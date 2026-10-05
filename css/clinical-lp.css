@@ -1,5 +1,39 @@
+/* ==========================================================================
+   Fonte customizada da marca (logo) — Cocogoose Pro
+   Os arquivos ficam em ./fonts/font-ebot-logo/
+   Os nomes abaixo são exatamente os usados dentro do SVG do logo.
+   ========================================================================== */
+
+@font-face {
+  font-family: "CocogooseProTrial-Bold";
+  src: url("../fonts/font-ebot-logo/Cocogoose-Pro-Bold-trial.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CocogooseProTrial";
+  src: url("../fonts/font-ebot-logo/Cocogoose-Pro-Regular-trial.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Atalho para usar a família da marca em outros textos, se necessário */
+@font-face {
+  font-family: "Cocogoose";
+  src: url("../fonts/font-ebot-logo/Cocogoose-Pro-Bold-trial.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   scroll-behavior: smooth;
+  /* As animações .reveal-left/.reveal-right deslocam elementos 40px para fora
+     enquanto ainda não ativaram — evita o scroll horizontal transitório. */
+  overflow-x: clip;
 }
 
 .clinical-page {
@@ -30,15 +64,22 @@ html {
   z-index: 1000;
 }
 
+.logo {
+  /* o logo nunca deve ser comprimido pelo flex do header */
+  flex: 0 0 auto;
+}
+
 .brand-link {
   display: flex;
   align-items: center;
 }
 
-.brand-link img {
+.brand-link img,
+.brand-link svg {
   height: 48px;
   width: auto;
   object-fit: contain;
+  display: block;
 }
 
 .clinical-header .nav-menu a {
@@ -580,7 +621,6 @@ html {
 
 .clinical-pain-card h3,
 .flow-step h3,
-.resource-card h3,
 .rollout-grid h3 {
   color: var(--dark);
   font-size: 1.2rem;
@@ -657,583 +697,6 @@ html {
   color: var(--dark);
   font-weight: 800;
   margin: 0.5rem 0;
-}
-
-.resource-mosaic {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-areas:
-    "schedule schedule schedule schedule schedule schedule triage triage triage reminder reminder reminder"
-    "schedule schedule schedule schedule schedule schedule docs docs docs reminder reminder reminder"
-    "panel panel panel panel panel panel panel panel human human human human";
-  gap: 1.1rem;
-  align-items: stretch;
-}
-
-.resource-card {
-  position: relative;
-  padding: 2rem;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(43, 159, 232, 0.12);
-  box-shadow: 0 18px 50px rgba(33, 68, 86, 0.07);
-  overflow: hidden;
-  min-height: 260px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.resource-reminder,
-.resource-panel,
-.resource-human {
-  justify-content: flex-start;
-}
-
-.resource-schedule {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(190px, 240px);
-  grid-template-rows: auto auto auto 1fr;
-  column-gap: 1.5rem;
-}
-
-.resource-schedule > span,
-.resource-schedule h3,
-.resource-schedule p,
-.resource-schedule .schedule-visual {
-  grid-column: 1;
-}
-
-.resource-schedule .human-photo-card {
-  grid-column: 2;
-  grid-row: 1 / -1;
-  align-self: stretch;
-  width: 100%;
-  margin-top: 0;
-}
-
-.resource-human .human-photo-card {
-  width: 100%;
-  max-height: 170px;
-  margin-top: auto;
-  margin-left: 0;
-  border-radius: 24px;
-  background-position: center 34%;
-}
-
-.resource-panel .resource-visual,
-.resource-reminder .resource-visual,
-.resource-human .resource-visual {
-  width: 100%;
-}
-
-.resource-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 28px 70px rgba(43, 159, 232, 0.16);
-}
-
-.resource-card.large {
-  background:
-    radial-gradient(circle at 100% 0%, rgba(43, 159, 232, 0.24), transparent 44%),
-    #ffffff;
-}
-
-.resource-schedule { grid-area: schedule; }
-.resource-triage { grid-area: triage; }
-.resource-reminder { grid-area: reminder; }
-.resource-docs { grid-area: docs; }
-.resource-panel { grid-area: panel; }
-.resource-human { grid-area: human; }
-
-.resource-card.dark {
-  background: #263532;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.resource-card.dark h3 {
-  color: #ffffff;
-}
-
-.whatsapp-mark {
-  position: absolute;
-  right: 1.4rem;
-  top: 1.4rem;
-  z-index: 3;
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #25d366;
-  color: #ffffff;
-  box-shadow: 0 20px 36px rgba(37, 211, 102, 0.24);
-}
-
-.whatsapp-mark svg {
-  width: 31px;
-  height: 31px;
-}
-
-.resource-card > span {
-  display: block;
-  color: var(--primary);
-  font-weight: 900;
-  opacity: 0.42;
-  margin-bottom: 2rem;
-}
-
-.resource-card p {
-  position: relative;
-  z-index: 2;
-}
-
-.human-photo-card {
-  position: relative;
-  z-index: 2;
-  aspect-ratio: 3 / 4;
-  min-height: 0;
-  margin-top: 1.5rem;
-  border-radius: 24px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28), 0 20px 45px rgba(33, 68, 86, 0.12);
-}
-
-.human-photo-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 32%, rgba(18, 31, 29, 0.42));
-}
-
-.human-photo-doctor {
-  background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80');
-}
-
-.human-photo-patient {
-  min-height: 0;
-  background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80');
-}
-
-.resource-card h3,
-.resource-card > span {
-  position: relative;
-  z-index: 2;
-}
-
-.resource-visual {
-  position: relative;
-  z-index: 1;
-  margin-top: auto;
-  min-height: 92px;
-  pointer-events: none;
-}
-
-.resource-card.large .resource-visual {
-  min-height: 240px;
-}
-
-.schedule-visual {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  align-content: end;
-  padding-top: 1.2rem;
-}
-
-.schedule-calendar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.45rem;
-  padding: 0.75rem;
-  border-radius: 22px;
-  background: rgba(43, 159, 232, 0.08);
-  border: 1px solid rgba(43, 159, 232, 0.14);
-}
-
-.schedule-calendar span {
-  color: #59706b;
-  font-size: 0.68rem;
-  font-weight: 850;
-  text-align: center;
-}
-
-.schedule-calendar i {
-  height: 50px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid rgba(43, 159, 232, 0.16);
-  box-shadow: inset 0 -18px 0 rgba(43, 159, 232, 0.08);
-  animation: scheduleGlow 3.6s ease-in-out infinite;
-}
-
-.schedule-calendar i:nth-of-type(2) { animation-delay: 0.25s; }
-.schedule-calendar i:nth-of-type(3) { animation-delay: 0.5s; }
-.schedule-calendar i:nth-of-type(4) { animation-delay: 0.75s; }
-
-.schedule-flow-card {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.7rem;
-  align-items: center;
-  padding: 0.85rem;
-  border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid rgba(43, 159, 232, 0.16);
-  box-shadow: 0 14px 28px rgba(33, 68, 86, 0.08);
-  animation: scheduleCardLift 4s ease-in-out infinite;
-}
-
-.schedule-flow-card.secondary {
-  opacity: 0.82;
-  animation-delay: 0.8s;
-}
-
-.schedule-flow-card strong {
-  color: var(--primary);
-  font-size: 1.05rem;
-}
-
-.schedule-flow-card span {
-  color: #263532;
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.schedule-flow-card em {
-  padding: 0.38rem 0.5rem;
-  border-radius: 999px;
-  background: var(--primary);
-  color: #ffffff;
-  font-size: 0.68rem;
-  font-style: normal;
-  font-weight: 850;
-}
-
-.triage-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.triage-visual i {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(43, 159, 232, 0.26);
-  animation: triageOrbit 5s linear infinite;
-}
-
-.triage-visual i:nth-child(1) { width: 34px; height: 34px; background: rgba(43, 159, 232, 0.24); animation-duration: 3.5s; }
-.triage-visual i:nth-child(2) { width: 76px; height: 76px; animation-delay: -1s; }
-.triage-visual i:nth-child(3) { width: 118px; height: 118px; animation-delay: -2s; opacity: 0.75; }
-
-.reminder-visual {
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  justify-content: flex-end;
-}
-
-.reminder-phone-card {
-  padding: 1rem;
-  width: 100%;
-  max-width: 100%;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 20px 45px rgba(0, 0, 0, 0.18);
-  animation: reminderSlide 4s ease-in-out infinite;
-  min-width: 0;
-}
-
-.reminder-phone-card span,
-.reminder-phone-card strong {
-  display: block;
-}
-
-.reminder-phone-card span {
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 0.72rem;
-  font-weight: 800;
-}
-
-.reminder-phone-card strong {
-  color: #ffffff;
-  width: 100%;
-  margin: 0.45rem 0 0.75rem;
-  font-size: clamp(0.86rem, 1.5vw, 1rem);
-  line-height: 1.2;
-  overflow-wrap: anywhere;
-}
-
-.reminder-phone-card strong::before {
-  content: none;
-}
-
-.reminder-phone-card em {
-  display: block;
-  width: fit-content;
-  padding: 0.55rem 0.7rem;
-  border-radius: 999px;
-  background: #25d366;
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-style: normal;
-  font-weight: 850;
-}
-
-.reminder-status-line {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.72rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.78rem;
-  font-weight: 800;
-  animation: reminderSlide 4s ease-in-out infinite;
-  animation-delay: 0.45s;
-}
-
-.reminder-status-line.alt {
-  animation-delay: 0.9s;
-  opacity: 0.84;
-}
-
-.reminder-status-line i {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 0 6px rgba(43, 159, 232, 0.14);
-}
-
-.reminder-visual > strong {
-  position: relative;
-  align-self: flex-end;
-  width: 64px;
-  height: 64px;
-  border-radius: 22px;
-  background: rgba(43, 159, 232, 0.94);
-  animation: bellNudge 2.8s ease-in-out infinite;
-}
-
-.reminder-visual > strong::before {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 30px;
-  left: 19px;
-  top: 15px;
-  border: 3px solid #ffffff;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-bottom: 0;
-}
-
-.docs-visual {
-  min-height: 118px;
-}
-
-.docs-visual i {
-  position: absolute;
-  width: 76px;
-  height: 96px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid rgba(43, 159, 232, 0.16);
-  box-shadow: 0 14px 30px rgba(33, 68, 86, 0.08);
-  animation: docFloat 4s ease-in-out infinite;
-}
-
-.docs-visual i::before {
-  content: '';
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  top: 22px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(43, 159, 232, 0.35);
-  box-shadow: 0 18px 0 rgba(43, 159, 232, 0.16), 0 36px 0 rgba(43, 159, 232, 0.1);
-}
-
-.docs-visual i:nth-child(1) { left: 0; bottom: 0; transform: rotate(-7deg); }
-.docs-visual i:nth-child(2) { left: 58px; bottom: 12px; transform: rotate(4deg); animation-delay: 0.45s; }
-.docs-visual i:nth-child(3) { left: 116px; bottom: 0; transform: rotate(9deg); animation-delay: 0.9s; }
-
-.panel-visual {
-  min-height: 260px;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  grid-template-areas:
-    "topline reasons"
-    "chart reasons"
-    "kpis kpis";
-  gap: 0.85rem;
-  padding-top: 1rem;
-}
-
-.crm-topline,
-.crm-chart,
-.crm-reasons,
-.crm-kpis span {
-  border: 1px solid rgba(43, 159, 232, 0.13);
-  background: rgba(255, 255, 255, 0.76);
-  box-shadow: 0 14px 34px rgba(33, 68, 86, 0.07);
-}
-
-.crm-topline {
-  grid-area: topline;
-  padding: 1rem;
-  border-radius: 22px;
-}
-
-.crm-topline span,
-.crm-topline em {
-  color: #6a7b77;
-  font-size: 0.72rem;
-  font-style: normal;
-  font-weight: 850;
-}
-
-.crm-topline strong {
-  display: block;
-  color: #263532;
-  font-size: 2rem;
-  line-height: 1;
-  margin: 0.4rem 0;
-  font-variant-numeric: tabular-nums;
-}
-
-.crm-topline em {
-  color: #1f9e5a;
-}
-
-.crm-chart {
-  grid-area: chart;
-  min-height: 132px;
-  display: flex;
-  align-items: end;
-  gap: 0.45rem;
-  padding: 0.85rem;
-  border-radius: 22px;
-}
-
-.crm-chart i {
-  flex: 1;
-  border-radius: 12px 12px 6px 6px;
-  background: linear-gradient(180deg, rgba(43, 159, 232, 0.7), rgba(43, 159, 232, 0.16));
-  animation: panelBar 3.2s ease-in-out infinite;
-}
-
-.crm-chart i:nth-child(1) { height: 42%; }
-.crm-chart i:nth-child(2) { height: 76%; animation-delay: 0.15s; }
-.crm-chart i:nth-child(3) { height: 58%; animation-delay: 0.3s; }
-.crm-chart i:nth-child(4) { height: 92%; animation-delay: 0.45s; }
-.crm-chart i:nth-child(5) { height: 66%; animation-delay: 0.6s; }
-.crm-chart i:nth-child(6) { height: 48%; animation-delay: 0.75s; }
-
-.crm-reasons {
-  grid-area: reasons;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.75rem;
-  align-content: center;
-  padding: 1rem;
-  border-radius: 22px;
-}
-
-.crm-reasons span {
-  color: #52625f;
-  font-size: 0.72rem;
-  font-weight: 850;
-}
-
-.crm-reasons strong {
-  height: 9px;
-  border-radius: 999px;
-  background: rgba(43, 159, 232, 0.14);
-  overflow: hidden;
-}
-
-.crm-reasons strong::before {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 70%;
-  border-radius: inherit;
-  background: var(--primary);
-  animation: crmReasonFill 4s ease-in-out infinite;
-}
-
-.crm-reasons strong:nth-of-type(2)::before { width: 46%; animation-delay: 0.35s; }
-.crm-reasons strong:nth-of-type(3)::before { width: 34%; animation-delay: 0.7s; }
-
-.crm-kpis {
-  grid-area: kpis;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.65rem;
-}
-
-.crm-kpis span {
-  min-height: 58px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #263532;
-  font-size: 0.72rem;
-  font-weight: 850;
-}
-
-.human-visual {
-  min-height: 166px;
-  display: flex;
-  align-items: flex-end;
-}
-
-.handoff-summary-card {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 0.85rem;
-  width: 100%;
-  padding: 1rem;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(43, 159, 232, 0.14);
-  box-shadow: 0 20px 44px rgba(33, 68, 86, 0.12);
-  animation: handoffBubble 3.8s ease-in-out infinite;
-}
-
-.handoff-summary-card img {
-  width: 52px;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.handoff-summary-card strong,
-.handoff-summary-card span {
-  display: block;
-}
-
-.handoff-summary-card strong {
-  color: #263532;
-  margin-bottom: 0.35rem;
-}
-
-.handoff-summary-card span {
-  color: #5f706c;
-  font-size: 0.76rem;
-  line-height: 1.45;
 }
 
 .security-section {
@@ -1843,6 +1306,11 @@ html {
   min-width: 150px;
 }
 
+/* E-mails/URLs sem espaço não quebravam e estouravam o rodapé em telas médias */
+.footer-restored-grid * {
+  overflow-wrap: anywhere;
+}
+
 .footer-brand-block {
   flex: 1.5 !important;
   min-width: 250px !important;
@@ -2225,69 +1693,6 @@ html {
   }
 }
 
-@keyframes scheduleGlow {
-  0%, 100% { transform: translateY(0); opacity: 0.82; }
-  50% { transform: translateY(-8px); opacity: 1; }
-}
-
-@keyframes schedulePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-
-@keyframes scheduleCardLift {
-  0%, 100% { transform: translateY(0); opacity: 0.88; }
-  50% { transform: translateY(-6px); opacity: 1; }
-}
-
-@keyframes triageOrbit {
-  0% { transform: rotate(0deg) translateX(0) scale(1); opacity: 0.72; }
-  50% { transform: rotate(180deg) translateX(8px) scale(1.04); opacity: 1; }
-  100% { transform: rotate(360deg) translateX(0) scale(1); opacity: 0.72; }
-}
-
-@keyframes reminderSlide {
-  0%, 100% { transform: translateX(0); opacity: 0.72; }
-  50% { transform: translateX(12px); opacity: 1; }
-}
-
-@keyframes bellNudge {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  12% { transform: rotate(-6deg) scale(1.03); }
-  24% { transform: rotate(6deg) scale(1.03); }
-  36% { transform: rotate(0deg) scale(1); }
-}
-
-@keyframes docFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -10px; }
-}
-
-@keyframes panelBar {
-  0%, 100% { transform: scaleY(0.86); transform-origin: bottom; }
-  50% { transform: scaleY(1.08); transform-origin: bottom; }
-}
-
-@keyframes panelCard {
-  0%, 100% { transform: translateY(0); opacity: 0.78; }
-  50% { transform: translateY(-8px); opacity: 1; }
-}
-
-@keyframes crmReasonFill {
-  0%, 100% { transform: scaleX(0.76); transform-origin: left; }
-  50% { transform: scaleX(1); transform-origin: left; }
-}
-
-@keyframes humanPulse {
-  0%, 100% { transform: scale(1); opacity: 0.86; }
-  50% { transform: scale(1.08); opacity: 1; }
-}
-
-@keyframes handoffBubble {
-  0%, 100% { transform: translateX(0); opacity: 0.82; }
-  50% { transform: translateX(-10px); opacity: 1; }
-}
-
 @media (max-width: 1100px) {
   .split-heading,
   .security-grid,
@@ -2295,23 +1700,6 @@ html {
   .flow-rail,
   .rollout-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .resource-mosaic {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-      "schedule schedule"
-      "triage reminder"
-      "docs human"
-      "panel panel"
-  }
-
-  .resource-schedule {
-    grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
-  }
-
-  .resource-card {
-    min-height: 250px;
   }
 
   .clinical-pain-card.featured {
@@ -2391,50 +1779,6 @@ html {
   .flow-rail,
   .rollout-grid,
   .security-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .resource-mosaic {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "schedule"
-      "triage"
-      "reminder"
-      "docs"
-      "panel"
-      "human";
-  }
-
-  .resource-card {
-    min-height: auto;
-  }
-
-  .resource-schedule {
-    display: flex;
-  }
-
-  .resource-schedule .human-photo-card,
-  .resource-human .human-photo-card {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 1.5rem;
-  }
-
-  .resource-card.large .resource-visual,
-  .reminder-visual {
-    min-height: 220px;
-  }
-
-  .panel-visual {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "topline"
-      "chart"
-      "reasons"
-      "kpis";
-  }
-
-  .crm-kpis {
     grid-template-columns: 1fr;
   }
 
@@ -2572,7 +1916,6 @@ html {
 
   .clinical-pain-card,
   .flow-step,
-  .resource-card,
   .rollout-grid article {
     padding: 1.5rem;
   }

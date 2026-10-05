@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
          let message = "Olá, gostaria de falar com um especialista";
          if (btnText.includes('Suporte Técnico')) message = "Olá, preciso de suporte técnico/LGPD";
          if (btnText.includes('Demonstração')) message = "Olá, gostaria de agendar uma demonstração";
+         if (btnText.includes('sistema completo')) message = "Olá, gostaria de agendar uma demonstração completa do sistema Ê-Bot Clinical";
          if (btnText.includes('Integração')) message = "Olá, gostaria de solicitar integração via API";
          if (btnText.includes('Orçamento')) message = "Olá, gostaria de solicitar um orçamento";
          
