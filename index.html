@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/clinical-lp.css">
+  <link rel="stylesheet" href="css/dashboard-preview.css">
+  <link rel="stylesheet" href="css/whatsapp-showcase.css">
+  <link rel="stylesheet" href="css/feature-cards.css">
 </head>
 <body class="clinical-page" style="--primary: #2B9FE8; --primary-hover: #1a7ebc; --primary-light: rgba(43, 159, 232, 0.1);">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -28,7 +31,20 @@
     <div class="container header-inner">
       <div class="logo">
         <a href="#inicio" aria-label="Ê-Bot Clinical" class="brand-link">
-          <img src="./assets/images/logos_ebot/ebot_clinical/SVG/Logo_clinical_aplicação_1_black.svg" alt="Ê-Bot Clinical">
+          <!-- SVG inline (em vez de <img>) para que o texto use a fonte Cocogoose carregada via @font-face -->
+          <svg class="brand-logo" viewBox="0 0 384.8 163.25" role="img" aria-label="Ê-Bot Clinical" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="brandLogoGrad" x1="0" y1="75.23" x2="190.2" y2="75.23" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#91d0d3"/>
+                <stop offset="1" stop-color="#40bdec"/>
+              </linearGradient>
+            </defs>
+            <text transform="translate(247.36 88.96)" font-family="CocogooseProTrial-Bold, CocogooseProTrial, sans-serif" font-weight="700" font-size="71.31px" fill="#3f4b48"><tspan x="0" y="0">bot</tspan></text>
+            <text transform="translate(202.73 133.63)" font-family="CocogooseProTrial-Bold, CocogooseProTrial, sans-serif" font-weight="700" font-size="42.44px" fill="#40bdec"><tspan x="0" y="0">clini</tspan><tspan x="104.68" y="0" letter-spacing="-0.04em">c</tspan><tspan x="129.68" y="0">al</tspan></text>
+            <text transform="translate(197.1 88.96)" font-family="CocogooseProTrial-Bold, CocogooseProTrial, sans-serif" font-weight="700" font-size="71.31px" fill="#40bdec"><tspan x="0" y="0">ê</tspan></text>
+            <path fill="url(#brandLogoGrad)" d="M42.22,142.96c9.23-26.92-5.71-41.34-9.95-46.46-3.53-4.27-11.98-10.27-18.03-17.23C8.19,72.32-.44,60.73.02,44.94.6,24.61,19.4,2.14,44.34.17c17.91-1.41,35.48,8.03,45.68,24.05,0,0,2.12,3.78,3.33,3.93s9.38-8.77,9.83-9.68S118.3-.86,144.17.03s48.4,26.16,45.83,50.96c-2.57,24.81-18.61,54.91-82.59,93.63-12.31,6.81-24.96,0-24.96,0,0,0-5.14-2.72-8.32-5.6s-8.02-.3-8.02-.3c0,0-13.01,9.68-15.13,10.59-3.03,1.66-9.83,2.87-8.77-6.35Z"/>
+            <path fill="#ffffff" d="M29.71,59.26h37.21s7.26.4,10.08,7.87c5.04,7.46,5.65,9.48,5.65,9.48,0,0,2.22,5.14,5.75.61,3.63-5.75,20.17-44.67,20.17-44.67,0,0,6.45-8.77,13.11,0,4.24,10.69,12,37.71,12,37.71,0,0,1.61,2.72,2.92,0s5.14-10.29,10.89-11.39c0,0,4.84-1.21,6.76-.5.81-1.31.23-1.11.5-3.23s2.92-8.27,11.39-7.76,10.49,7.87,10.08,11.6-2.52,9.88-9.98,10.79-7.61-1.31-7.87-2.22-3.58-2.57-6.86-.1c-6.03,6.48-10.08,14.52-10.08,14.52,0,0-8.27,11.7-15.73-2.62-4.03-13.61-9.98-29.75-9.98-29.75,0,0-1.11-2.22-2.32.1-2.22,3.23-17.24,37.11-17.24,37.11,0,0-9.28,14.42-21.08-1.41-8.87-16.74-9.48-15.45-12.81-15.41s-32.57.39-32.57.39c0,0-5.55-.61-5.55-5.75s5.55-5.34,5.55-5.34Z"/>
+          </svg>
         </a>
       </div>
 
@@ -37,6 +53,8 @@
           <li><a href="#inicio">Início</a></li>
           <li><a href="#fluxo">Fluxo</a></li>
           <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#painel">Painel</a></li>
+          <li><a href="#whatsapp">WhatsApp</a></li>
           <li><a href="#seguranca">Segurança</a></li>
           <li><a href="#demo">Demo IA</a></li>
         </ul>
@@ -50,6 +68,47 @@
   </header>
 
   <main id="conteudo">
+    <!-- Sprite de ícones usado nas prévias do painel -->
+    <svg class="dx-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="dx-i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></symbol>
+      <symbol id="dx-i-headset" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M18 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M6 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H6z"/></symbol>
+      <symbol id="dx-i-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></symbol>
+      <symbol id="dx-i-cols" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M15 4v16"/></symbol>
+      <symbol id="dx-i-check" viewBox="0 0 24 24"><path d="M9 11.5l2.5 2.5L21 4.5"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+      <symbol id="dx-i-users" viewBox="0 0 24 24"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7.5" r="3.5"/><path d="M22 20v-1.5a4 4 0 0 0-3-3.87"/><path d="M16.5 4.13a4 4 0 0 1 0 7.24"/></symbol>
+      <symbol id="dx-i-clip" viewBox="0 0 24 24"><rect x="8" y="2.5" width="8" height="4" rx="1.5"/><path d="M16 4.5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></symbol>
+      <symbol id="dx-i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h5a3 3 0 0 1 3 3v4.5"/></symbol>
+      <symbol id="dx-i-book" viewBox="0 0 24 24"><path d="M12 7v13"/><path d="M3 18.5A1.5 1.5 0 0 1 4.5 17H10a2 2 0 0 0 2 2 2 2 0 0 0 2-2h5.5A1.5 1.5 0 0 1 21 18.5v-11A1.5 1.5 0 0 0 19.5 6H14a2 2 0 0 0-2 2 2 2 0 0 0-2-2H4.5A1.5 1.5 0 0 0 3 7.5z"/></symbol>
+      <symbol id="dx-i-radio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"/><path d="M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.9 19.1a10 10 0 0 1 0-14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></symbol>
+      <symbol id="dx-i-mega" viewBox="0 0 24 24"><path d="M3 11.5v1.8a2 2 0 0 0 2 2h1.5L18 21V3L6.5 8.7H5a2 2 0 0 0-2 2z"/><path d="M7 15.3V21"/><path d="M18 8.5a3.5 3.5 0 0 1 0 7"/></symbol>
+      <symbol id="dx-i-steth" viewBox="0 0 24 24"><path d="M4.5 3v5a5 5 0 0 0 10 0V3"/><path d="M3.5 3h2M13.5 3h2"/><path d="M9.5 13v2.5a5 5 0 0 0 10 0V13"/><circle cx="19.5" cy="10.5" r="2.2"/></symbol>
+      <symbol id="dx-i-plug" viewBox="0 0 24 24"><path d="M9 2.5v6M15 2.5v6"/><path d="M6.5 8.5h11v3a5.5 5.5 0 0 1-11 0z"/><path d="M12 17v4.5"/></symbol>
+      <symbol id="dx-i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.4 5.4l1.9 1.9M16.7 16.7l1.9 1.9M18.6 5.4l-1.9 1.9M7.3 16.7l-1.9 1.9"/></symbol>
+      <symbol id="dx-i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></symbol>
+      <symbol id="dx-i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></symbol>
+      <symbol id="dx-i-bot" viewBox="0 0 24 24"><rect x="4" y="8.5" width="16" height="11.5" rx="4"/><path d="M12 8.5V4M8.5 4h7"/><path d="M9 14h.01M15 14h.01"/></symbol>
+      <symbol id="dx-i-msg" viewBox="0 0 24 24"><path d="M21 11.6a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-4-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 12 3.2a8.4 8.4 0 0 1 9 8.4z"/></symbol>
+      <symbol id="dx-i-act" viewBox="0 0 24 24"><path d="M3 12h4l3 7.5 4-15 3 7.5h4"/></symbol>
+      <symbol id="dx-i-usercheck" viewBox="0 0 24 24"><path d="M15 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="8.5" cy="7.5" r="3.5"/><path d="M16 11.5l2 2 4-4.5"/></symbol>
+      <symbol id="dx-i-calclock" viewBox="0 0 24 24"><path d="M21 10V6.5a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 6.5v13A2.5 2.5 0 0 0 5.5 22H11"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/><circle cx="17.5" cy="17.5" r="4.5"/><path d="M17.5 15.4v2.2l1.5 1"/></symbol>
+      <symbol id="dx-i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.5 1.5"/><path d="M9.5 2.5h5"/></symbol>
+      <symbol id="dx-i-hourglass" viewBox="0 0 24 24"><path d="M6.5 3h11M6.5 21h11"/><path d="M7.5 3v3.2c0 2 4.5 4.3 4.5 5.8s-4.5 3.8-4.5 5.8V21"/><path d="M16.5 3v3.2c0 2-4.5 4.3-4.5 5.8s4.5 3.8 4.5 5.8V21"/></symbol>
+      <symbol id="dx-i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.2c0 4.6-3 8.8-7.5 10.3C7.5 20 4.5 15.8 4.5 11.2V6z"/><path d="M9.2 12l2 2 3.8-4.2"/></symbol>
+      <symbol id="dx-i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></symbol>
+      <symbol id="dx-i-check2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.2 12.4l2.6 2.6 5-5.6"/></symbol>
+      <symbol id="dx-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></symbol>
+      <symbol id="dx-i-send" viewBox="0 0 24 24"><path d="M21.5 2.5L11 13"/><path d="M21.5 2.5L15 21.5l-4-8.5-8.5-4z"/></symbol>
+      <symbol id="dx-i-zap" viewBox="0 0 24 24"><path d="M13.5 2L4 13.5h6.5L9.5 22l9.5-11.5H12z"/></symbol>
+      <symbol id="dx-i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9L2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 17.2h.01"/></symbol>
+      <symbol id="dx-i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+      <symbol id="dx-i-dl" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 20h16"/></symbol>
+      <symbol id="dx-i-tag" viewBox="0 0 24 24"><path d="M3 12.5V5a2 2 0 0 1 2-2h7.5L21 11.5 12.5 20z"/><circle cx="8" cy="8" r="1.4"/></symbol>
+      <symbol id="dx-i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="dx-i-scroll" viewBox="0 0 24 24"><path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 0 2 2H7a2 2 0 0 1-2-2V6"/><path d="M5 6a2 2 0 0 1 2-2"/><path d="M9 9h6M9 13h6M9 17h4"/></symbol>
+      <symbol id="dx-i-arrow" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></symbol>
+      <symbol id="dx-i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    </svg>
+
     <section id="inicio" class="section clinical-hero bg-grid-pattern">
       <div class="container grid grid-2 items-center hero-split clinical-hero-grid">
         <div class="reveal reveal-left">
@@ -177,6 +236,57 @@
             <p>Lembra o paciente, mede satisfação e reduz faltas com mensagens no momento certo.</p>
           </article>
         </div>
+
+        <!-- Fluxo de automação montado no painel -->
+        <div class="dx-builder reveal">
+          <div class="dx-builder-head">
+            <div>
+              <span class="text-micro text-primary">Fluxos de automação</span>
+              <h3>Esse fluxo é montado no painel, sem depender de TI.</h3>
+              <p>Cada etapa vira um bloco: gatilho, regra, consulta na agenda e resposta no WhatsApp. A equipe liga, pausa e acompanha tudo pelo Ê-Bot Clinical.</p>
+            </div>
+            <span class="dx-builder-badge"><svg class="dx-ico"><use href="#dx-i-zap"></use></svg> Sem código</span>
+          </div>
+
+          <ol class="dx-track">
+            <li class="dx-node">
+              <span class="dx-node-ico is-wa"><svg class="dx-ico"><use href="#dx-i-msg"></use></svg></span>
+              <small>Gatilho</small>
+              <strong>Mensagem recebida</strong>
+              <p>Paciente escreve no WhatsApp da unidade, mesmo fora do expediente.</p>
+            </li>
+            <li class="dx-node">
+              <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-bot"></use></svg></span>
+              <small>Etapa 1</small>
+              <strong>Identifica intenção</strong>
+              <p>Agendar, remarcar, confirmar, pedir receita, preparo ou falar com humano.</p>
+            </li>
+            <li class="dx-node">
+              <span class="dx-node-ico is-teal"><svg class="dx-ico"><use href="#dx-i-clip"></use></svg></span>
+              <small>Etapa 2</small>
+              <strong>Consulta regras</strong>
+              <p>Valida convênio, especialidade, agenda médica, documentos e políticas da unidade.</p>
+            </li>
+            <li class="dx-node">
+              <span class="dx-node-ico is-green"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg></span>
+              <small>Etapa 3</small>
+              <strong>Executa a ação</strong>
+              <p>Confirma o horário, envia a orientação, abre a solicitação ou entrega o caso.</p>
+            </li>
+            <li class="dx-node">
+              <span class="dx-node-ico is-orange"><svg class="dx-ico"><use href="#dx-i-headset"></use></svg></span>
+              <small>Etapa 4</small>
+              <strong>Passa para a recepção</strong>
+              <p>Quando precisa de humano, a conversa chega resumida e com contexto.</p>
+            </li>
+            <li class="dx-node">
+              <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-act"></use></svg></span>
+              <small>Acompanhamento</small>
+              <strong>Mede e otimiza</strong>
+              <p>Lembretes, satisfação e relatórios de faltas, horários críticos e demandas.</p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -219,69 +329,879 @@
           <p class="body-large">Você escolhe o que automatizar. O Ê-Bot pode começar por agendamentos e evoluir para triagem, receitas, financeiro e painel de gestão.</p>
         </div>
 
-        <div class="resource-mosaic">
-          <article class="resource-card resource-schedule large">
-            <span>01</span>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-agenda">
+                <div class="fs-cols">
+                  <div class="fs-col">
+                    <span class="fs-col-head" style="--dot:#0E7A3E"><i></i>Hoje<b class="fs-count fs-count--early"><span>3</span><span>2</span></b></span>
+                    <div class="fs-card"><span class="fs-id">09:00</span><strong>Dra. Juliana · Cardiologia</strong><small><i class="fs-av">CR</i>Camila Rocha</small></div>
+                    <div class="fs-card fs-card--move"><span class="fs-id">10:30</span><strong>Dr. Ricardo · retorno</strong><small><i class="fs-av">MS</i>Marcos Silva</small></div>
+                    <div class="fs-slot"></div>
+                  </div>
+                  <div class="fs-col">
+                    <span class="fs-col-head" style="--dot:#C97F12"><i></i>Amanhã<b class="fs-count"><span>2</span><span>3</span></b></span>
+                    <div class="fs-card"><span class="fs-id">08:40</span><strong>Avaliação pré-operatória</strong><small><i class="fs-av">AP</i>Ana Paula</small></div>
+                    <div class="fs-card"><span class="fs-id">14:00</span><strong>Clínica geral</strong><small><i class="fs-av">PR</i>Paulo Ribeiro</small></div>
+                    <div class="fs-slot"></div>
+                  </div>
+                  <div class="fs-col">
+                    <span class="fs-col-head" style="--dot:#8FA9B4"><i></i>15 Jul<b>2</b></span>
+                    <div class="fs-card"><span class="fs-id">11:15</span><strong>Hemograma · jejum 8h</strong><small><i class="fs-av">JM</i>Júlia Mendes</small></div>
+                    <div class="fs-slot"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <h3>Agendamento inteligente</h3>
             <p>Sincronização com disponibilidade real para marcar, remarcar e cancelar consultas com regras da unidade.</p>
-            <div class="resource-visual schedule-visual" aria-hidden="true">
-              <div class="schedule-calendar">
-                <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span>
-                <i></i><i></i><i></i><i></i>
-              </div>
-              <div class="schedule-flow-card"><strong>14:20</strong><span>Dra. Helena</span><em>Confirmado</em></div>
-              <div class="schedule-flow-card secondary"><strong>15:00</strong><span>Cardiologia</span><em>Encaixe livre</em></div>
-            </div>
-            <div class="human-photo-card human-photo-doctor" aria-label="Médica usando atendimento digital"></div>
           </article>
-          <article class="resource-card resource-triage">
-            <span>02</span>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-chat">
+                <div class="fs-msg fs-msg--in"><b>Marcos Silva</b><span>Preciso remarcar minha cardiologia.</span></div>
+                <div class="fs-msg fs-msg--type"><i></i><i></i><i></i></div>
+                <div class="fs-msg fs-msg--ai"><b><svg class="dx-ico"><use href="#dx-i-bot"></use></svg> Ê-BOT · IA</b><span>Qual o motivo da consulta?</span></div>
+                <div class="fs-msg fs-msg--out"><span>Dor no peito ao esforçar, desde ontem.</span></div>
+                <div class="fs-chips"><span class="fs-pill fs-pill--ok">prioridade alta</span><span class="fs-pill">transfere p/ humano</span></div>
+              </div>
+            </div>
             <h3>Triagem inicial</h3>
             <p>Coleta sintomas, prioridade e especialidade antes do atendimento humano.</p>
-            <div class="resource-visual triage-visual" aria-hidden="true"><i></i><i></i><i></i></div>
           </article>
-          <article class="resource-card resource-reminder dark">
-            <div class="whatsapp-mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.28 14.3c-.22.61-1.28 1.15-1.78 1.22-.43.06-1.02.13-3.23-.79-2.66-1.11-4.38-3.83-4.52-4.01-.13-.19-1.08-1.44-1.08-2.75 0-1.31.68-1.95.92-2.22.24-.26.52-.33.69-.33.17 0 .34 0 .49.01.16.01.37-.06.57.43.21.5.73 1.77.79 1.9.06.13.1.28.01.47-.08.19-.13.31-.26.46-.13.15-.28.33-.39.46-.13.14-.27.29-.12.56.15.26.68 1.13 1.46 1.83.99.9 1.84 1.18 2.1 1.31.26.13.41.11.56-.06.15-.17.65-.75.82-1.01.17-.26.34-.22.58-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.64-.16 1.25z"/></svg>
-            </div>
-            <span>03</span>
-            <h3>Lembretes antifalta</h3>
-            <p>Confirma presença, envia preparo e libera horários quando há cancelamento.</p>
-            <div class="resource-visual reminder-visual" aria-hidden="true">
-              <div class="reminder-phone-card"><span>Amanhã 14:20</span><strong>Consulta confirmada?</strong><em>Sim, vou comparecer</em></div>
-              <div class="reminder-status-line"><i></i><span>Preparo enviado</span></div>
-              <div class="reminder-status-line alt"><i></i><span>Horário liberado</span></div>
-              <strong></strong>
-            </div>
-          </article>
-          <article class="resource-card resource-docs">
-            <span>04</span>
-            <h3>Receitas e documentos</h3>
-            <p>Organiza solicitações de renovação, exames, anexos e orientações.</p>
-            <div class="resource-visual docs-visual" aria-hidden="true"><i></i><i></i><i></i></div>
-          </article>
-          <article class="resource-card resource-panel wide">
-            <span>05</span>
-            <h3>Painel gerencial</h3>
-            <p>Acompanhe volume de conversas, motivos de contato, taxa de confirmação, horários críticos e demandas transferidas para humanos.</p>
-            <div class="resource-visual panel-visual" aria-hidden="true">
-              <div class="crm-topline"><span>Conversas hoje</span><strong>1.284</strong><em>+18%</em></div>
-              <div class="crm-chart"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="crm-reasons"><span>Agendamento</span><strong></strong><span>Preparo</span><strong></strong><span>Financeiro</span><strong></strong></div>
-              <div class="crm-kpis"><span>87% confirmação</span><span>10h-12h crítico</span><span>42 para humano</span></div>
-            </div>
-          </article>
-          <article class="resource-card resource-human">
-            <span>06</span>
-            <h3>Atendimento híbrido</h3>
-            <p>Quando precisa de humano, a conversa chega resumida e com contexto.</p>
-            <div class="resource-visual human-visual" aria-hidden="true">
-              <div class="handoff-summary-card">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=220&q=80" alt="">
-                <div><strong>Ana P.</strong><span>Quer remarcar retorno e já enviou exames. Convênio validado. Prioridade: média.</span></div>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-hist">
+                <div class="fs-contact">
+                  <i class="fs-av fs-av--lg">CR</i>
+                  <span><strong>Camila Rocha</strong><small>WhatsApp · +55 11 98842-3170</small></span>
+                  <span class="fs-pill fs-pill--ok">#4821</span>
+                </div>
+                <div class="fs-tl">
+                  <div class="fs-tl-row"><i></i><span><strong>Lembrete 1 enviado</strong><small>ontem 18:00 · WhatsApp</small></span></div>
+                  <div class="fs-tl-row"><i></i><span><strong>Presença confirmada</strong><small>hoje 09:12 · “Sim, vou comparecer”</small></span></div>
+                  <div class="fs-tl-row"><i></i><span><strong>Preparo de exame enviado</strong><small>hoje 09:13 · jejum de 8 horas</small></span></div>
+                  <div class="fs-tl-row"><i></i><span><strong>Horário liberado na agenda</strong><small>hoje 09:14 · lista de espera contatada</small></span></div>
+                </div>
               </div>
             </div>
-            <div class="human-photo-card human-photo-patient" aria-label="Paciente em atendimento humanizado"></div>
+            <h3>Lembretes antifalta</h3>
+            <p>Confirma presença, envia preparo e libera horários quando há cancelamento.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-docs">
+                <div class="fs-doc"><span><strong>Renovação · Losartana 50mg</strong><small>Camila Rocha · solicitado hoje, 08:12</small></span><span class="fs-pill fs-pill--down">assinar</span></div>
+                <div class="fs-doc"><span><strong>Exame · Hemograma completo</strong><small>PDF recebido no WhatsApp · 09:41</small></span><span class="fs-pill fs-pill--ok">recebido</span></div>
+                <div class="fs-doc"><span><strong>Orientação · Jejum de 8 horas</strong><small>Preparo padrão para 12 pacientes</small></span><span class="fs-pill">enviado</span></div>
+              </div>
+            </div>
+            <h3>Receitas e documentos</h3>
+            <p>Organiza solicitações de renovação, exames, anexos e orientações.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-metrics">
+                <div class="fs-panel">
+                  <div class="fs-panel-head"><strong>Fluxo por hora</strong><span class="fs-legend"><i class="is-total"></i>Total<i class="is-ai"></i>IA</span></div>
+                  <svg class="fs-spark" viewBox="0 0 340 84" preserveAspectRatio="none" aria-hidden="true">
+                    <path class="fs-spark-area" d="M0,70 L20,64 L40,55 L60,45 L80,50 L100,58 L120,52 L140,44 L160,34 L180,36 L200,26 L220,14 L240,10 L260,22 L280,32 L300,44 L320,54 L340,62 L340,84 L0,84 Z"></path>
+                    <path class="fs-spark-line" d="M0,70 L20,64 L40,55 L60,45 L80,50 L100,58 L120,52 L140,44 L160,34 L180,36 L200,26 L220,14 L240,10 L260,22 L280,32 L300,44 L320,54 L340,62"></path>
+                  </svg>
+                </div>
+                <div class="fs-kpis">
+                  <div class="fs-kpi"><small>Confirmação de presença</small><b>87<em>%</em></b><span class="fs-pill fs-pill--ok">+18%</span></div>
+                  <div class="fs-kpi"><small>Resolvidos pela IA</small><b>73<em>%</em></b><span class="fs-pill fs-pill--ok">+12%</span></div>
+                  <div class="fs-kpi"><small>Não compareceram</small><b>6<em>%</em></b><span class="fs-pill fs-pill--down">-2pt</span></div>
+                </div>
+              </div>
+            </div>
+            <h3>Painel gerencial</h3>
+            <p>Acompanhe volume de conversas, motivos de contato, taxa de confirmação, horários críticos e demandas transferidas para humanos.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-xfer">
+                <div class="fs-msg fs-msg--in"><b>Camila Rocha</b><span>Quer remarcar o retorno e já enviou os exames.</span></div>
+                <div class="fs-chips"><span class="fs-pill">#4821</span><span class="fs-pill">Convênio Unimed</span><span class="fs-pill">retorno</span></div>
+                <div class="fs-xfer-row">
+                  <span class="fs-xfer-node"><i></i>Ê-Bot IA</span>
+                  <svg class="dx-ico"><use href="#dx-i-arrow"></use></svg>
+                  <span class="fs-xfer-node is-target"><i></i>Recepção</span>
+                </div>
+                <div class="fs-note"><svg class="dx-ico"><use href="#dx-i-check2"></use></svg> Contexto e histórico seguem junto</div>
+              </div>
+            </div>
+            <h3>Atendimento híbrido</h3>
+            <p>Quando precisa de humano, a conversa chega resumida e com contexto.</p>
+          </article>
+        </div><!-- /feature-grid -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- Conheça o sistema: prévia interativa do painel Ê-Bot Clinical -->
+    <section id="painel" class="section section-light bg-grid-pattern clinical-panel">
+      <div class="container">
+        <div class="dx-showcase reveal">
+          <div class="dx-head">
+            <div class="dx-head-copy">
+              <span class="text-micro text-primary">Painel e dashboard</span>
+              <h3>Conheça nosso sistema</h3>
+              <p>Um único lugar para agenda, atendimentos, automação e gestão da clínica. O layout é simples, minimalista e funcional: menu enxuto, poucos cliques e dados atualizados em tempo real, pensado para a rotina da recepção. Navegue pelas telas usando as abas.</p>
+              <div class="dx-head-cta">
+                <button class="trigger-wa-modal btn btn-primary wa-button">Conheça o sistema completo</button>
+                <span>Demonstração guiada, módulo a módulo, com um especialista.</span>
+              </div>
+            </div>
+            <div class="dx-tabs" role="tablist" aria-label="Telas do painel Ê-Bot Clinical">
+              <button class="dx-tab is-active" type="button" role="tab" id="dx-tab-dash" aria-controls="dx-pane-dash" aria-selected="true" data-dx-tab="dash">Dashboard</button>
+              <button class="dx-tab" type="button" role="tab" id="dx-tab-agenda" aria-controls="dx-pane-agenda" aria-selected="false" tabindex="-1" data-dx-tab="agenda">Agenda</button>
+              <button class="dx-tab" type="button" role="tab" id="dx-tab-inbox" aria-controls="dx-pane-inbox" aria-selected="false" tabindex="-1" data-dx-tab="inbox">Atendimentos</button>
+              <button class="dx-tab" type="button" role="tab" id="dx-tab-ia" aria-controls="dx-pane-ia" aria-selected="false" tabindex="-1" data-dx-tab="ia">Automação</button>
+            </div>
+          </div>
+
+          <div class="dx-window">
+            <div class="dx-chrome">
+              <span class="dx-dot dx-dot-red"></span>
+              <span class="dx-dot dx-dot-amber"></span>
+              <span class="dx-dot dx-dot-green"></span>
+              <span class="dx-addr"><svg class="dx-ico"><use href="#dx-i-shield"></use></svg> painel.ebot.clinical/<b data-dx-addr>dashboard</b></span>
+              <span class="dx-chrome-meta">Prévia interativa do sistema</span>
+            </div>
+
+            <div class="dx-app">
+              <aside class="dx-side" aria-hidden="true">
+                <div class="dx-brand">
+                  <span class="dx-brand-mark">
+                    <img src="./assets/images/logos_ebot/ebot_clinical/SVG/Icone_clinical_aplicação_1.svg" alt="">
+                    <i></i>
+                  </span>
+                  <span><strong>Ê-Bot</strong><small>Clinical Command</small></span>
+                </div>
+
+                <div class="dx-side-scroll">
+                  <p class="dx-side-label">Acesso rápido</p>
+                  <ul class="dx-nav">
+                    <li class="is-active" data-dx-nav="dash"><svg class="dx-ico"><use href="#dx-i-dash"></use></svg>Dashboard</li>
+                    <li data-dx-nav="inbox"><svg class="dx-ico"><use href="#dx-i-headset"></use></svg>Atendimentos<em class="dx-nav-badge">9</em></li>
+                    <li data-dx-nav="agenda"><svg class="dx-ico"><use href="#dx-i-cal"></use></svg>Agenda</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-cols"></use></svg>Kanban</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-check"></use></svg>Tarefas</li>
+                  </ul>
+
+                  <p class="dx-side-label">Pacientes</p>
+                  <ul class="dx-nav">
+                    <li><svg class="dx-ico"><use href="#dx-i-users"></use></svg>Contatos</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-clip"></use></svg>Protocolos</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-file"></use></svg>Arquivos</li>
+                  </ul>
+
+                  <p class="dx-side-label">Automação</p>
+                  <ul class="dx-nav">
+                    <li data-dx-nav="ia"><svg class="dx-ico"><use href="#dx-i-flow"></use></svg>Fluxos de automação</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-book"></use></svg>Base de conhecimento</li>
+                  </ul>
+
+                  <p class="dx-side-label">Comunicação</p>
+                  <ul class="dx-nav">
+                    <li><svg class="dx-ico"><use href="#dx-i-radio"></use></svg>Canais</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-mega"></use></svg>Campanhas</li>
+                  </ul>
+
+                  <p class="dx-side-label">Clínica</p>
+                  <ul class="dx-nav">
+                    <li><svg class="dx-ico"><use href="#dx-i-steth"></use></svg>Profissionais</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-plug"></use></svg>Convênios</li>
+                  </ul>
+
+                  <p class="dx-side-label">Sistema</p>
+                  <ul class="dx-nav">
+                    <li><svg class="dx-ico"><use href="#dx-i-wallet"></use></svg>Financeiro</li>
+                    <li><svg class="dx-ico"><use href="#dx-i-gear"></use></svg>Configurações</li>
+                  </ul>
+                </div>
+
+                <div class="dx-side-card">
+                  <strong>IA operando 24/7</strong>
+                  <span>Handoff humano e regras clínicas monitoradas.</span>
+                </div>
+              </aside>
+
+              <div class="dx-main">
+                <div class="dx-topbar">
+                  <div class="dx-search">
+                    <svg class="dx-ico"><use href="#dx-i-search"></use></svg>
+                    Buscar paciente, atendimento ou protocolo
+                  </div>
+                  <div class="dx-top-chips">
+                    <span class="dx-chip">Hoje, 14 Jul</span>
+                    <span class="dx-chip dx-chip-live"><i></i> WhatsApp conectado</span>
+                    <span class="dx-chip"><svg class="dx-ico"><use href="#dx-i-bot"></use></svg> IA Online</span>
+                    <span class="dx-avatar">MT</span>
+                  </div>
+                </div>
+
+                <div class="dx-panes">
+                  <!-- Aba: Dashboard -->
+                  <section class="dx-pane is-active" id="dx-pane-dash" role="tabpanel" aria-labelledby="dx-tab-dash" tabindex="0">
+                    <div class="dx-greet">
+                      <div>
+                        <h4>Bom dia, Marina</h4>
+                        <p>Veja como está a operação da clínica hoje: atendimentos, agenda, IA e recepção.</p>
+                      </div>
+                      <span class="dx-btn-ghost"><svg class="dx-ico"><use href="#dx-i-dl"></use></svg> Exportar relatório</span>
+                    </div>
+
+                    <div class="dx-filters">
+                      <span class="dx-filter is-on"><small>Período</small> Hoje</span>
+                      <span class="dx-filter"><small>Canal</small> Todos</span>
+                      <span class="dx-filter"><small>Status</small> Todos</span>
+                      <span class="dx-filter"><small>Unidade</small> Clínica Geral</span>
+                    </div>
+
+                    <div class="dx-kpis">
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico"><svg class="dx-ico"><use href="#dx-i-msg"></use></svg></span><em class="dx-delta">+18%</em></div>
+                        <p>Atendimentos hoje</p><strong>1.284</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico tone-teal"><svg class="dx-ico"><use href="#dx-i-bot"></use></svg></span><em class="dx-delta">+12%</em></div>
+                        <p>Resolvidos pela IA</p><strong>73%</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico tone-orange"><svg class="dx-ico"><use href="#dx-i-usercheck"></use></svg></span><em class="dx-delta">-8%</em></div>
+                        <p>Aguardando humano</p><strong>42</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico tone-green"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg></span><em class="dx-delta">+27%</em></div>
+                        <p>Consultas confirmadas</p><strong>312</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico"><svg class="dx-ico"><use href="#dx-i-timer"></use></svg></span><em class="dx-delta">-34%</em></div>
+                        <p>Tempo médio de resposta</p><strong>18s</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico tone-orange"><svg class="dx-ico"><use href="#dx-i-hourglass"></use></svg></span><em class="dx-delta">-21%</em></div>
+                        <p>Tempo médio de espera</p><strong>2m14</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico tone-green"><svg class="dx-ico"><use href="#dx-i-shield"></use></svg></span><em class="dx-delta">+11%</em></div>
+                        <p>Faltas evitadas</p><strong>38</strong>
+                      </article>
+                      <article class="dx-kpi">
+                        <div class="dx-kpi-top"><span class="dx-kpi-ico tone-teal"><svg class="dx-ico"><use href="#dx-i-moon"></use></svg></span></div>
+                        <p>Fora do horário, atendidos pela IA</p><strong>156</strong>
+                      </article>
+                    </div>
+
+                    <div class="dx-cols">
+                      <article class="dx-card">
+                        <div class="dx-chart-top">
+                          <div class="dx-card-title" style="margin-bottom:0">
+                            <div>
+                              <h5>Fluxo por hora</h5>
+                              <p>Volume de conversas, transferências e resoluções automáticas ao longo do dia.</p>
+                            </div>
+                          </div>
+                          <div class="dx-legend">
+                            <span>Total</span>
+                            <span class="is-ai">Resolvidos por IA</span>
+                            <span class="is-human">Transferidos</span>
+                          </div>
+                        </div>
+
+                        <div class="dx-chart-box">
+                          <svg viewBox="0 0 620 230" role="img" aria-label="Gráfico de fluxo de conversas por hora, com pico entre 18h e 21h">
+                            <defs>
+                              <linearGradient id="dxGradTotal" x1="0" x2="1" y1="0" y2="0">
+                                <stop offset="0%" stop-color="#1A8BC7"/>
+                                <stop offset="100%" stop-color="#30A3A4"/>
+                              </linearGradient>
+                              <linearGradient id="dxFillTotal" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#1A8BC7" stop-opacity="0.28"/>
+                                <stop offset="100%" stop-color="#1A8BC7" stop-opacity="0.02"/>
+                              </linearGradient>
+                            </defs>
+                            <g stroke="rgba(58,157,202,0.16)" stroke-dasharray="4 8">
+                              <line x1="8" y1="40" x2="612" y2="40"/>
+                              <line x1="8" y1="82" x2="612" y2="82"/>
+                              <line x1="8" y1="124" x2="612" y2="124"/>
+                              <line x1="8" y1="166" x2="612" y2="166"/>
+                              <line x1="8" y1="196" x2="612" y2="196"/>
+                            </g>
+                            <path d="M 8 171.7 C 26.9 171.7 26.9 157.6 45.8 157.6 C 64.7 157.6 64.7 133.3 83.5 133.3 C 102.4 133.3 102.4 121.1 121.3 121.1 C 140.2 121.1 140.2 137.3 159 137.3 C 177.9 137.3 177.9 146.4 196.8 146.4 C 215.7 146.4 215.7 142.4 234.5 142.4 C 253.4 142.4 253.4 127.2 272.3 127.2 C 291.1 127.2 291.1 103.9 310 103.9 C 328.9 103.9 328.9 98.9 347.8 98.9 C 366.6 98.9 366.6 82.7 385.5 82.7 C 404.4 82.7 404.4 56.4 423.3 56.4 C 442.1 56.4 442.1 38.2 461 38.2 C 479.9 38.2 479.9 65.5 498.8 65.5 C 517.6 65.5 517.6 90.8 536.5 90.8 C 555.4 90.8 555.4 113 574.3 113 C 593.1 113 593.1 134.3 612 134.3 L 612 210 L 8 210 Z" fill="url(#dxFillTotal)"/>
+                            <path d="M 8 171.7 C 26.9 171.7 26.9 157.6 45.8 157.6 C 64.7 157.6 64.7 133.3 83.5 133.3 C 102.4 133.3 102.4 121.1 121.3 121.1 C 140.2 121.1 140.2 137.3 159 137.3 C 177.9 137.3 177.9 146.4 196.8 146.4 C 215.7 146.4 215.7 142.4 234.5 142.4 C 253.4 142.4 253.4 127.2 272.3 127.2 C 291.1 127.2 291.1 103.9 310 103.9 C 328.9 103.9 328.9 98.9 347.8 98.9 C 366.6 98.9 366.6 82.7 385.5 82.7 C 404.4 82.7 404.4 56.4 423.3 56.4 C 442.1 56.4 442.1 38.2 461 38.2 C 479.9 38.2 479.9 65.5 498.8 65.5 C 517.6 65.5 517.6 90.8 536.5 90.8 C 555.4 90.8 555.4 113 574.3 113 C 593.1 113 593.1 134.3 612 134.3" fill="none" stroke="url(#dxGradTotal)" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M 8 177.8 C 26.9 177.8 26.9 167.7 45.8 167.7 C 64.7 167.7 64.7 149.5 83.5 149.5 C 102.4 149.5 102.4 139.3 121.3 139.3 C 140.2 139.3 140.2 151.5 159 151.5 C 177.9 151.5 177.9 157.6 196.8 157.6 C 215.7 157.6 215.7 155.5 234.5 155.5 C 253.4 155.5 253.4 143.4 272.3 143.4 C 291.1 143.4 291.1 127.2 310 127.2 C 328.9 127.2 328.9 124.2 347.8 124.2 C 366.6 124.2 366.6 116.1 385.5 116.1 C 404.4 116.1 404.4 95.8 423.3 95.8 C 442.1 95.8 442.1 76.6 461 76.6 C 479.9 76.6 479.9 93.8 498.8 93.8 C 517.6 93.8 517.6 113 536.5 113 C 555.4 113 555.4 129.2 574.3 129.2 C 593.1 129.2 593.1 146.4 612 146.4" fill="none" stroke="#30A3A4" stroke-width="2.2" stroke-linecap="round"/>
+                            <path d="M 8 189.9 C 26.9 189.9 26.9 185.9 45.8 185.9 C 64.7 185.9 64.7 179.8 83.5 179.8 C 102.4 179.8 102.4 177.8 121.3 177.8 C 140.2 177.8 140.2 181.8 159 181.8 C 177.9 181.8 177.9 184.9 196.8 184.9 C 215.7 184.9 215.7 182.8 234.5 182.8 C 253.4 182.8 253.4 179.8 272.3 179.8 C 291.1 179.8 291.1 172.7 310 172.7 C 328.9 172.7 328.9 170.7 347.8 170.7 C 366.6 170.7 366.6 162.6 385.5 162.6 C 404.4 162.6 404.4 156.5 423.3 156.5 C 442.1 156.5 442.1 157.6 461 157.6 C 479.9 157.6 479.9 167.7 498.8 167.7 C 517.6 167.7 517.6 173.7 536.5 173.7 C 555.4 173.7 555.4 179.8 574.3 179.8 C 593.1 179.8 593.1 183.9 612 183.9" fill="none" stroke="#87A630" stroke-width="2.2" stroke-linecap="round"/>
+                            <circle cx="461" cy="38.2" r="5.5" fill="#1A8BC7" stroke="#fff" stroke-width="3"/>
+                            <g fill="rgba(79,96,98,0.85)" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter, sans-serif">
+                              <text x="8" y="226">7h</text>
+                              <text x="83.5" y="226">9h</text>
+                              <text x="159" y="226">11h</text>
+                              <text x="234.5" y="226">13h</text>
+                              <text x="310" y="226">15h</text>
+                              <text x="385.5" y="226">17h</text>
+                              <text x="461" y="226">19h</text>
+                              <text x="536.5" y="226">21h</text>
+                              <text x="605" y="226">23h</text>
+                            </g>
+                          </svg>
+                        </div>
+
+                        <p class="dx-chart-note">Pico de atendimento entre <strong>18h e 21h</strong>. A IA resolveu <strong>76%</strong> das conversas fora do horário comercial.</p>
+                      </article>
+
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Motivos de contato</h5>
+                            <p>Ranking dos principais motivos de demanda operacional.</p>
+                          </div>
+                          <span class="dx-card-mark is-orange"><svg class="dx-ico"><use href="#dx-i-act"></use></svg></span>
+                        </div>
+
+                        <div class="dx-reason">
+                          <div class="dx-reason-head"><b><i>1</i> Agendamento</b><span>34%</span></div>
+                          <div class="dx-bar"><i style="width:34%"></i></div>
+                        </div>
+                        <div class="dx-reason">
+                          <div class="dx-reason-head"><b><i>2</i> Confirmação</b><span>22%</span></div>
+                          <div class="dx-bar"><i style="width:22%"></i></div>
+                        </div>
+                        <div class="dx-reason">
+                          <div class="dx-reason-head"><b><i>3</i> Valores e convênios</b><span>16%</span></div>
+                          <div class="dx-bar"><i style="width:16%"></i></div>
+                        </div>
+                        <div class="dx-reason">
+                          <div class="dx-reason-head"><b><i>4</i> Preparo de exames</b><span>11%</span></div>
+                          <div class="dx-bar"><i style="width:11%"></i></div>
+                        </div>
+                        <div class="dx-reason">
+                          <div class="dx-reason-head"><b><i>5</i> Receita/documentos</b><span>9%</span></div>
+                          <div class="dx-bar"><i style="width:9%"></i></div>
+                        </div>
+                        <div class="dx-reason">
+                          <div class="dx-reason-head"><b><i>6</i> Falar com humano</b><span>8%</span></div>
+                          <div class="dx-bar"><i style="width:8%"></i></div>
+                        </div>
+                      </article>
+                    </div>
+
+                    <div class="dx-live">
+                      <div class="dx-live-top">
+                        <div class="dx-live-title">
+                          <span class="dx-card-mark"><svg class="dx-ico"><use href="#dx-i-act"></use></svg></span>
+                          <h5>Operação em tempo real</h5>
+                          <span class="dx-pill tone-green">Atualizando agora</span>
+                        </div>
+                        <div class="dx-live-filters">
+                          <span class="is-on">Todos</span>
+                          <span>WhatsApp</span>
+                          <span>Webchat</span>
+                          <span>E-mail</span>
+                        </div>
+                      </div>
+
+                      <div class="dx-live-grid">
+                        <div class="dx-live-item">
+                          <span><svg class="dx-ico"><use href="#dx-i-headset"></use></svg></span>
+                          <strong>17</strong><b>Atendimentos ativos</b><small>+3 nos últimos 15 min</small>
+                        </div>
+                        <div class="dx-live-item tone-orange">
+                          <span><svg class="dx-ico"><use href="#dx-i-users"></use></svg></span>
+                          <strong>06</strong><b>Pacientes aguardando</b><small>2 acima do SLA</small>
+                        </div>
+                        <div class="dx-live-item tone-green">
+                          <span><svg class="dx-ico"><use href="#dx-i-usercheck"></use></svg></span>
+                          <strong>18/24</strong><b>Agentes online</b><small>75% da equipe disponível</small>
+                        </div>
+                        <div class="dx-live-item tone-teal">
+                          <span><svg class="dx-ico"><use href="#dx-i-bot"></use></svg></span>
+                          <strong>42</strong><b>IA em operação</b><small>conversas simultâneas</small>
+                        </div>
+                      </div>
+
+                      <div class="dx-live-foot">
+                        <b>Última leitura há 8 segundos · dados de demonstração</b>
+                        <span class="dx-pill tone-blue">Abrir fila de atendimento</span>
+                      </div>
+                    </div>
+
+                    <div class="dx-cols is-equal">
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Conversas recentes</h5>
+                            <p>Últimos atendimentos com contexto de canal e resolução.</p>
+                          </div>
+                          <span class="dx-card-mark is-wa"><svg class="dx-ico"><use href="#dx-i-msg"></use></svg></span>
+                        </div>
+                        <div class="dx-list">
+                          <div class="dx-row">
+                            <span class="dx-row-av">AP</span>
+                            <span class="dx-row-main"><b>Ana Paula</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> agendamento confirmado</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-green">IA resolveu</span><time>há 2 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">MS</span>
+                            <span class="dx-row-main"><b>Marcos Silva</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> dúvida sobre convênio</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-orange">Humano assumiu</span><time>há 6 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">FL</span>
+                            <span class="dx-row-main"><b>Fernanda Lima</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> remarcação</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-blue">Resolvido por IA</span><time>há 9 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">JP</span>
+                            <span class="dx-row-main"><b>João Pereira</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> preparo de exame</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-green">Orientação enviada</span><time>há 14 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">CR</span>
+                            <span class="dx-row-main"><b>Camila Rocha</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> solicitação de receita</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-red">Aguardando humano</span><time>há 18 min</time></span>
+                          </div>
+                        </div>
+                      </article>
+
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Performance da equipe</h5>
+                            <p>Assumidos, tempo de resposta, avaliação e SLA por perfil.</p>
+                          </div>
+                          <span class="dx-card-mark is-green"><svg class="dx-ico"><use href="#dx-i-users"></use></svg></span>
+                        </div>
+                        <table class="dx-table">
+                          <thead>
+                            <tr><th>Perfil</th><th>Assumidos</th><th>Resposta</th><th>SLA</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><span class="dx-user"><i>AD</i> <b>Admin</b></span></td>
+                              <td>68</td><td>01m 08s</td><td>98%</td>
+                            </tr>
+                            <tr>
+                              <td><span class="dx-user"><i>DR</i> <b>Dr. Ruan</b></span></td>
+                              <td>24</td><td>03m 22s</td><td>94%</td>
+                            </tr>
+                            <tr>
+                              <td><span class="dx-user"><i>SS</i> <b>Superuser</b></span></td>
+                              <td>51</td><td>01m 46s</td><td>96%</td>
+                            </tr>
+                            <tr>
+                              <td><span class="dx-user"><i>DS</i> <b>Designer</b></span></td>
+                              <td>12</td><td>05m 12s</td><td>89%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </article>
+                    </div>
+                  </section>
+
+                  <!-- Aba: Agenda -->
+                  <section class="dx-pane" id="dx-pane-agenda" role="tabpanel" aria-labelledby="dx-tab-agenda" tabindex="0">
+                    <div class="dx-cols">
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Agenda inteligente</h5>
+                            <p>Horários críticos, confirmações e encaixes em tempo real.</p>
+                          </div>
+                          <span class="dx-card-mark is-green"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg></span>
+                        </div>
+
+                        <div class="dx-daychips">
+                          <span class="dx-day is-on">Hoje</span>
+                          <span class="dx-day">Amanhã</span>
+                          <span class="dx-day">15 Jul</span>
+                          <span class="dx-day">16 Jul</span>
+                          <span class="dx-day">17 Jul</span>
+                        </div>
+
+                        <div class="dx-timeline">
+                          <div class="dx-event">
+                            <time>09:00</time>
+                            <div class="dx-event-body">
+                              <div class="dx-event-head"><b>Dra. Juliana Mendes</b><span class="dx-pill tone-green">Confirmado</span></div>
+                              <p>Consulta particular · Paciente já enviou exames</p>
+                            </div>
+                          </div>
+                          <div class="dx-event">
+                            <time>10:30</time>
+                            <div class="dx-event-body">
+                              <div class="dx-event-head"><b>Dr. Ricardo Lima</b><span class="dx-pill tone-orange">Aguardando confirmação</span></div>
+                              <p>Retorno cardiologia · 2º lembrete agendado para 20h</p>
+                            </div>
+                          </div>
+                          <div class="dx-event">
+                            <time>11:15</time>
+                            <div class="dx-event-body">
+                              <div class="dx-event-head"><b>Encaixe liberado</b><span class="dx-pill tone-blue">IA em ação</span></div>
+                              <p>Cancelamento detectado · IA contatando lista de espera</p>
+                            </div>
+                          </div>
+                          <div class="dx-event">
+                            <time>14:00</time>
+                            <div class="dx-event-body">
+                              <div class="dx-event-head"><b>Clínica Geral</b><span class="dx-pill tone-green">Confirmado</span></div>
+                              <p>Primeira consulta · Orientação de chegada enviada</p>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+
+                      <div class="dx-stack">
+                        <article class="dx-card">
+                          <div class="dx-card-title">
+                            <div>
+                              <h5>Encaixes liberados</h5>
+                              <p>Horários que a IA já tentou preencher.</p>
+                            </div>
+                            <span class="dx-card-mark"><svg class="dx-ico"><use href="#dx-i-plus"></use></svg></span>
+                          </div>
+
+                          <div class="dx-slot">
+                            <span><b>15:00 · Retorno particular</b><small>6 pacientes na lista de espera</small></span>
+                            <span class="dx-pill tone-wa">WhatsApp</span>
+                          </div>
+                          <div class="dx-slot">
+                            <span><b>18:30 · Cardiologia</b><small>Paciente pediu remarcação</small></span>
+                            <span class="dx-pill tone-blue">IA em atendimento</span>
+                          </div>
+                          <div class="dx-slot">
+                            <span><b>19:15 · Exames</b><small>Lembretes de preparo enviados</small></span>
+                            <span class="dx-pill tone-green">Enviado</span>
+                          </div>
+
+                          <div class="dx-stat-mini">
+                            <div><strong>312</strong><span>Confirmadas</span></div>
+                            <div><strong>24</strong><span>Aguardando</span></div>
+                            <div><strong>3</strong><span>Encaixes</span></div>
+                          </div>
+                        </article>
+
+                        <article class="dx-card">
+                          <div class="dx-card-title">
+                            <div>
+                              <h5>Resumo do dia</h5>
+                              <p>O que a recepção precisa resolver agora.</p>
+                            </div>
+                            <span class="dx-card-mark is-orange"><svg class="dx-ico"><use href="#dx-i-alert"></use></svg></span>
+                          </div>
+                          <div class="dx-flow-row">
+                            <span><b>8 confirmações pendentes</b><small>1º lembrete sai às 16h</small></span>
+                            <span class="dx-switch is-on"></span>
+                          </div>
+                          <div class="dx-flow-row">
+                            <span><b>2 retornos sem convênio</b><small>Validação manual necessária</small></span>
+                            <span class="dx-switch"></span>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Aba: Atendimentos -->
+                  <section class="dx-pane" id="dx-pane-inbox" role="tabpanel" aria-labelledby="dx-tab-inbox" tabindex="0">
+                    <div class="dx-filters">
+                      <span class="dx-filter is-on"><small>Fila</small> Todos · 24</span>
+                      <span class="dx-filter"><small>IA resolveu</small> 17</span>
+                      <span class="dx-filter"><small>Humano assumiu</small> 5</span>
+                      <span class="dx-filter"><small>Aguardando</small> 2</span>
+                    </div>
+
+                    <div class="dx-inbox">
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Central de atendimentos</h5>
+                            <p>Conversas do WhatsApp e do webchat na mesma fila.</p>
+                          </div>
+                          <span class="dx-card-mark is-wa"><svg class="dx-ico"><use href="#dx-i-headset"></use></svg></span>
+                        </div>
+                        <div class="dx-list">
+                          <div class="dx-row">
+                            <span class="dx-row-av">AP</span>
+                            <span class="dx-row-main"><b>Ana Paula</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> agendamento confirmado</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-green">IA resolveu</span><time>há 2 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">MS</span>
+                            <span class="dx-row-main"><b>Marcos Silva</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> dúvida sobre convênio</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-orange">Humano assumiu</span><time>há 6 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">FL</span>
+                            <span class="dx-row-main"><b>Fernanda Lima</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> remarcação</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-blue">Resolvido por IA</span><time>há 9 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">JP</span>
+                            <span class="dx-row-main"><b>João Pereira</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> preparo de exame</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-green">Orientação enviada</span><time>há 14 min</time></span>
+                          </div>
+                          <div class="dx-row">
+                            <span class="dx-row-av">CR</span>
+                            <span class="dx-row-main"><b>Camila Rocha</b><small><svg class="dx-ico"><use href="#dx-i-send"></use></svg> solicitação de receita</small></span>
+                            <span class="dx-row-end"><span class="dx-pill tone-red">Aguardando humano</span><time>há 18 min</time></span>
+                          </div>
+                        </div>
+                      </article>
+
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div class="dx-user" style="gap:.6rem">
+                            <i style="width:38px;height:38px;border-radius:13px;font-size:.78rem">AP</i>
+                            <div>
+                              <h5>Ana Paula</h5>
+                              <p><svg class="dx-ico" style="color:#25d366"><use href="#dx-i-msg"></use></svg> WhatsApp · há 2 min · protocolo #4821</p>
+                            </div>
+                          </div>
+                          <span class="dx-pill tone-green">IA resolveu</span>
+                        </div>
+
+                        <div class="dx-summary">
+                          <b>Resumo da IA:</b> paciente pediu confirmação de consulta com a Dra. Juliana Mendes. Convênio validado, horário confirmado e orientações de chegada enviadas.
+                          <div class="dx-tags">
+                            <span class="dx-tag">Convênio Unimed</span>
+                            <span class="dx-tag">Cardiologia</span>
+                            <span class="dx-tag">Prioridade média</span>
+                          </div>
+                        </div>
+
+                        <div class="dx-thread" style="margin-top:12px">
+                          <div class="dx-msg is-bot">Olá, Ana. Sua consulta com a Dra. Juliana está disponível amanhã às 14h20. Posso confirmar?<small>Ê-Bot · 09:38</small></div>
+                          <div class="dx-msg is-me">Pode confirmar.<small>Paciente · 09:39</small></div>
+                          <div class="dx-msg is-bot">Consulta confirmada. Quer receber as orientações de preparo?<small>Ê-Bot · 09:39</small></div>
+                          <div class="dx-msg is-me">Sim, por favor 😊<small>Paciente · 09:40</small></div>
+                        </div>
+
+                        <div class="dx-actions">
+                          <span class="dx-action is-primary"><svg class="dx-ico"><use href="#dx-i-send"></use></svg> Assumir atendimento</span>
+                          <span class="dx-action is-ghost">Ver histórico</span>
+                          <span class="dx-action is-ghost">Transferir para recepção</span>
+                        </div>
+                      </article>
+                    </div>
+                  </section>
+
+                  <!-- Aba: Automação -->
+                  <section class="dx-pane" id="dx-pane-ia" role="tabpanel" aria-labelledby="dx-tab-ia" tabindex="0">
+                    <div class="dx-greet">
+                      <div>
+                        <h4>Automação e IA</h4>
+                        <p>O painel lê o volume de conversas e sugere onde automatizar a seguir.</p>
+                      </div>
+                      <span class="dx-btn-ghost"><svg class="dx-ico"><use href="#dx-i-plus"></use></svg> Novo fluxo</span>
+                    </div>
+
+                    <div class="dx-insights">
+                      <article class="dx-insight">
+                        <div class="dx-insight-top"><span>Automação sugerida</span><span class="dx-pill tone-blue">23 pacientes</span></div>
+                        <h6>Preparo de exames recorrente</h6>
+                        <p>23 pacientes perguntaram sobre preparo de exames hoje, principalmente no fim da tarde.</p>
+                        <span class="dx-action is-primary">Criar automação</span>
+                      </article>
+                      <article class="dx-insight">
+                        <div class="dx-insight-top"><span>Oportunidades</span><span class="dx-pill tone-green">12 conversas</span></div>
+                        <h6>Fluxos repetitivos detectados</h6>
+                        <p>12 conversas poderiam virar fluxo automático sem intervenção da recepção.</p>
+                        <span class="dx-action is-ghost">Ver conversas</span>
+                      </article>
+                      <article class="dx-insight">
+                        <div class="dx-insight-top"><span>Risco de faltas</span><span class="dx-pill tone-orange">3 horários</span></div>
+                        <h6>Encaixes recuperados</h6>
+                        <p>3 horários foram liberados após cancelamento e podem ser preenchidos pela lista de espera.</p>
+                        <span class="dx-action is-ghost">Enviar campanha</span>
+                      </article>
+                      <article class="dx-insight">
+                        <div class="dx-insight-top"><span>Gargalos</span><span class="dx-pill tone-red">17h às 19h</span></div>
+                        <h6>Gargalo no fim do dia</h6>
+                        <p>Pacientes repetiram dúvidas sobre preparo de exames entre 17h e 19h.</p>
+                        <span class="dx-action is-primary">Criar automação</span>
+                      </article>
+                    </div>
+
+                    <div class="dx-cols is-equal">
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Fluxos ativos</h5>
+                            <p>Gatilhos monitorando a operação 24 horas.</p>
+                          </div>
+                          <span class="dx-card-mark"><svg class="dx-ico"><use href="#dx-i-flow"></use></svg></span>
+                        </div>
+
+                        <div class="dx-flow-row">
+                          <span><b>Confirmação de consulta</b><small>Gatilho: 24h antes · WhatsApp · 312 execuções</small></span>
+                          <span class="dx-switch is-on"></span>
+                        </div>
+                        <div class="dx-flow-row">
+                          <span><b>Preparo de exame</b><small>Gatilho: resposta com “preparo” · 148 execuções</small></span>
+                          <span class="dx-switch is-on"></span>
+                        </div>
+                        <div class="dx-flow-row">
+                          <span><b>Lista de espera para encaixes</b><small>Gatilho: cancelamento · 36 execuções</small></span>
+                          <span class="dx-switch is-on"></span>
+                        </div>
+                        <div class="dx-flow-row">
+                          <span><b>Cobrança de retorno pendente</b><small>Gatilho: 7 dias sem resposta · rascunho</small></span>
+                          <span class="dx-switch"></span>
+                        </div>
+                      </article>
+
+                      <article class="dx-card">
+                        <div class="dx-card-title">
+                          <div>
+                            <h5>Base de conhecimento</h5>
+                            <p>Fontes que a IA usa antes de responder ao paciente.</p>
+                          </div>
+                          <span class="dx-card-mark is-green"><svg class="dx-ico"><use href="#dx-i-book"></use></svg></span>
+                        </div>
+
+                        <div class="dx-flow-row">
+                          <span><b>Protocolos clínicos da unidade</b><small>12 documentos · atualizado ontem</small></span>
+                          <span class="dx-pill tone-green">Ativo</span>
+                        </div>
+                        <div class="dx-flow-row">
+                          <span><b>Convênios e valores</b><small>Tabela de preços · atualizado hoje</small></span>
+                          <span class="dx-pill tone-green">Ativo</span>
+                        </div>
+                        <div class="dx-flow-row">
+                          <span><b>Orientações de exames</b><small>28 preparos padronizados</small></span>
+                          <span class="dx-pill tone-blue">Revisando</span>
+                        </div>
+                        <div class="dx-flow-row">
+                          <span><b>Respostas rápidas da recepção</b><small>41 atalhos de equipe</small></span>
+                          <span class="dx-pill tone-green">Ativo</span>
+                        </div>
+                      </article>
+                    </div>
+
+                    <p class="dx-footnote">Dados de demonstração do ambiente de protótipo — a versão em produção usa as informações reais da sua unidade.</p>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Atendimento completo no WhatsApp -->
+    <section id="whatsapp" class="section section-gray clinical-whatsapp">
+      <div class="container cw-grid">
+        <div class="cw-copy reveal reveal-left">
+          <span class="text-micro text-primary">Atendimento completo no WhatsApp</span>
+          <h2 class="h2">A conversa do paciente vira ficha, histórico e arquivos.</h2>
+          <p class="body-large">O Ê-Bot atende dentro do WhatsApp que o paciente já abre todo dia. Identifica o cadastro, valida convênio, remarca consultas, envia orientações e recebe documentos. Tudo o que é conversado fica salvo na ficha do paciente, sem a recepção redigitar nada.</p>
+
+          <ul class="cw-checks">
+            <li>
+              <span class="cw-check"><svg class="cw-ico"><use href="#dx-i-usercheck"></use></svg></span>
+              <div>
+                <strong>Cadastro identificado na conversa</strong>
+                <p>Nome, convênio, nascimento e contato confirmados sem enviar formulário.</p>
+              </div>
+            </li>
+            <li>
+              <span class="cw-check"><svg class="cw-ico"><use href="#dx-i-clip"></use></svg></span>
+              <div>
+                <strong>Arquivos no mesmo lugar</strong>
+                <p>Exames, receitas e comprovantes enviados no chat vão direto para a ficha.</p>
+              </div>
+            </li>
+            <li>
+              <span class="cw-check"><svg class="cw-ico"><use href="#dx-i-clock"></use></svg></span>
+              <div>
+                <strong>Histórico que continua</strong>
+                <p>O próximo atendimento começa com o contexto da conversa anterior.</p>
+              </div>
+            </li>
+            <li>
+              <span class="cw-check"><svg class="cw-ico"><use href="#dx-i-headset"></use></svg></span>
+              <div>
+                <strong>Pronto para a equipe assumir</strong>
+                <p>Quando precisa de humano, a ficha chega preenchida, resumida e com os anexos.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="hero-actions">
+            <button class="trigger-wa-modal btn btn-primary wa-button">Falar com especialista de saúde</button>
+            <a class="clinical-link" href="#painel">Conheça nosso sistema</a>
+          </div>
+        </div>
+
+        <div class="cw-stage reveal reveal-right" aria-hidden="true">
+          <!-- Celular com a conversa de atendimento -->
+          <div class="cw-phone">
+            <span class="cw-key cw-key-a"></span>
+            <span class="cw-key cw-key-b"></span>
+            <span class="cw-key cw-key-c"></span>
+            <div class="cw-screen">
+              <span class="cw-notch"></span>
+              <div class="cw-status">
+                <span>09:41</span>
+                <span class="cw-status-icons"><i></i><i></i><i></i><i></i></span>
+              </div>
+              <div class="cw-wa-head">
+                <span class="cw-wa-avatar"><img src="./assets/images/logos_ebot/ebot_clinical/SVG/Icone_clinical_aplicação_1.svg" alt=""></span>
+                <div class="cw-wa-id">
+                  <strong>Clínica Vida · Cardiologia</strong>
+                  <span>Ê-Bot Clinical online</span>
+                </div>
+                <svg class="cw-ico cw-wa-ico"><use href="#dx-i-headset"></use></svg>
+              </div>
+              <div class="cw-thread" id="cw-thread"></div>
+              <div class="cw-input">
+                <span>Mensagem</span>
+                <b><svg class="cw-ico"><use href="#dx-i-send"></use></svg></b>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conexão: a conversa alimenta a ficha -->
+          <div class="cw-pipe"><span></span></div>
+
+          <!-- Ficha do paciente sendo preenchida em tempo real -->
+          <article class="cw-card">
+            <div class="cw-live" id="cw-live"><i></i><span id="cw-badge">Atendendo no WhatsApp</span></div>
+
+            <header class="cw-card-head">
+              <span class="cw-card-avatar" id="cw-initials">—</span>
+              <div class="cw-card-id">
+                <strong id="cw-name">Novo contato</strong>
+                <span>Ficha do paciente</span>
+              </div>
+            </header>
+
+            <div class="cw-fields">
+              <div class="cw-field is-empty" id="cw-f-plan"><span>Convênio</span><strong>—</strong></div>
+              <div class="cw-field is-empty" id="cw-f-birth"><span>Nascimento</span><strong>—</strong></div>
+              <div class="cw-field is-empty" id="cw-f-num"><span>WhatsApp</span><strong>—</strong></div>
+              <div class="cw-field is-empty" id="cw-f-when"><span>Consulta</span><strong>—</strong></div>
+            </div>
+
+            <div class="cw-files">
+              <div class="cw-files-head"><span>Arquivos do paciente</span><b id="cw-count">0</b></div>
+              <div class="cw-file-list" id="cw-file-list">
+                <p class="cw-file-empty">Nenhum arquivo enviado</p>
+              </div>
+            </div>
+
+            <div class="cw-tags" id="cw-tags">
+              <span class="cw-tag is-muted">Sem classificação</span>
+            </div>
           </article>
         </div>
       </div>
@@ -384,6 +1304,43 @@
           <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 7h10v10H7z"/><path d="M4 12h3M17 12h3M12 4v3M12 17v3M5.8 5.8l2.1 2.1M16.1 16.1l2.1 2.1M18.2 5.8l-2.1 2.1M7.9 16.1l-2.1 2.1"/></svg></i><strong>Integrações por etapa</strong><span>Agenda, CRM, ERP, prontuário, sistemas internos e APIs existentes.</span></div>
           <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M17.5 10.5l2 2 3-4"/></svg></i><strong>Escalonamento humano</strong><span>Casos sensíveis, dúvidas clínicas e exceções saem da automação.</span></div>
           <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v4h4M9 12h6M9 16h4"/></svg></i><strong>Base de conhecimento</strong><span>Respostas seguem protocolos, horários, convênios e políticas da clínica.</span></div>
+        </div>
+      </div>
+
+      <!-- Prévia da retaguarda: auditoria e permissões do painel -->
+      <div class="container reveal dx-audit">
+        <div class="dx-audit-head">
+          <span class="text-micro">Painel e retaguarda</span>
+          <h3>Cada ação registrada, cada perfil com permissão.</h3>
+        </div>
+
+        <div class="dx-audit-grid">
+          <div class="dx-panel">
+            <div class="dx-panel-title">
+              <strong><svg class="dx-ico"><use href="#dx-i-scroll"></use></svg> Logs de auditoria</strong>
+              <span>hoje</span>
+            </div>
+            <ul class="dx-log">
+              <li><time>09:42</time><span><b>Marina T.</b> exportou o relatório de atendimentos da Clínica Geral.</span></li>
+              <li><time>09:18</time><span><b>Dr. Ruan</b> assumiu a conversa #4821 transferida pela IA.</span></li>
+              <li><time>08:55</time><span><b>Ê-Bot IA</b> enviou 312 confirmações de consulta no WhatsApp.</span></li>
+              <li><time>08:31</time><span><b>Admin</b> alterou a permissão de “Somente leitura” do perfil Recepção.</span></li>
+              <li><time>08:04</time><span><b>Ê-Bot IA</b> encerrou 156 atendimentos fora do horário comercial.</span></li>
+            </ul>
+          </div>
+
+          <div class="dx-panel">
+            <div class="dx-panel-title">
+              <strong><svg class="dx-ico"><use href="#dx-i-lock"></use></svg> Perfis e permissões</strong>
+              <span>4 níveis</span>
+            </div>
+            <ul class="dx-roles">
+              <li><span class="dx-role">Admin</span> Acesso total, incluindo retaguarda, logs e integrações.</li>
+              <li><span class="dx-role">Gestão</span> Relatórios, financeiro, equipes e exportação de dados.</li>
+              <li><span class="dx-role">Recepção</span> Atendimentos e agenda, sem acesso a dados financeiros.</li>
+              <li><span class="dx-role">Profissional</span> Própria agenda, protocolos e histórico dos seus pacientes.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -491,6 +1448,8 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#fluxo">Fluxo de atendimento</a></li>
             <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#painel">Conheça nosso sistema</a></li>
+            <li><a href="#whatsapp">Atendimento no WhatsApp</a></li>
             <li><a href="#clientes">Clientes</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#demo">Demo IA</a></li>
@@ -535,5 +1494,7 @@
   <script src="js/charts-animations.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/dashboard-preview.js"></script>
+  <script src="js/whatsapp-showcase.js"></script>
 </body>
 </html>
