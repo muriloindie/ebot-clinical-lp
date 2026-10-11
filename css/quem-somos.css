@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Quem somos — institucional Ê-Sistemas
+   Mosaico editorial com as fotos reais da nossa história
+   ========================================================================== */
+
+.quem-somos-section {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(43, 159, 232, 0.09), transparent 36%),
+    radial-gradient(circle at 4% 92%, rgba(43, 159, 232, 0.07), transparent 32%),
+    #ffffff;
+}
+
+.quem-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.quem-copy .h2,
+.quem-copy .sec-heading {
+  margin-bottom: 1.25rem;
+}
+
+.quem-copy .body-large,
+.quem-copy .sec-lead {
+  margin-bottom: 2.25rem;
+  color: #52625f;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.quem-checks {
+  display: grid;
+  gap: 1.15rem;
+  margin-bottom: 2.25rem;
+}
+
+.quem-check {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.15rem 1.25rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(43, 159, 232, 0.12);
+  box-shadow: 0 16px 40px rgba(33, 68, 86, 0.06);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.quem-check:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 52px rgba(33, 68, 86, 0.1);
+}
+
+.quem-check > i {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(43, 159, 232, 0.16), rgba(43, 159, 232, 0.05));
+  color: var(--primary);
+  box-shadow: inset 0 0 0 1px rgba(43, 159, 232, 0.18);
+}
+
+.quem-check .dx-ico {
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+}
+
+.quem-check strong {
+  display: block;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+
+.quem-check span {
+  color: #5a6b67;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: block;
+}
+
+.quem-cta {
+  margin-top: 0.25rem;
+}
+
+/* --- Mosaico da nossa história --- */
+.quem-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: clamp(112px, 13.5vw, 170px);
+  gap: 0.85rem;
+}
+
+.quem-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #e8f2f7;
+  box-shadow: 0 20px 46px rgba(33, 68, 86, 0.14);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+}
+
+.quem-photo:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 30px 60px rgba(33, 68, 86, 0.22);
+  z-index: 2;
+}
+
+.quem-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quem-photo:hover img {
+  transform: scale(1.06);
+}
+
+.quem-photo figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1.8rem 0.8rem 0.6rem;
+  background: linear-gradient(180deg, transparent, rgba(10, 24, 30, 0.74));
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.quem-photo:hover figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* composição assimétrica (3 colunas × 3 faixas — zero células vazias) */
+.quem-photo--a { grid-column: 1 / 3; grid-row: 1 / 3; --tilt: -1.1deg; }
+.quem-photo--b { grid-column: 3 / 4; grid-row: 1 / 3; --tilt: 0.9deg; }
+.quem-photo--c { grid-column: 1 / 2; grid-row: 3 / 4; --tilt: 0.7deg; }
+.quem-photo--d { grid-column: 2 / 3; grid-row: 3 / 4; --tilt: -0.8deg; }
+.quem-photo--e { grid-column: 3 / 4; grid-row: 3 / 4; }
+
+/* entrada em cascata do mosaico (se available: reveal do JS da stage) */
+.quem-photo {
+  opacity: 0;
+  transform: translateY(26px) rotate(var(--tilt, 0deg));
+}
+
+.quem-mosaic.reveal-active .quem-photo {
+  opacity: 1;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+}
+
+.quem-mosaic.reveal-active .quem-photo:nth-child(1),
+.quem-mosaic.reveal-active .quem-photo:nth-child(4) { transition-delay: 0.05s; }
+.quem-mosaic.reveal-active .quem-photo:nth-child(2),
+.quem-mosaic.reveal-active .quem-photo:nth-child(5) { transition-delay: 0.16s; }
+.quem-mosaic.reveal-active .quem-photo:nth-child(3),
+.quem-mosaic.reveal-active .quem-photo:nth-child(6) { transition-delay: 0.27s; }
+
+/* --- Responsivo --- */
+@media (max-width: 1024px) {
+  .quem-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quem-mosaic {
+    grid-auto-rows: clamp(110px, 16vw, 160px);
+  }
+}
+
+@media (max-width: 640px) {
+  .quem-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 128px;
+    gap: 0.7rem;
+  }
+
+  .quem-photo--a { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .quem-photo--b { grid-column: 1 / 2; grid-row: 3 / 5; }
+  .quem-photo--c { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .quem-photo--d { grid-column: 2 / 3; grid-row: 4 / 5; }
+  .quem-photo--e { grid-column: 1 / 3; grid-row: 5 / 6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quem-photo {
+    opacity: 1;
+    transition: none;
+  }
+
+  .quem-photo:hover,
+  .quem-photo:hover img {
+    transform: none;
+  }
+}

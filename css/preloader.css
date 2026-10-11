@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Splash screen — logo Ê-Bot Clinical + barra de progresso
+   + "Carregando experiência Ê-Sistemas" / "powered by Ê-Sistemas"
+   O JS (js/preloader.js) controla o progresso e a saída (.is-hidden).
+   ========================================================================== */
+
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(43, 159, 232, 0.16), transparent 42%),
+    radial-gradient(circle at 12% 86%, rgba(64, 189, 236, 0.1), transparent 46%),
+    linear-gradient(160deg, #17211f 0%, #0d1413 100%);
+  overflow: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Grade sutil da marca */
+.site-preloader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(143, 208, 245, 0.14) 1px, transparent 1.4px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at 50% 46%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 0%, transparent 78%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Halo azul respirando atrás da logo */
+.site-preloader::after {
+  content: '';
+  position: absolute;
+  width: min(520px, 70vw);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+  background: radial-gradient(circle, rgba(43, 159, 232, 0.2), rgba(43, 159, 232, 0.05) 46%, transparent 72%);
+  filter: blur(8px);
+  animation: plHalo 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.site-preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-core {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+  padding: 1.5rem;
+  text-align: center;
+  animation: plRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.site-preloader.is-hidden .preloader-core {
+  transform: translateY(-14px) scale(0.97);
+  opacity: 0;
+}
+
+/* --- Logo Ê-Bot Clinical --- */
+.preloader-logo {
+  width: min(252px, 62vw);
+  filter: drop-shadow(0 22px 40px rgba(13, 34, 46, 0.5));
+}
+
+.preloader-ebot {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.pl-txt {
+  font-family: "CocogooseProTrial-Bold", "CocogooseProTrial", sans-serif;
+  font-weight: 700;
+}
+
+.pl-txt--bot {
+  font-size: 71.31px;
+  fill: #f2f8fa;
+}
+
+.pl-txt--e {
+  font-size: 71.31px;
+  fill: #40bdec;
+}
+
+.pl-txt--sub {
+  font-size: 42.44px;
+  fill: #40bdec;
+  letter-spacing: -0.01em;
+}
+
+.pl-heart {
+  transform-origin: 92px 60px;
+  animation: plHeart 2.5s ease-in-out infinite;
+}
+
+.pl-pulse {
+  transform-origin: 92px 60px;
+  animation: plPulse 2.5s ease-in-out infinite;
+}
+
+/* --- Barra de progresso --- */
+.preloader-progress {
+  width: min(264px, 66vw);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  margin-top: 0.9rem;
+}
+
+.preloader-progress-bar {
+  width: 6%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #91d0d3, #40bdec);
+  box-shadow: 0 0 14px rgba(64, 189, 236, 0.65);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.preloader-load-text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242, 248, 250, 0.62);
+}
+
+.preloader-powered {
+  font-size: 0.8rem;
+  color: rgba(242, 248, 250, 0.52);
+  letter-spacing: 0.02em;
+}
+
+.preloader-powered b {
+  color: #7cc3f2;
+  font-weight: 700;
+}
+
+.splash-is-done .preloader-core {
+  opacity: 0;
+  transform: translateY(-18px) scale(0.97);
+}
+
+.splash-is-done.site-preloader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.splash-lock {
+  overflow: hidden;
+}
+
+body.splash-skip .s-hero-reveal .hero-badgeline,
+body.splash-skip .s-hero-reveal .hero-title,
+body.splash-skip .s-hero-reveal .hero-copy,
+body.splash-skip .s-hero-reveal .hero-actions,
+body.splash-skip .s-hero-reveal .hero-proof,
+body.splash-skip .s-hero-reveal .clinical-hero-visual {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body.preloader-done {
+  overflow: auto;
+}
+
+/* --- Keyframes --- */
+@keyframes plRise {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes plHalo {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -54%) scale(0.94); }
+  50% { opacity: 1; transform: translate(-50%, -54%) scale(1.06); }
+}
+
+@keyframes plHeart {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.07); }
+  26% { transform: scale(1); }
+  38% { transform: scale(1.045); }
+}
+
+@keyframes plPulse {
+  0%, 100% { opacity: 1; }
+  18% { opacity: 0.55; }
+  34% { opacity: 1; }
+}
+
+/* --- Acessibilidade: movimento reduzido corta tudo e mantém logo estática --- */
+@media (prefers-reduced-motion: reduce) {
+  .site-preloader::after,
+  .preloader-core,
+  .pl-heart,
+  .pl-pulse {
+    animation: none !important;
+  }
+
+  .preloader-core {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .preloader-progress-bar {
+    transition: none;
+  }
+}

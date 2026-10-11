@@ -3,13 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ê-Bot Clinical | Secretária virtual para clínicas e hospitais</title>
-  <meta name="description" content="Automatize agendamentos, confirmações, triagem, recepção e comunicação com pacientes via IA para clínicas, hospitais e unidades de saúde.">
+  <title>Ê-Bot Clinical | Secretária virtual com IA para unidades de saúde</title>
+  <meta name="description" content="Automatize agendamentos, confirmações, triagem, recepção e comunicação com pacientes via IA para unidades públicas de saúde, clínicas e hospitais. Tecnologia própria Ê-Sistemas, TechProvider Meta.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2B9FE8">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ê-Bot Clinical | Secretária virtual com IA para unidades de saúde">
+  <meta property="og:description" content="Automatize agendamentos, confirmações e lembretes com IA para unidades públicas de saúde, clínicas e hospitais.">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Ê-Bot Clinical",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "description": "Secretária virtual com IA para unidades públicas de saúde, clínicas e hospitais.",
+    "author": { "@type": "Organization", "name": "Ê-Sistemas" },
+    "awards": ["Meta TechProvider"]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/font-ebot-logo/Cocogoose-Pro-Bold-trial.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -23,8 +41,39 @@
   <link rel="stylesheet" href="css/dashboard-preview.css">
   <link rel="stylesheet" href="css/whatsapp-showcase.css">
   <link rel="stylesheet" href="css/feature-cards.css">
+  <link rel="stylesheet" href="css/preloader.css">
+  <link rel="stylesheet" href="css/quem-somos.css">
+  <link rel="stylesheet" href="css/trust-badges.css">
+  <link rel="stylesheet" href="css/crm-section.css">
+  <link rel="stylesheet" href="css/redesign-sections.css">
+  <link rel="stylesheet" href="css/standard.css">
 </head>
 <body class="clinical-page" style="--primary: #2B9FE8; --primary-hover: #1a7ebc; --primary-light: rgba(43, 159, 232, 0.1);">
+
+  <!-- Splash screen padrão Ê-Bot: logo + barra + "powered by Ê-Sistemas" -->
+  <div class="splash site-preloader" id="site-preloader" role="status" aria-label="Carregando experiência Ê-Sistemas">
+    <div class="splash-inner preloader-core">
+      <div class="splash-logo preloader-logo">
+        <svg viewBox="0 0 384.8 163.25" role="img" aria-label="Ê-Bot Clinical">
+          <title>Ê-Bot Clinical</title>
+          <defs>
+            <linearGradient id="plGrad" x1="0" y1="75.23" x2="190.2" y2="75.23" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#91d0d3"/>
+              <stop offset="1" stop-color="#40bdec"/>
+            </linearGradient>
+          </defs>
+          <text class="pl-txt pl-txt--bot" transform="translate(247.36 88.96)" x="0" y="0">bot</text>
+          <text class="pl-txt pl-txt--sub" transform="translate(202.73 133.63)" x="0" y="0">clinical</text>
+          <text class="pl-txt pl-txt--e" transform="translate(197.1 88.96)" x="0" y="0">ê</text>
+          <path class="pl-heart" fill="url(#plGrad)" d="M42.22,142.96c9.23-26.92-5.71-41.34-9.95-46.46-3.53-4.27-11.98-10.27-18.03-17.23C8.19,72.32-.44,60.73.02,44.94.6,24.61,19.4,2.14,44.34.17c17.91-1.41,35.48,8.03,45.68,24.05,0,0,2.12,3.78,3.33,3.93s9.38-8.77,9.83-9.68S118.3-.86,144.17.03s48.4,26.16,45.83,50.96c-2.57,24.81-18.61,54.91-82.59,93.63-12.31,6.81-24.96,0-24.96,0,0,0-5.14-2.72-8.32-5.6s-8.02-.3-8.02-.3c0,0-13.01,9.68-15.13,10.59-3.03,1.66-9.83,2.87-8.77-6.35Z"/>
+          <path class="pl-pulse" fill="#ffffff" d="M29.71,59.26h37.21s7.26.4,10.08,7.87c5.04,7.46,5.65,9.48,5.65,9.48,0,0,2.22,5.14,5.75.61,3.63-5.75,20.17-44.67,20.17-44.67,0,0,6.45-8.77,13.11,0,4.24,10.69,12,37.71,12,37.71,0,0,1.61,2.72,2.92,0s5.14-10.29,10.89-11.39c0,0,4.84-1.21,6.76-.5.81-1.31.23-1.11.5-3.23s2.92-8.27,11.39-7.76,10.49,7.87,10.08,11.6-2.52,9.88-9.98,10.79-7.61-1.31-7.87-2.22-3.58-2.57-6.86-.1c-6.03,6.48-10.08,14.52-10.08,14.52,0,0-8.27,11.7-15.73-2.62-4.03-13.61-9.98-29.75-9.98-29.75,0,0-1.11-2.22-2.32.1-2.22,3.23-17.24,37.11-17.24,37.11,0,0-9.28,14.42-21.08-1.41-8.87-16.74-9.48-15.45-12.81-15.41s-32.57.39-32.57.39c0,0-5.55-.61-5.55-5.75s5.55-5.34,5.55-5.34Z"/>
+        </svg>
+      </div>
+      <span class="splash-eyebrow preloader-load-text">Carregando experiência Ê-Sistemas</span>
+      <div class="splash-bar preloader-progress" aria-hidden="true"><i class="preloader-progress-bar" id="preloaderBar"></i></div>
+      <span class="splash-powered preloader-powered">powered by <b>Ê-Sistemas</b></span>
+    </div>
+  </div>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="glass-header clinical-header">
@@ -61,6 +110,7 @@
       </nav>
 
       <div class="desktop-cta">
+        <span class="meta-seal meta-seal--nav" title="TechProvider Meta — parceiro oficial Meta"><span class="meta-seal__logo"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M25.4 6.9c-3 0-5.3 1.5-7.4 3.9-2.1-2.4-4.4-3.9-7.4-3.9C6 6.9 2 11.7 2 18.6c0 6.7 3.4 10.5 7.6 10.5 3.1 0 5.9-2.3 8.4-6.6 2.5 4.3 5.3 6.6 8.4 6.6 4.2 0 7.6-3.8 7.6-10.5 0-6.9-4-11.7-8.6-11.7zM9.9 24.7c-2.2 0-3.8-2.4-3.8-6.1 0-4.5 2-7.3 4.9-7.3 1.8 0 3.4 1.2 5.2 3.7-2.3 4.6-4.2 9.7-6.3 9.7zm15.2 0c-2.1 0-3.9-5.1-6.3-9.7 1.8-2.5 3.4-3.7 5.2-3.7 2.9 0 4.9 2.8 4.9 7.3 0 3.7-1.6 6.1-3.8 6.1z"/></svg></span>TechProvider Meta<span class="meta-seal__check" aria-hidden="true">✓</span></span>
         <button class="trigger-wa-modal btn btn-primary wa-button">Agendar demonstração</button>
       </div>
       <button class="hamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
@@ -72,6 +122,7 @@
     <svg class="dx-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
       <symbol id="dx-i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></symbol>
       <symbol id="dx-i-headset" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M18 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M6 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H6z"/></symbol>
+      <symbol id="dx-i-phone" viewBox="0 0 24 24"><path d="M5 4c9.4 0 15 5.6 15 15a2 2 0 0 1-2 2h-2.2a1.8 1.8 0 0 1-1.8-1.7c0-1.3-.3-2.4-.8-3.4a1.7 1.7 0 0 0-2.2-.8l-1.1.5c-2.2-1.2-4.1-3-5.3-5.3l.5-1.1a1.7 1.7 0 0 0-.8-2.2c-1-.5-2.1-.8-3.4-.8A1.8 1.8 0 0 1 3 8.2V6a2 2 0 0 1 2-2z"/></symbol>
       <symbol id="dx-i-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></symbol>
       <symbol id="dx-i-cols" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M15 4v16"/></symbol>
       <symbol id="dx-i-check" viewBox="0 0 24 24"><path d="M9 11.5l2.5 2.5L21 4.5"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
@@ -109,24 +160,27 @@
       <symbol id="dx-i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
     </svg>
 
-    <section id="inicio" class="section clinical-hero bg-grid-pattern">
+    <section id="inicio" class="section clinical-hero">
       <div class="container grid grid-2 items-center hero-split clinical-hero-grid">
-        <div class="reveal reveal-left">
-          <span class="badge clinical-badge">Para clínicas, hospitais e unidades públicas</span>
-          <h1 class="h1">Sua clínica ainda perde pacientes por demora no WhatsApp?</h1>
-          <p class="body-large hero-copy"><strong>O Ê-Bot Clinical resolve.</strong> Automatize agendamentos, confirmações, orientações, triagem inicial e lembretes com IA para clínicas públicas, clínicas privadas, hospitais e unidades de saúde, sem tirar o controle da equipe de recepção.</p>
+        <div class="reveal reveal-left s-hero-reveal">
+          <div class="hero-badgeline">
+            <div class="hero-kicker">IA omnichannel para o atendimento em saúde</div>
+            <span class="meta-seal" title="TechProvider Meta — parceiro oficial Meta"><span class="meta-seal__logo"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M25.4 6.9c-3 0-5.3 1.5-7.4 3.9-2.1-2.4-4.4-3.9-7.4-3.9C6 6.9 2 11.7 2 18.6c0 6.7 3.4 10.5 7.6 10.5 3.1 0 5.9-2.3 8.4-6.6 2.5 4.3 5.3 6.6 8.4 6.6 4.2 0 7.6-3.8 7.6-10.5 0-6.9-4-11.7-8.6-11.7zM9.9 24.7c-2.2 0-3.8-2.4-3.8-6.1 0-4.5 2-7.3 4.9-7.3 1.8 0 3.4 1.2 5.2 3.7-2.3 4.6-4.2 9.7-6.3 9.7zm15.2 0c-2.1 0-3.9-5.1-6.3-9.7 1.8-2.5 3.4-3.7 5.2-3.7 2.9 0 4.9 2.8 4.9 7.3 0 3.7-1.6 6.1-3.8 6.1z"/></svg></span>TechProvider Meta<span class="meta-seal__check" aria-hidden="true">✓</span></span>
+          </div>
+          <h1 class="hero-title h1">Seu paciente ainda espera demais por uma resposta? <span>O Ê-Bot Clinical resolve.</span></h1>
+          <p class="body-large hero-copy"><strong>Atendimento com IA</strong> que responde, confirma, orienta e acompanha o paciente de verdade — na unidade pública, na clínica privada ou no hospital — sem tirar o controle da equipe.</p>
           <div class="hero-actions">
-            <button class="trigger-wa-modal btn btn-primary wa-button">Falar com especialista de saúde</button>
-            <a class="clinical-link" href="#fluxo">Ver como funciona</a>
+            <button class="trigger-wa-modal btn btn-primary wa-button float-hover">Fale com um de nossos especialistas</button>
+            <a class="text-link clinical-link" href="#fluxo">Ver como funciona <span aria-hidden="true">→</span></a>
           </div>
           <div class="hero-proof" aria-label="Indicadores do Ê-Bot Clinical">
-            <span><strong>24/7</strong> respostas ao paciente</span>
-            <span><strong>-18%</strong> faltas em agenda</span>
-            <span><strong>48h</strong> setup inicial</span>
+            <div class="proof-chip"><strong>24/7</strong><span>respondendo seu paciente, mesmo fora do expediente.</span></div>
+            <div class="proof-chip"><strong>-41%</strong><span>de faltas com confirmação ativa e lembretes.</span></div>
+            <div class="proof-chip"><strong>48h</strong><span>de setup orientado para começar a operação.</span></div>
           </div>
         </div>
 
-        <div class="reveal reveal-right clinical-hero-visual" aria-label="Simulação de atendimento via chat">
+        <div class="reveal reveal-right clinical-hero-visual s-hero-reveal" aria-label="Simulação de atendimento via chat">
           <div class="phone-orbit" aria-hidden="true"></div>
           <div class="clinical-phone float-hover">
             <div class="hero-phone-wa-icon" aria-hidden="true">
@@ -169,9 +223,6 @@
               </div>
             </div>
           </div>
-          <div class="mac-mouse-pointer" aria-hidden="true">
-            <span></span>
-          </div>
         </div>
       </div>
     </section>
@@ -180,24 +231,53 @@
       <div class="container reveal">
         <div class="section-heading stacked-heading">
           <div>
-            <span class="text-micro text-primary">Gargalo operacional</span>
-            <h2 class="h2">A recepção não deveria ser o ponto fraco da experiência do paciente.</h2>
+            <span class="sec-eyebrow">Gargalo operacional</span>
+            <h2 class="sec-heading">A recepção não deveria ser o ponto fraco da experiência do paciente.</h2>
+            <p class="sec-lead">Quando telefone, WhatsApp, agenda médica e financeiro operam separados, a equipe perde tempo em tarefas repetidas e o paciente espera por respostas simples.</p>
           </div>
-          <p class="body-large">Quando telefone, WhatsApp, agenda médica e financeiro operam separados, a equipe perde tempo em tarefas repetidas e o paciente espera por respostas simples.</p>
         </div>
 
         <div class="clinical-pain-grid">
           <article class="glass-card clinical-pain-card">
+            <div class="pain-demo pain-demo--phone" aria-hidden="true">
+              <div class="pd-call">
+                <span class="pd-ava">L</span>
+                <div><small>Paciente ligando</small><b>“Alô, é da clínica?”</b></div>
+                <i class="pd-mute"></i>
+              </div>
+              <div class="pd-call is-busy">
+                <span class="pd-ava pd-ava--on">M</span>
+                <div><small>Na linha há 14 min</small><b>Barra de espera cheia…</b></div>
+                <i class="pd-busy"><u></u></i>
+              </div>
+            </div>
             <span class="pain-index">01</span>
             <h3>Telefone sempre ocupado</h3>
             <p>Pacientes ligam para confirmar horário, cancelar consulta, pedir preparo de exame e tirar dúvidas que poderiam ser resolvidas automaticamente.</p>
           </article>
-          <article class="glass-card clinical-pain-card featured">
+
+          <article class="glass-card clinical-pain-card">
+            <div class="pain-demo pain-demo--agenda" aria-hidden="true">
+              <div class="pd-slot"><time>09:00</time><b></b><em style="--pdw:70%">compareceu</em></div>
+              <div class="pd-slot is-missed"><time>10:30</time><b class="is-gap"></b><em style="--pdw:100%">vazou no-show</em></div>
+              <div class="pd-slot"><time>14:00</time><b></b><em style="--pdw:56%">confirmado</em></div>
+              <div class="pd-slot is-missed"><time>16:30</time><b class="is-gap"></b><em style="--pdw:100%">vazou no-show</em></div>
+            </div>
             <span class="pain-index">02</span>
             <h3>Absenteismo sem previsibilidade</h3>
             <p>Sem lembretes e confirmação ativa, a agenda parece cheia no sistema, mas chega vazia no consultório.</p>
           </article>
+
           <article class="glass-card clinical-pain-card">
+            <div class="pain-demo pain-demo--scattered" aria-hidden="true">
+              <span class="pd-chip pd-chip--wa">WhatsApp<em>?</em></span>
+              <span class="pd-chip pd-chip--ag">Agenda<em>?</em></span>
+              <span class="pd-chip pd-chip--fm">Financeiro<em>?</em></span>
+              <div class="pd-search">
+                <i></i>
+                <span>procurando o histórico do paciente…</span>
+              </div>
+            </div>
             <span class="pain-index">03</span>
             <h3>Dados dispersos</h3>
             <p>Atendentes precisam procurar histórico, convênio, profissional, agenda e status financeiro antes de dar uma resposta segura.</p>
@@ -206,12 +286,12 @@
       </div>
     </section>
 
-    <section id="fluxo" class="section section-light clinical-flow-section">
+    <section id="fluxo" class="section section-light surface-grid clinical-flow-section">
       <div class="container reveal">
         <div class="section-heading text-center compact-heading">
-          <span class="text-micro text-primary">Fluxo completo</span>
-          <h2 class="h2">Da primeira mensagem à sala de atendimento.</h2>
-          <p class="body-large">O paciente conversa no canal que já usa. O Ê-Bot consulta regras, agenda, disponibilidade e histórico para resolver ou encaminhar com contexto.</p>
+          <span class="sec-eyebrow">Fluxo completo</span>
+          <h2 class="sec-heading">Da primeira mensagem à sala de atendimento.</h2>
+          <p class="sec-lead">O paciente conversa no canal que já usa. O Ê-Bot consulta regras, agenda, disponibilidade e histórico para resolver ou encaminhar com contexto.</p>
         </div>
 
         <div class="flow-rail">
@@ -228,12 +308,17 @@
           <article class="flow-step">
             <span>3</span>
             <h3>Executa a ação</h3>
-            <p>Confirma horário, envia orientação, abre solicitação ou entrega o caso para a recepção.</p>
+            <p>Confirma o horário, envia a orientação, abre a solicitação ou encaminha o atendimento.</p>
           </article>
           <article class="flow-step">
             <span>4</span>
             <h3>Acompanha depois</h3>
-            <p>Lembra o paciente, mede satisfação e reduz faltas com mensagens no momento certo.</p>
+            <p>Lembretes no momento certo: confirmação de presença, preparo, retorno e satisfação — reduzindo faltas sem sobrecarregar a equipe.</p>
+          </article>
+          <article class="flow-step flow-step--highlight">
+            <span>5</span>
+            <h3>Organize seus encaixes</h3>
+            <p>Cancelou? A IA aciona a lista de espera, ocupa a agenda automaticamente e avisa a recepção. Vaga que abre nunca mais fica vazia.</p>
           </article>
         </div>
 
@@ -241,9 +326,9 @@
         <div class="dx-builder reveal">
           <div class="dx-builder-head">
             <div>
-              <span class="text-micro text-primary">Fluxos de automação</span>
-              <h3>Esse fluxo é montado no painel, sem depender de TI.</h3>
-              <p>Cada etapa vira um bloco: gatilho, regra, consulta na agenda e resposta no WhatsApp. A equipe liga, pausa e acompanha tudo pelo Ê-Bot Clinical.</p>
+              <span class="sec-eyebrow">Automação e IA</span>
+              <h3>Automatize o atendimento e personalize a experiência do seu paciente com IA.</h3>
+              <p>Crie automações inteligentes pelo próprio Ê-Bot Clinical, sem depender da equipe de TI. Defina gatilhos, regras, consultas na agenda e respostas automáticas para que a IA conduza cada atendimento de forma personalizada, 24 horas por dia.</p>
             </div>
             <span class="dx-builder-badge"><svg class="dx-ico"><use href="#dx-i-zap"></use></svg> Sem código</span>
           </div>
@@ -257,31 +342,31 @@
             </li>
             <li class="dx-node">
               <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-bot"></use></svg></span>
-              <small>Etapa 1</small>
+              <small>Fase 1 · Entende</small>
               <strong>Identifica intenção</strong>
               <p>Agendar, remarcar, confirmar, pedir receita, preparo ou falar com humano.</p>
             </li>
             <li class="dx-node">
               <span class="dx-node-ico is-teal"><svg class="dx-ico"><use href="#dx-i-clip"></use></svg></span>
-              <small>Etapa 2</small>
+              <small>Fase 2 · Valida</small>
               <strong>Consulta regras</strong>
               <p>Valida convênio, especialidade, agenda médica, documentos e políticas da unidade.</p>
             </li>
             <li class="dx-node">
               <span class="dx-node-ico is-green"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg></span>
-              <small>Etapa 3</small>
+              <small>Fase 3 · Executa</small>
               <strong>Executa a ação</strong>
-              <p>Confirma o horário, envia a orientação, abre a solicitação ou entrega o caso.</p>
+              <p>Confirma o horário, envia a orientação, abre a solicitação ou encaminha o atendimento.</p>
             </li>
             <li class="dx-node">
               <span class="dx-node-ico is-orange"><svg class="dx-ico"><use href="#dx-i-headset"></use></svg></span>
-              <small>Etapa 4</small>
+              <small>Fase 4 · Passa adiante</small>
               <strong>Passa para a recepção</strong>
               <p>Quando precisa de humano, a conversa chega resumida e com contexto.</p>
             </li>
             <li class="dx-node">
               <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-act"></use></svg></span>
-              <small>Acompanhamento</small>
+              <small>Fase 5 · Acompanha</small>
               <strong>Mede e otimiza</strong>
               <p>Lembretes, satisfação e relatórios de faltas, horários críticos e demandas.</p>
             </li>
@@ -290,46 +375,46 @@
       </div>
     </section>
 
-    <section class="section section-light chart-container clinical-metrics bg-grid-pattern">
+    <section class="section section-dark metrics-dark clinical-metrics">
       <div class="container reveal text-center">
-        <span class="text-micro text-primary">Impacto mensurável</span>
-        <h2 class="h2">Benefícios comprovados na operação de saúde.</h2>
-        <div class="grid grid-4 metric-grid">
-          <div class="glass-card metric-card stagger-1">
-            <h3 class="h1 text-primary counter-value" data-end="50" data-prefix="-" data-suffix="%">0</h3>
-            <p class="text-small metric-title">tempo médio de espera</p>
-            <p class="text-small">Pacientes chegam com confirmação e orientação prontas.</p>
+        <span class="sec-eyebrow">Impacto mensurável</span>
+        <h2 class="sec-heading">Benefícios comprovados na operação de saúde.</h2>
+        <div class="metric-strip">
+          <div class="metric-strip-item stagger-1">
+            <span class="metric-number counter-value" data-end="63" data-prefix="-" data-suffix="%">0</span>
+            <strong class="metric-label">tempo médio de espera</strong>
+            <p>Respostas imediatas no WhatsApp: o paciente nunca fica sem retorno.</p>
           </div>
-          <div class="glass-card metric-card stagger-2">
-            <h3 class="h1 text-primary counter-value" data-end="18" data-prefix="-" data-suffix="%">0</h3>
-            <p class="text-small metric-title">faltas em consulta</p>
-            <p class="text-small">Lembretes e confirmação ativa antes do horário.</p>
+          <div class="metric-strip-item stagger-2">
+            <span class="metric-number counter-value" data-end="41" data-prefix="-" data-suffix="%">0</span>
+            <strong class="metric-label">faltas em consulta</strong>
+            <p>Confirmação ativa e lembretes antes de cada horário da agenda.</p>
           </div>
-          <div class="glass-card metric-card stagger-3">
-            <h3 class="h1 text-primary counter-value" data-end="87" data-prefix="+" data-suffix="%">0</h3>
-            <p class="text-small metric-title">confirmações antecipadas</p>
-            <p class="text-small">Mais previsibilidade para médicos e recepção.</p>
+          <div class="metric-strip-item stagger-3">
+            <span class="metric-number counter-value" data-end="87" data-prefix="+" data-suffix="%">0</span>
+            <strong class="metric-label">confirmações antecipadas</strong>
+            <p>Agenda previsível para profissionais e recepção desde a manhã.</p>
           </div>
-          <div class="glass-card metric-card stagger-4">
-            <h3 class="h1 text-primary counter-value" data-end="24" data-prefix="" data-suffix="h">0</h3>
-            <p class="text-small metric-title">atendimento contínuo</p>
-            <p class="text-small">Mesmo fora do expediente, sem sobrecarregar equipe.</p>
+          <div class="metric-strip-item stagger-4">
+            <span class="metric-number counter-value" data-end="3" data-prefix="" data-suffix="x">0</span>
+            <strong class="metric-label">mais capacidade de atendimento</strong>
+            <p>A IA conduz fim de semana e pós-expediente, sem sobrecarregar ninguém.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="recursos" class="section section-gray clinical-ecosystem">
+    <section id="recursos" class="section section-gray surface-dots clinical-ecosystem">
       <div class="container reveal">
         <div class="section-heading stacked-heading">
           <div>
-            <span class="text-micro text-primary">Ecossistema Clinical</span>
-            <h2 class="h2">Um canal inteligente entre paciente, equipe e sistema da clínica.</h2>
+            <span class="sec-eyebrow">Ecossistema Clinical</span>
+            <h2 class="sec-heading">Um canal omnichannel entre paciente, equipe e sistema de saúde.</h2>
+            <p class="sec-lead">Tecnologia própria da Ê-Sistemas, com desenvolvimento contínuo e integração nativa aos sistemas de gestão da sua unidade. Você escolhe o que automatizar: comece por agendamentos e evolua para triagem, renovação automática, telefonia, CRM e insights de operação.</p>
           </div>
-          <p class="body-large">Você escolhe o que automatizar. O Ê-Bot pode começar por agendamentos e evoluir para triagem, receitas, financeiro e painel de gestão.</p>
         </div>
 
-        <div class="feature-grid">
+        <div class="feature-grid reveal-stagger">
           <article class="feature-card">
             <div class="fs" aria-hidden="true">
               <div class="fs-body fs-agenda">
@@ -388,8 +473,8 @@
                 </div>
               </div>
             </div>
-            <h3>Lembretes antifalta</h3>
-            <p>Confirma presença, envia preparo e libera horários quando há cancelamento.</p>
+            <h3>Confirmação inteligente</h3>
+            <p>Confirma presença, envia lembretes no momento certo, entrega o preparo e libera horários quando há cancelamento.</p>
           </article>
 
           <article class="feature-card">
@@ -400,8 +485,66 @@
                 <div class="fs-doc"><span><strong>Orientação · Jejum de 8 horas</strong><small>Preparo padrão para 12 pacientes</small></span><span class="fs-pill">enviado</span></div>
               </div>
             </div>
-            <h3>Receitas e documentos</h3>
-            <p>Organiza solicitações de renovação, exames, anexos e orientações.</p>
+            <h3>Renovação automática</h3>
+            <p>Renovação de receitas, exames, anexos e orientações conduzidos pela IA, sem fila na recepção.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-transc">
+                <div class="fs-wave">
+                  <span class="fs-wave-time">03:12</span>
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <div class="fs-transc-line"><time>00:18</time><p><b>Paciente:</b> “Dor no peito quando caminho rápido…”</p></div>
+                <div class="fs-transc-line"><time>01:04</time><p><b>Profissional:</b> “Vamos ajustar o exame e a medicação.”</p></div>
+                <div class="fs-transc-line is-resume"><time>03:10</time><p><b>Resumo IA:</b> prioridade média · encaminhado ao cardiologista</p></div>
+              </div>
+            </div>
+            <h3>Transcrição de consulta</h3>
+            <p>A consulta é transcrita e resumida pela IA, gerando registro limpo para o prontuário.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-queue">
+                <div class="fs-q-head"><strong>Fila inteligente</strong><span class="fs-pill">7 aguardando</span></div>
+                <div class="fs-q-row"><i>1</i><span><strong>Marcos Silva</strong><small>cardiologia · espera há 2 dias</small></span></div>
+                <div class="fs-q-row"><i>2</i><span><strong>Paula Nunes</strong><small>clínica geral</small></span></div>
+                <div class="fs-q-row is-solved"><i>3</i><span><strong>Camila Rocha</strong><small>encaixada na vaga das 15:00</small></span><span class="fs-pill fs-pill--ok">contatada</span></div>
+                <div class="fs-q-foot"><svg class="dx-ico"><use href="#dx-i-plus"></use></svg> Cancelou? A IA chama a lista de espera na hora</div>
+              </div>
+            </div>
+            <h3>Fila inteligente com encaixe automático</h3>
+            <p>Vaga que abre é preenchida pela lista de espera, por prioridade e perfil do paciente.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-docs">
+                <div class="fs-doc"><span><strong>Protocolos clínicos da unidade</strong><small>12 documentos · atualizado ontem</small></span><span class="fs-pill fs-pill--ok">ativo</span></div>
+                <div class="fs-doc"><span><strong>Convênios e valores</strong><small>tabela de preços · atualizado hoje</small></span><span class="fs-pill fs-pill--ok">ativo</span></div>
+                <div class="fs-doc"><span><strong>Orientações de exames</strong><small>28 preparos padronizados</small></span><span class="fs-pill">revisando</span></div>
+              </div>
+            </div>
+            <h3>Base de conhecimento</h3>
+            <p>A IA responde com o material oficial da unidade: protocolos, convênios e políticas.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="fs" aria-hidden="true">
+              <div class="fs-body fs-tel">
+                <div class="fs-call">
+                  <i class="fs-av fs-av--lg"><svg class="dx-ico"><use href="#dx-i-phone"></use></svg></i>
+                  <span><strong>Chamada recebida</strong><small>14:02 · 1m 42s · nº reconhecido</small></span>
+                  <span class="fs-pill fs-pill--ok">transcrita</span>
+                </div>
+                <p class="fs-call-line">“Liguei só para confirmar a consulta de amanhã…”</p>
+                <div class="fs-doc"><span><strong>Resposta do Ê-Bot</strong><small>consulta confirmada · preparo enviado</small></span><span class="fs-pill fs-pill--down">resolvida por voz</span></div>
+              </div>
+            </div>
+            <h3>Telefonia</h3>
+            <p>A IA também atende por voz: transcreve a chamada e devolve o registro ao sistema.</p>
           </article>
 
           <article class="feature-card">
@@ -421,8 +564,8 @@
                 </div>
               </div>
             </div>
-            <h3>Painel gerencial</h3>
-            <p>Acompanhe volume de conversas, motivos de contato, taxa de confirmação, horários críticos e demandas transferidas para humanos.</p>
+            <h3>Insights para decisão</h3>
+            <p>Inteligência em tempo real: volume de conversas, motivos de contato, taxas de confirmação e horários críticos para apoiar decisões da gestão.</p>
           </article>
 
           <article class="feature-card">
@@ -445,28 +588,101 @@
       </div><!-- /container -->
     </section>
 
+    <!-- ======================= CRM do paciente (bloco dedicado) ======================= -->
+    <section class="section section-light surface-grid crm-section" id="crm">
+      <div class="container reveal">
+        <div class="section-heading stacked-heading">
+          <div>
+            <span class="sec-eyebrow">CRM do paciente</span>
+            <h2 class="sec-heading">O Ê-Bot Clinical é o CRM da sua operação — não um acessório de outro sistema.</h2>
+            <p class="sec-lead">Cadastro, histórico, documentos e a jornada de cada consulta vivem junto do atendimento: o que a conversa descobre, o CRM registra. E a automação cuida do próximo passo de cada paciente, sem depender da memória de ninguém na recepção.</p>
+          </div>
+        </div>
+
+        <div class="crm-grid reveal-stagger">
+          <article class="crm-card crm-card--feature">
+            <h3>Jornada do paciente conectada ao atendimento</h3>
+            <p>Do primeiro “tem horário?” à consulta realizada: cada conversa chega com ficha, etapa e histórico — sem recopiar dados à mão.</p>
+            <div class="crm-pipeline" aria-hidden="true">
+              <div class="crm-pipeline__track">
+                <span class="crm-step"><i></i>Paciente novo</span><span class="crm-arrow">→</span>
+                <span class="crm-step is-done"><i></i>Triagem da IA</span><span class="crm-arrow">→</span>
+                <span class="crm-step"><i></i>Consulta agendada</span><span class="crm-arrow">→</span>
+                <span class="crm-step"><i></i>Confirmado</span><span class="crm-arrow">→</span>
+                <span class="crm-step is-done"><i></i>Atendido</span>
+              </div>
+              <div class="crm-pipeline__note"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg>Cada etapa com regra, prazo e canal definidos — a confirmação recomeça quando o card avança.</div>
+            </div>
+          </article>
+
+          <article class="crm-card crm-card--dark">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg></div>
+            <h3>Cadência de confirmação automática</h3>
+            <p>Jornadas automáticas por etapa: lembretes, preparo e avisos que acompanham o paciente até a consulta — no ritmo certo da agenda.</p>
+            <div class="crm-cadence" aria-hidden="true">
+              <span><b>Etapa 1</b>Confirmação ativa · WhatsApp</span>
+              <span><b>Etapa 2</b>Lembrete com preparo na véspera</span>
+              <span><b>Etapa 3</b>Lista de espera acionada se faltar</span>
+            </div>
+          </article>
+
+          <article class="crm-card">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-file"></use></svg></div>
+            <h3>Histórico unificado</h3>
+            <p>Conversa, anexos, receitas e retornos no mesmo lugar. O próximo atendimento começa com o contexto do anterior — de qualquer atendente.</p>
+          </article>
+
+          <article class="crm-card">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-scroll"></use></svg></div>
+            <h3>Protocolo por atendimento</h3>
+            <p>Todo contato ganha um protocolo rastreável: quem atendeu, quando, em qual canal, com qual resolução.</p>
+          </article>
+
+          <article class="crm-card">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-plug"></use></svg></div>
+            <h3>Conectado ao sistema de gestão</h3>
+            <p>A ficha conversa com agenda, prontuário e sistemas de gestão de saúde via integração — MV, RANG, FEEGOW, IDS e APIs existentes.</p>
+          </article>
+
+          <article class="crm-card">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-phone"></use></svg></div>
+            <h3>Telefonia registrada no CRM</h3>
+            <p>Chamadas pelo WhatsApp e PABX no mesmo ticket: a ligação é transcrita pela IA e anexada ao protocolo do paciente.</p>
+          </article>
+
+          <article class="crm-card">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-act"></use></svg></div>
+            <h3>Tempo real, decisão certa</h3>
+            <p>Painel ao vivo com atendimentos ativos, fila, confirmações e encaixes recuperados pela IA — atualizado a cada poucos segundos.</p>
+          </article>
+
+          <article class="crm-card crm-card--dark">
+            <div class="crm-icon"><svg class="dx-ico"><use href="#dx-i-zap"></use></svg></div>
+            <h3>Tecnologia própria Ê-Sistemas</h3>
+            <p>CRM desenvolvido e mantido junto do Ê-Bot Clinical: evolução contínua, suporte direto e o roadmap nas mãos do mesmo time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Conheça o sistema: prévia interativa do painel Ê-Bot Clinical -->
-    <section id="painel" class="section section-light bg-grid-pattern clinical-panel">
+    <section id="painel" class="section section-light surface-grid clinical-panel">
       <div class="container">
         <div class="dx-showcase reveal">
-          <div class="dx-head">
-            <div class="dx-head-copy">
-              <span class="text-micro text-primary">Painel e dashboard</span>
-              <h3>Conheça nosso sistema</h3>
-              <p>Um único lugar para agenda, atendimentos, automação e gestão da clínica. O layout é simples, minimalista e funcional: menu enxuto, poucos cliques e dados atualizados em tempo real, pensado para a rotina da recepção. Navegue pelas telas usando as abas.</p>
-              <div class="dx-head-cta">
-                <button class="trigger-wa-modal btn btn-primary wa-button">Conheça o sistema completo</button>
-                <span>Demonstração guiada, módulo a módulo, com um especialista.</span>
-              </div>
-            </div>
-            <div class="dx-tabs" role="tablist" aria-label="Telas do painel Ê-Bot Clinical">
-              <button class="dx-tab is-active" type="button" role="tab" id="dx-tab-dash" aria-controls="dx-pane-dash" aria-selected="true" data-dx-tab="dash">Dashboard</button>
-              <button class="dx-tab" type="button" role="tab" id="dx-tab-agenda" aria-controls="dx-pane-agenda" aria-selected="false" tabindex="-1" data-dx-tab="agenda">Agenda</button>
-              <button class="dx-tab" type="button" role="tab" id="dx-tab-inbox" aria-controls="dx-pane-inbox" aria-selected="false" tabindex="-1" data-dx-tab="inbox">Atendimentos</button>
-              <button class="dx-tab" type="button" role="tab" id="dx-tab-ia" aria-controls="dx-pane-ia" aria-selected="false" tabindex="-1" data-dx-tab="ia">Automação</button>
-            </div>
+          <div class="tour-head text-center">
+            <span class="sec-eyebrow">Conheça o sistema</span>
+            <h2 class="sec-heading">Conheça nossa experiência.</h2>
+            <p class="sec-lead">Um único lugar para agenda, atendimentos, automação e gestão da clínica. Layout enxuto, poucos cliques e dados atualizados em tempo real, pensado para a rotina da recepção. Tudo abaixo é interativo: troque de tela e veja a operação acontecer.</p>
           </div>
 
+          <div class="tour-tabs" role="tablist" aria-label="Telas do painel Ê-Bot Clinical">
+            <button class="tour-tab dx-tab is-active" type="button" role="tab" id="dx-tab-dash" aria-controls="dx-pane-dash" aria-selected="true" data-dx-tab="dash"><svg class="dx-ico"><use href="#dx-i-dash"></use></svg>Dashboard</button>
+            <button class="tour-tab dx-tab" type="button" role="tab" id="dx-tab-agenda" aria-controls="dx-pane-agenda" aria-selected="false" tabindex="-1" data-dx-tab="agenda"><svg class="dx-ico"><use href="#dx-i-cal"></use></svg>Agenda</button>
+            <button class="tour-tab dx-tab" type="button" role="tab" id="dx-tab-inbox" aria-controls="dx-pane-inbox" aria-selected="false" tabindex="-1" data-dx-tab="inbox"><svg class="dx-ico"><use href="#dx-i-headset"></use></svg>Atendimentos</button>
+            <button class="tour-tab dx-tab" type="button" role="tab" id="dx-tab-ia" aria-controls="dx-pane-ia" aria-selected="false" tabindex="-1" data-dx-tab="ia"><svg class="dx-ico"><use href="#dx-i-flow"></use></svg>Automações</button>
+          </div>
+
+          <div class="tour-frame">
           <div class="dx-window">
             <div class="dx-chrome">
               <span class="dx-dot dx-dot-red"></span>
@@ -994,97 +1210,110 @@
                     </div>
                   </section>
 
-                  <!-- Aba: Automação -->
+                  <!-- Aba: Automações — editor de fluxo no padrão Ê-Bot Panel -->
                   <section class="dx-pane" id="dx-pane-ia" role="tabpanel" aria-labelledby="dx-tab-ia" tabindex="0">
-                    <div class="dx-greet">
-                      <div>
-                        <h4>Automação e IA</h4>
-                        <p>O painel lê o volume de conversas e sugere onde automatizar a seguir.</p>
+                    <div class="dx-flow-toolbar" aria-hidden="true">
+                      <div class="dx-flow-name">
+                        <span class="dx-card-mark"><svg class="dx-ico"><use href="#dx-i-flow"></use></svg></span>
+                        <span><strong>Confirmação de consulta</strong><small>1 automação monitorando a operação</small></span>
                       </div>
-                      <span class="dx-btn-ghost"><svg class="dx-ico"><use href="#dx-i-plus"></use></svg> Novo fluxo</span>
+                      <span class="dx-spacer"></span>
+                      <div class="dx-flow-chips">
+                        <button type="button" class="is-active">Confirmação de consulta</button>
+                        <button type="button">Preparo de exames</button>
+                        <button type="button">Lista de encaixes</button>
+                      </div>
+                      <span class="dx-btn dx-btn--ghost dx-btn--sm"><svg class="dx-ico"><use href="#dx-i-zap"></use></svg>Testar fluxo</span>
+                      <span class="dx-btn dx-btn--primary dx-btn--sm"><svg class="dx-ico"><use href="#dx-i-check"></use></svg>Publicar</span>
                     </div>
 
-                    <div class="dx-insights">
-                      <article class="dx-insight">
-                        <div class="dx-insight-top"><span>Automação sugerida</span><span class="dx-pill tone-blue">23 pacientes</span></div>
-                        <h6>Preparo de exames recorrente</h6>
-                        <p>23 pacientes perguntaram sobre preparo de exames hoje, principalmente no fim da tarde.</p>
-                        <span class="dx-action is-primary">Criar automação</span>
-                      </article>
-                      <article class="dx-insight">
-                        <div class="dx-insight-top"><span>Oportunidades</span><span class="dx-pill tone-green">12 conversas</span></div>
-                        <h6>Fluxos repetitivos detectados</h6>
-                        <p>12 conversas poderiam virar fluxo automático sem intervenção da recepção.</p>
-                        <span class="dx-action is-ghost">Ver conversas</span>
-                      </article>
-                      <article class="dx-insight">
-                        <div class="dx-insight-top"><span>Risco de faltas</span><span class="dx-pill tone-orange">3 horários</span></div>
-                        <h6>Encaixes recuperados</h6>
-                        <p>3 horários foram liberados após cancelamento e podem ser preenchidos pela lista de espera.</p>
-                        <span class="dx-action is-ghost">Enviar campanha</span>
-                      </article>
-                      <article class="dx-insight">
-                        <div class="dx-insight-top"><span>Gargalos</span><span class="dx-pill tone-red">17h às 19h</span></div>
-                        <h6>Gargalo no fim do dia</h6>
-                        <p>Pacientes repetiram dúvidas sobre preparo de exames entre 17h e 19h.</p>
-                        <span class="dx-action is-primary">Criar automação</span>
-                      </article>
-                    </div>
+                    <div class="dx-editor">
+                      <div class="dx-canvas" aria-hidden="true">
+                        <div class="dx-canvas-inner">
+                          <svg viewBox="0 0 1240 340" preserveAspectRatio="none">
+                            <path class="dx-edge" d="M196,172 H220"></path>
+                            <path class="dx-edge" d="M396,172 H420"></path>
+                            <path class="dx-edge" d="M596,172 H620"></path>
+                            <path class="dx-edge" d="M796,172 H808 V92 H820"></path>
+                            <path class="dx-edge" d="M996,92 H1020"></path>
+                            <path class="dx-edge" d="M908,142 V252 H1020"></path>
+                          </svg>
 
-                    <div class="dx-cols is-equal">
-                      <article class="dx-card">
-                        <div class="dx-card-title">
-                          <div>
-                            <h5>Fluxos ativos</h5>
-                            <p>Gatilhos monitorando a operação 24 horas.</p>
+                          <div class="dx-cnode is-active" style="left:20px; top:130px;">
+                            <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-msg"></use></svg></span>
+                            <span class="dx-node-kind" style="color:#1a8bc7;"><i style="background:#1a8bc7;"></i>Entrada</span>
+                            <strong>Consulta a 24h do horário</strong>
+                            <small>Dispara a confirmação de cada paciente agendado</small>
                           </div>
-                          <span class="dx-card-mark"><svg class="dx-ico"><use href="#dx-i-flow"></use></svg></span>
-                        </div>
 
-                        <div class="dx-flow-row">
-                          <span><b>Confirmação de consulta</b><small>Gatilho: 24h antes · WhatsApp · 312 execuções</small></span>
-                          <span class="dx-switch is-on"></span>
-                        </div>
-                        <div class="dx-flow-row">
-                          <span><b>Preparo de exame</b><small>Gatilho: resposta com “preparo” · 148 execuções</small></span>
-                          <span class="dx-switch is-on"></span>
-                        </div>
-                        <div class="dx-flow-row">
-                          <span><b>Lista de espera para encaixes</b><small>Gatilho: cancelamento · 36 execuções</small></span>
-                          <span class="dx-switch is-on"></span>
-                        </div>
-                        <div class="dx-flow-row">
-                          <span><b>Cobrança de retorno pendente</b><small>Gatilho: 7 dias sem resposta · rascunho</small></span>
-                          <span class="dx-switch"></span>
-                        </div>
-                      </article>
-
-                      <article class="dx-card">
-                        <div class="dx-card-title">
-                          <div>
-                            <h5>Base de conhecimento</h5>
-                            <p>Fontes que a IA usa antes de responder ao paciente.</p>
+                          <div class="dx-cnode" style="left:220px; top:130px;">
+                            <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-users"></use></svg></span>
+                            <span class="dx-node-kind" style="color:#30a3a4;"><i style="background:#30a3a4;"></i>Busca</span>
+                            <strong>Recuperar paciente</strong>
+                            <small>Nome, convênio e históricos na ficha do CRM</small>
                           </div>
-                          <span class="dx-card-mark is-green"><svg class="dx-ico"><use href="#dx-i-book"></use></svg></span>
-                        </div>
 
-                        <div class="dx-flow-row">
-                          <span><b>Protocolos clínicos da unidade</b><small>12 documentos · atualizado ontem</small></span>
-                          <span class="dx-pill tone-green">Ativo</span>
+                          <div class="dx-cnode" style="left:420px; top:130px;">
+                            <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-msg"></use></svg></span>
+                            <span class="dx-node-kind" style="color:#6d8a24;"><i style="background:#6d8a24;"></i>Mensagem</span>
+                            <strong>Envio da confirmação</strong>
+                            <small>Modelo: “Posso confirmar sua consulta de amanhã?”</small>
+                          </div>
+
+                          <div class="dx-cnode" style="left:620px; top:130px;">
+                            <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-calclock"></use></svg></span>
+                            <span class="dx-node-kind" style="color:#b87707;"><i style="background:#b87707;"></i>Espera</span>
+                            <strong>Aguardar resposta</strong>
+                            <small>Janela de 2h antes de reenviar o lembrete</small>
+                          </div>
+
+                          <div class="dx-cnode is-success" style="left:820px; top:50px;">
+                            <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-usercheck"></use></svg></span>
+                            <span class="dx-node-kind" style="color:#0e7a3e;"><i style="background:#0e7a3e;"></i>Sucesso</span>
+                            <strong>Presença confirmada</strong>
+                            <small>Agenda atualizada e preparo enviado</small>
+                          </div>
+
+                          <div class="dx-cnode is-human" style="left:820px; top:210px;">
+                            <span class="dx-node-ico"><svg class="dx-ico"><use href="#dx-i-headset"></use></svg></span>
+                            <span class="dx-node-kind" style="color:#c97f12;"><i style="background:#c97f12;"></i>Falha</span>
+                            <strong>Passa para a recepção</strong>
+                            <small>Fila humana com o contexto da conversa</small>
+                          </div>
                         </div>
-                        <div class="dx-flow-row">
-                          <span><b>Convênios e valores</b><small>Tabela de preços · atualizado hoje</small></span>
-                          <span class="dx-pill tone-green">Ativo</span>
-                        </div>
-                        <div class="dx-flow-row">
-                          <span><b>Orientações de exames</b><small>28 preparos padronizados</small></span>
-                          <span class="dx-pill tone-blue">Revisando</span>
-                        </div>
-                        <div class="dx-flow-row">
-                          <span><b>Respostas rápidas da recepção</b><small>41 atalhos de equipe</small></span>
-                          <span class="dx-pill tone-green">Ativo</span>
-                        </div>
-                      </article>
+                      </div>
+
+                      <aside class="dx-inspector" aria-hidden="true">
+                        <article class="dx-card">
+                          <span class="dx-insp-kind">Espera</span>
+                          <h4>Pode resolver sozinha?</h4>
+                          <p class="dx-insp-note">Mede a resposta do paciente no WhatsApp antes de qualquer ação manual da recepção.</p>
+                          <div class="dx-field"><label>Lista</label><span class="dx-field-box">Consultas confirmáveis em 24h</span></div>
+                          <div class="dx-field"><label>Janela de espera</label><span class="dx-field-box">2h · lembrete único</span></div>
+                          <div class="dx-field"><label>Condição</label><span class="dx-field-box">status = sem resposta</span></div>
+                          <span class="dx-btn dx-btn--ghost dx-btn--sm" style="margin-top:.35rem;"><svg class="dx-ico"><use href="#dx-i-gear"></use></svg>Editar passo</span>
+                        </article>
+
+                        <article class="dx-card">
+                          <div class="dx-card-head">
+                            <div><h5>Fluxos publicados</h5><p>3 automações ativas na unidade</p></div>
+                          </div>
+                          <div class="dx-flow-list">
+                            <button class="dx-flow-item is-active" type="button">
+                              <span class="dx-flow-ico"><svg class="dx-ico"><use href="#dx-i-msg"></use></svg></span>
+                              <span><strong>Confirmação de consulta</strong><small>312 execuções · 78% confirmaram</small></span>
+                            </button>
+                            <button class="dx-flow-item" type="button">
+                              <span class="dx-flow-ico"><svg class="dx-ico"><use href="#dx-i-clip"></use></svg></span>
+                              <span><strong>Preparo de exames</strong><small>148 execuções · orientação automática</small></span>
+                            </button>
+                            <button class="dx-flow-item" type="button">
+                              <span class="dx-flow-ico"><svg class="dx-ico"><use href="#dx-i-plus"></use></svg></span>
+                              <span><strong>Lista de encaixes</strong><small>36 execuções · 3 encaixes recuperados</small></span>
+                            </button>
+                          </div>
+                        </article>
+                      </aside>
                     </div>
 
                     <p class="dx-footnote">Dados de demonstração do ambiente de protótipo — a versão em produção usa as informações reais da sua unidade.</p>
@@ -1092,6 +1321,17 @@
                 </div>
               </div>
             </div>
+          </div>
+          </div><!-- /tour-frame -->
+
+          <div class="tour-hint reveal" aria-hidden="true">
+            <span><svg class="dx-ico"><use href="#dx-i-cols"></use></svg> Troque de módulo pelas abas ou pelo menu lateral</span>
+            <span><svg class="dx-ico"><use href="#dx-i-flow"></use></svg> Na aba Automações, arraste para explorar o canvas do fluxo</span>
+          </div>
+
+          <div class="tour-cta reveal">
+            <button class="trigger-wa-modal btn btn-primary wa-button float-hover">Conheça o sistema completo</button>
+            <span class="text-small">Demonstração guiada, módulo a módulo, com um especialista.</span>
           </div>
         </div>
       </div>
@@ -1101,9 +1341,9 @@
     <section id="whatsapp" class="section section-gray clinical-whatsapp">
       <div class="container cw-grid">
         <div class="cw-copy reveal reveal-left">
-          <span class="text-micro text-primary">Atendimento completo no WhatsApp</span>
-          <h2 class="h2">A conversa do paciente vira ficha, histórico e arquivos.</h2>
-          <p class="body-large">O Ê-Bot atende dentro do WhatsApp que o paciente já abre todo dia. Identifica o cadastro, valida convênio, remarca consultas, envia orientações e recebe documentos. Tudo o que é conversado fica salvo na ficha do paciente, sem a recepção redigitar nada.</p>
+          <span class="sec-eyebrow">Atendimento completo no WhatsApp</span>
+          <h2 class="sec-heading">A conversa do paciente vira ficha, histórico e arquivos.</h2>
+          <p class="sec-lead">O Ê-Bot atende dentro do WhatsApp que o paciente já abre todo dia. Identifica o cadastro, valida convênio, remarca consultas, envia orientações e recebe documentos. Tudo o que é conversado é registrado automaticamente na ficha do paciente, confiável e pronta para qualquer atendimento da equipe.</p>
 
           <ul class="cw-checks">
             <li>
@@ -1137,7 +1377,7 @@
           </ul>
 
           <div class="hero-actions">
-            <button class="trigger-wa-modal btn btn-primary wa-button">Falar com especialista de saúde</button>
+            <button class="trigger-wa-modal btn btn-primary wa-button">Fale com um de nossos especialistas</button>
             <a class="clinical-link" href="#painel">Conheça nosso sistema</a>
           </div>
         </div>
@@ -1211,34 +1451,105 @@
       <div class="container reveal">
         <div class="section-heading stacked-heading">
           <div>
-            <span class="text-micro text-primary">Clientes atendidos</span>
-            <h2 class="h2">Para clínicas públicas e privadas que precisam responder mais rápido.</h2>
+            <span class="sec-eyebrow">Quem atende</span>
+            <h2 class="sec-heading">Dois tipos de cliente, a mesma IA cuidando de cada paciente.</h2>
+            <p class="sec-lead">O Ê-Bot Clinical opera em <strong>Unidades Públicas de Saúde</strong> e <strong>Clínicas Privadas</strong>, com o mesmo canal, regras próprias para cada realidade e respeito total ao fluxo de cada rede.</p>
           </div>
-          <p class="body-large">O mesmo canal inteligente pode operar com regras diferentes por unidade, especialidade, convênio, fila, protocolo e perfil de paciente.</p>
         </div>
-        <div class="audience-grid">
-          <article class="audience-card public-care">
-            <span>Clínicas públicas</span>
-            <h3>UBS, ambulatórios e unidades municipais</h3>
-            <p>Organize filas, confirme presença, envie orientações e reduza demanda repetitiva da recepção em serviços de alto volume.</p>
+
+        <!-- Cena: cidade minimalista em CSS com as duas frentes de atendimento -->
+        <div class="city-scene" aria-hidden="true">
+          <div class="city-sky city-sky--1"></div>
+          <div class="city-sky city-sky--2"></div>
+          <div class="city-sky city-sky--3"></div>
+          <div class="city-sky city-sky--4"></div>
+          <div class="city-sky city-sky--5"></div>
+          <div class="city-ground"></div>
+
+          <!-- Unidade pública: UBS -->
+          <div class="city-unit city-unit--public">
+            <div class="city-unit-banner"><b></b><b></b><b></b></div>
+            <div class="city-unit-cross">+</div>
+            <div class="city-unit-windows"></div>
+            <span class="city-unit-tag">UBS</span>
+          </div>
+
+          <!-- Unidade privada: clínica -->
+          <div class="city-unit city-unit--private">
+            <div class="city-unit-banner city-unit-banner--private"><b></b><b></b><b></b></div>
+            <div class="city-unit-heart">
+              <svg viewBox="0 0 24 24"><path d="M12 21C7 16.6 4 13.6 4 10.2 4 7.4 6.2 5.4 8.8 5.4c1.3 0 2.5.6 3.2 1.6.7-1 1.9-1.6 3.2-1.6 2.6 0 4.8 2 4.8 4.8 0 3.4-3 6.4-8 10.8z"/></svg>
+            </div>
+            <div class="city-unit-windows"></div>
+            <span class="city-unit-tag city-unit-tag--private">Clínica</span>
+          </div>
+
+          <!-- Paciente chegando por WhatsApp: as linhas param na linha do chão -->
+          <svg class="city-route" viewBox="0 0 1100 460" preserveAspectRatio="none">
+            <path id="cityPathA" class="city-edge" d="M316,368 C316,330 316,238 316,182"/>
+            <path id="cityPathB" class="city-edge" d="M766,368 C766,330 766,238 766,182"/>
+            <circle class="city-packet" r="5"><animateMotion dur="3.4s" repeatCount="indefinite" rotate="auto"><mpath href="#cityPathA"/></animateMotion></circle>
+            <circle class="city-packet city-packet--wa" r="5"><animateMotion dur="4.1s" begin="-1.6s" repeatCount="indefinite"><mpath href="#cityPathB"/></animateMotion></circle>
+          </svg>
+
+          <!-- Cards flutuantes em glassmorphism: só os dois públicos -->
+          <article class="city-card city-card--public">
+            <span>Unidades Públicas de Saúde</span>
+            <strong>Filas organizadas em alto volume</strong>
+            <p>UBS, ambulatórios e unidades municipais confirmam presença, orientam o paciente e aliviam a recepção no alto volume, sem custo de TI extra.</p>
           </article>
-          <article class="audience-card private-care">
-            <span>Clínicas privadas</span>
-            <h3>Consultórios, redes e hospitais particulares</h3>
-            <p>Aumente conversão de agendamentos, melhore experiência do paciente e mantenha o time focado em casos que exigem cuidado humano.</p>
+          <article class="city-card city-card--private">
+            <span>Clínicas Privadas</span>
+            <strong>Agenda cheia, zero no-show</strong>
+            <p>Consultórios, redes e hospitais particulares convertem mais agendamentos com confirmação ativa, encaixe automático e ficha viva do paciente.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="parceiros" class="section section-gray partners-section">
+    <section id="parceiros" class="section section-gray surface-waves partners-section">
       <div class="container reveal">
         <div class="section-heading text-center compact-heading">
-          <span class="text-micro text-primary">Clientes e parceiros</span>
-          <h2 class="h2">Criado para integrar tecnologia, atendimento e gestão em saúde.</h2>
-          <p class="body-large">O Ê-Bot Clinical conecta equipes internas, parceiros de tecnologia, sistemas de agenda, ERPs, CRMs e canais digitais em uma operação mais previsível.</p>
+          <span class="sec-eyebrow">Integrações e parceiros</span>
+          <h2 class="sec-heading">Conectado aos sistemas de gestão de saúde que sua unidade já usa.</h2>
+          <p class="sec-lead">O Ê-Bot Clinical integra-se nativamente aos sistemas de gestão de saúde, agenda, prontuário e canais digitais — em uma operação omnichannel e previsível. Já operamos em conjunto com <strong>MV, RANG, FEEGOW e IDS</strong>.</p>
         </div>
-        <div class="partners-strip" aria-label="Perfis de clientes e parceiros">
+
+        <div class="integrations-marquee" aria-label="Sistemas de gestão de saúde integrados e parceiros">
+          <div class="integrations-track">
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/meta.webp" alt="Meta"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/rang.webp" alt="RANG"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/plug_and_play.webp" alt="Plug and Play"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/n8n.webp" alt="n8n"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/ollama.webp" alt="Ollama"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/claude.webp" alt="Claude"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/ellon.webp" alt="Ellon"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/sebrae.webp" alt="Sebrae"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/campus_mobile.webp" alt="Campus Mobile"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/ambar_bank.webp" alt="Ambar Bank"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/SI9_sistemas.webp" alt="SI9 Sistemas"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/sudotec.webp" alt="Sudotec"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/voraz.webp" alt="Voraz"></span>
+            <span class="integration-chip"><img src="assets/images/logos_parceiros/latreille.webp" alt="Latreille"></span>
+            <!-- repetidos para o loop da marquee -->
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/meta.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/rang.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/plug_and_play.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/n8n.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/ollama.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/claude.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/ellon.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/sebrae.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/campus_mobile.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/ambar_bank.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/SI9_sistemas.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/sudotec.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/voraz.webp" alt=""></span>
+            <span class="integration-chip" aria-hidden="true"><img src="assets/images/logos_parceiros/latreille.webp" alt=""></span>
+          </div>
+        </div>
+
+        <div class="partners-strip reveal-stagger" aria-label="Perfis de clientes e parceiros">
           <article class="partner-card"><img src="https://images.unsplash.com/photo-1519494140681-8b17d830a3e9?auto=format&fit=crop&w=600&q=80" alt="Recepção de clínica médica"><span>Clínicas médicas</span></article>
           <article class="partner-card"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=600&q=80" alt="Consultório odontológico"><span>Clínicas odontológicas</span></article>
           <article class="partner-card"><img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=600&q=80" alt="Corredor hospitalar moderno"><span>Hospitais</span></article>
@@ -1246,42 +1557,145 @@
           <article class="partner-card"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Documentos e cartão de saúde"><span>Operadoras e convênios</span></article>
           <article class="partner-card"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" alt="Equipe de tecnologia integrando sistemas"><span>Integradores de sistemas</span></article>
         </div>
-      </div>
-    </section>
 
-    <section id="depoimentos" class="section section-light testimonials-section">
-      <div class="container reveal">
-        <div class="section-heading stacked-heading text-center compact-heading">
-          <div>
-            <span class="text-micro text-primary">Depoimentos</span>
-            <h2 class="h2">Gestores, médicos e recepções com uma rotina mais previsível.</h2>
-          </div>
-          <p class="body-large">Exemplos de relatos que mostram como a automação humanizada apoia clínicas de diferentes portes.</p>
+        <div class="clients-mini-head">
+          <span class="sec-eyebrow">Clientes na operação real</span>
+          <h3 class="h3">Clínicas, hospitais e unidades que já atendem no ritmo da IA.</h3>
         </div>
 
-        <div class="swiper testimonials-swiper" aria-label="Carousel de depoimentos de clientes">
+        <div class="swiper clients-swiper clients-swiper--mini" aria-label="Carousel de clientes Ê-Bot Clinical">
           <div class="swiper-wrapper">
-            <article class="swiper-slide testimonial-card">
-              <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=900&q=80" alt="Médica em clínica moderna">
-              <div><span>Clínica privada</span><p>“Reduzimos as ligações repetitivas e passamos a confirmar pacientes antes do início do expediente.”</p><strong>Dra. Marina Telles, diretora clínica</strong></div>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1519494140681-8b17d830a3e9?auto=format&fit=crop&w=900&q=80" alt="Recepção de clínica médica parceira" loading="lazy">
+              <div>
+                <span>Rede de clínicas · Curitiba</span>
+                <strong>Clínica Vitalis</strong>
+                <p>Agendamento omnichannel: telefone, WhatsApp e webchat na mesma fila inteligente.</p>
+              </div>
             </article>
-            <article class="swiper-slide testimonial-card">
-              <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=900&q=80" alt="Médico em corredor hospitalar">
-              <div><span>Hospital regional</span><p>“O time recebe o histórico resumido e consegue priorizar casos que realmente precisam de atendimento humano.”</p><strong>Dr. Renato Azevedo, coordenação médica</strong></div>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=80" alt="Corredor de hospital regional parceiro" loading="lazy">
+              <div>
+                <span>Hospital regional · Oeste do Paraná</span>
+                <strong>Hospital Lar dos Ipês</strong>
+                <p>Confirmação ativa e encaixe automático em agenda multidisciplinar.</p>
+              </div>
             </article>
-            <article class="swiper-slide testimonial-card">
-              <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&w=900&q=80" alt="Recepção de clínica com pacientes aguardando">
-              <div><span>Unidade pública</span><p>“A confirmação ativa ajudou a organizar a fila e diminuiu encaixes de última hora por falta de informação.”</p><strong>Camila Duarte, gestão de atendimento</strong></div>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80" alt="Profissional de saúde de unidade pública atendendo no WhatsApp" loading="lazy">
+              <div>
+                <span>Rede municipal · setores públicos</span>
+                <strong>UBS e ambulatórios municipais</strong>
+                <p>Filas organizadas, orientações de preparo e satisfação do paciente monitoradas pela IA.</p>
+              </div>
             </article>
-            <article class="swiper-slide testimonial-card">
-              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80" alt="Médico usando tablet no consultório">
-              <div><span>Rede de especialidades</span><p>“O WhatsApp virou um canal organizado, com regras claras e passagem segura para a recepção.”</p><strong>Dr. Paulo Meireles, sócio operador</strong></div>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80" alt="Consultório odontológico parceiro" loading="lazy">
+              <div>
+                <span>Odontologia · Maringá</span>
+                <strong>OdontoPrime</strong>
+                <p>Retornos e convênios confirmados automaticamente, com ficha viva por paciente.</p>
+              </div>
+            </article>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" alt="Equipe de saúde mental em telemedicina" loading="lazy">
+              <div>
+                <span>Saúde mental · telemedicina</span>
+                <strong>Instituto Mens Sana</strong>
+                <p>Triagem inicial por IA com escalação segura para atendimento humano.</p>
+              </div>
+            </article>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80" alt="Médico parceiro usando tablet no consultório" loading="lazy">
+              <div>
+                <span>Rede de especialidades · Londrina</span>
+                <strong>Rede Laços de Vida</strong>
+                <p>Retornos programados pela IA, com ficha viva de cada paciente.</p>
+              </div>
+            </article>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80" alt="Documentação de operadora de saúde parceira" loading="lazy">
+              <div>
+                <span>Operadora de saúde</span>
+                <strong>Convênio BemVida</strong>
+                <p>Agendamentos autorizados e renovação automática de solicitações.</p>
+              </div>
+            </article>
+            <article class="swiper-slide client-card">
+              <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=900&q=80" alt="Médica parceira em clínica de apoio à mulher" loading="lazy">
+              <div>
+                <span>Clínica de apoio à mulher</span>
+                <strong>Casa Renascer</strong>
+                <p>Confirmação de exames e retornos sem sobrecarregar a recepção.</p>
+              </div>
             </article>
           </div>
           <div class="testimonials-controls">
-            <button class="testimonial-prev" aria-label="Depoimento anterior">‹</button>
+            <button class="testimonial-prev" aria-label="Cliente anterior">‹</button>
             <div class="swiper-pagination"></div>
-            <button class="testimonial-next" aria-label="Próximo depoimento">›</button>
+            <button class="testimonial-next" aria-label="Próximo cliente">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quem somos: institucional Ê-Sistemas com nossa história em fotos -->
+    <section id="quem-somos" class="section section-light quem-somos-section">
+      <div class="container reveal">
+        <div class="quem-grid">
+          <div class="quem-copy">
+            <span class="sec-eyebrow">Quem somos</span>
+            <h2 class="sec-heading">Tecnologia própria, gente que cuida de gente.</h2>
+            <p class="sec-lead">O Ê-Bot Clinical é desenvolvido pela <strong>Ê-Sistemas</strong>, empresa brasileira de tecnologia com engenharia, produto e suporte no mesmo time. Nada de software genérico: cada fluxo de automação e cada linha de IA que atende o seu paciente nasceu da nossa própria base de código, evoluindo com cada unidade que colocamos na operação.</p>
+
+            <div class="quem-checks">
+              <div class="quem-check">
+                <i><svg class="dx-ico"><use href="#dx-i-zap"></use></svg></i>
+                <div>
+                  <strong>Tecnologia 100% própria</strong>
+                  <span>Plataforma construída e mantida pela Ê-Sistemas, com autonomia total sobre o roadmap — sem intermediários entre a sua demanda e a solução.</span>
+                </div>
+              </div>
+              <div class="quem-check">
+                <i><svg class="dx-ico"><use href="#dx-i-users"></use></svg></i>
+                <div>
+                  <strong>Parceira do ecossistema global</strong>
+                  <span>TechProvider Meta e presença em programas como Sebrae, Plug and Play e imersões no Google — conexão direta com onde a tecnologia aponta.</span>
+                </div>
+              </div>
+              <div class="quem-check">
+                <i><svg class="dx-ico"><use href="#dx-i-check2"></use></svg></i>
+                <div>
+                  <strong>Resultado em nome próprio</strong>
+                  <span>De prêmios internos “Ê-Sistemas Destaque” a clientes que operam conosco há anos: reputação construída em atendimento de verdade.</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="trigger-wa-modal btn btn-primary wa-button quem-cta">Fale com um de nossos especialistas</button>
+          </div>
+
+          <div class="quem-mosaic" role="img" aria-label="Fotografias da nossa história: eventos, parcerias e a equipe da Ê-Sistemas">
+            <figure class="quem-photo quem-photo--a">
+              <img src="assets/images/nossa_historia/nossa_historia_6.jpg" alt="Equipe da Ê-Sistemas com prêmio interno de destaque" loading="lazy" style="object-position: 50% 26%;">
+              <figcaption>Equipe Ê-Sistemas · reconhecimento interno</figcaption>
+            </figure>
+            <figure class="quem-photo quem-photo--b">
+              <img src="assets/images/nossa_historia/pedro-google.webp" alt="Presença da Ê-Sistemas na sede do Google" loading="lazy">
+              <figcaption>Imersão no Google</figcaption>
+            </figure>
+            <figure class="quem-photo quem-photo--c">
+              <img src="assets/images/nossa_historia/nossa_historia_3.jpg" alt="Certificado recebido em programa do Plug and Play" loading="lazy">
+              <figcaption>Plug and Play · programa de inovação</figcaption>
+            </figure>
+            <figure class="quem-photo quem-photo--d">
+              <img src="assets/images/nossa_historia/nossa_historia_1.jpeg" alt="Ê-Sistemas em evento do Sebrae" loading="lazy" style="object-position: 50% 16%;">
+              <figcaption>Feira Sebrae · ecossistema empreendedor</figcaption>
+            </figure>
+            <figure class="quem-photo quem-photo--e">
+              <img src="assets/images/nossa_historia/nossa_historia_2.jpeg" alt="Parceiros da Ê-Sistemas em evento de negócios" loading="lazy" style="object-position: 50% 22%;">
+              <figcaption>Insights &amp; Soluções · ecossistema de parcerias</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -1290,57 +1704,23 @@
     <section id="seguranca" class="section section-dark bg-grid-pattern-dark security-section">
       <div class="container reveal security-grid">
         <div>
-          <span class="text-micro">Segurança e operação</span>
-          <h2 class="h2">Projetado para ambientes com dados sensíveis.</h2>
-          <p class="body-large">O Ê-Bot Clinical atua como uma camada controlada de atendimento, com registros, regras de encaminhamento e integração sob medida com a realidade da unidade.</p>
-          <p class="security-copy">A operação considera princípios da LGPD como finalidade, necessidade, transparência, segurança, prevenção e responsabilização. Conversas, consentimentos, bases de conhecimento e transferências para humanos podem ser estruturados para reduzir exposição de dados sensíveis e manter rastreabilidade operacional.</p>
+          <span class="sec-eyebrow">Segurança e operação</span>
+          <h2 class="h2 sec-heading">Projetado para ambientes com dados sensíveis.</h2>
+          <p class="sec-lead">O Ê-Bot Clinical atua como uma camada controlada de atendimento, com registros, regras de encaminhamento e integração sob medida com a realidade da unidade.</p>
+          <p class="security-copy">A operação considera princípios da LGPD como finalidade, necessidade, transparência, segurança, prevenção e responsabilização. Conversas, consentimentos, bases de conhecimento e transferências para humanos são estruturados para reduzir exposição de dados sensíveis e manter rastreabilidade operacional.</p>
           <div class="security-actions">
             <button class="btn btn-primary open-pdf-modal" data-pdf-title="LGPD" data-pdf-src="assets/pdf/ebot_LGPD.pdf">Ler LGPD</button>
             <button class="btn btn-outline open-pdf-modal" data-pdf-title="Política de Privacidade" data-pdf-src="assets/pdf/ebot_politica_privacidade.pdf">Ler política de privacidade</button>
+            <span class="meta-seal meta-seal--dark" title="TechProvider Meta — parceiro oficial Meta">
+              <span class="meta-seal__logo"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M25.4 6.9c-3 0-5.3 1.5-7.4 3.9-2.1-2.4-4.4-3.9-7.4-3.9C6 6.9 2 11.7 2 18.6c0 6.7 3.4 10.5 7.6 10.5 3.1 0 5.9-2.3 8.4-6.6 2.5 4.3 5.3 6.6 8.4 6.6 4.2 0 7.6-3.8 7.6-10.5 0-6.9-4-11.7-8.6-11.7zM9.9 24.7c-2.2 0-3.8-2.4-3.8-6.1 0-4.5 2-7.3 4.9-7.3 1.8 0 3.4 1.2 5.2 3.7-2.3 4.6-4.2 9.7-6.3 9.7zm15.2 0c-2.1 0-3.9-5.1-6.3-9.7 1.8-2.5 3.4-3.7 5.2-3.7 2.9 0 4.9 2.8 4.9 7.3 0 3.7-1.6 6.1-3.8 6.1z"/></svg></span>TechProvider Meta<span class="meta-seal__check" aria-hidden="true">✓</span>
+            </span>
           </div>
         </div>
         <div class="security-list">
           <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z"/><path d="M9.5 12l1.7 1.7 3.8-4"/></svg></i><strong>LGPD na jornada</strong><span>Consentimento, finalidade clara e rastreabilidade nas interações.</span></div>
-          <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 7h10v10H7z"/><path d="M4 12h3M17 12h3M12 4v3M12 17v3M5.8 5.8l2.1 2.1M16.1 16.1l2.1 2.1M18.2 5.8l-2.1 2.1M7.9 16.1l-2.1 2.1"/></svg></i><strong>Integrações por etapa</strong><span>Agenda, CRM, ERP, prontuário, sistemas internos e APIs existentes.</span></div>
+          <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 7h10v10H7z"/><path d="M4 12h3M17 12h3M12 4v3M12 17v3M5.8 5.8l2.1 2.1M16.1 16.1l2.1 2.1M18.2 5.8l-2.1 2.1M7.9 16.1l-2.1 2.1"/></svg></i><strong>Integrações por etapa</strong><span>Agenda, prontuário, sistemas de gestão de saúde e APIs existentes.</span></div>
           <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M17.5 10.5l2 2 3-4"/></svg></i><strong>Escalonamento humano</strong><span>Casos sensíveis, dúvidas clínicas e exceções saem da automação.</span></div>
           <div><i class="security-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v4h4M9 12h6M9 16h4"/></svg></i><strong>Base de conhecimento</strong><span>Respostas seguem protocolos, horários, convênios e políticas da clínica.</span></div>
-        </div>
-      </div>
-
-      <!-- Prévia da retaguarda: auditoria e permissões do painel -->
-      <div class="container reveal dx-audit">
-        <div class="dx-audit-head">
-          <span class="text-micro">Painel e retaguarda</span>
-          <h3>Cada ação registrada, cada perfil com permissão.</h3>
-        </div>
-
-        <div class="dx-audit-grid">
-          <div class="dx-panel">
-            <div class="dx-panel-title">
-              <strong><svg class="dx-ico"><use href="#dx-i-scroll"></use></svg> Logs de auditoria</strong>
-              <span>hoje</span>
-            </div>
-            <ul class="dx-log">
-              <li><time>09:42</time><span><b>Marina T.</b> exportou o relatório de atendimentos da Clínica Geral.</span></li>
-              <li><time>09:18</time><span><b>Dr. Ruan</b> assumiu a conversa #4821 transferida pela IA.</span></li>
-              <li><time>08:55</time><span><b>Ê-Bot IA</b> enviou 312 confirmações de consulta no WhatsApp.</span></li>
-              <li><time>08:31</time><span><b>Admin</b> alterou a permissão de “Somente leitura” do perfil Recepção.</span></li>
-              <li><time>08:04</time><span><b>Ê-Bot IA</b> encerrou 156 atendimentos fora do horário comercial.</span></li>
-            </ul>
-          </div>
-
-          <div class="dx-panel">
-            <div class="dx-panel-title">
-              <strong><svg class="dx-ico"><use href="#dx-i-lock"></use></svg> Perfis e permissões</strong>
-              <span>4 níveis</span>
-            </div>
-            <ul class="dx-roles">
-              <li><span class="dx-role">Admin</span> Acesso total, incluindo retaguarda, logs e integrações.</li>
-              <li><span class="dx-role">Gestão</span> Relatórios, financeiro, equipes e exportação de dados.</li>
-              <li><span class="dx-role">Recepção</span> Atendimentos e agenda, sem acesso a dados financeiros.</li>
-              <li><span class="dx-role">Profissional</span> Própria agenda, protocolos e histórico dos seus pacientes.</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
@@ -1348,11 +1728,11 @@
     <section class="section section-light rollout-section">
       <div class="container reveal">
         <div class="section-heading text-center compact-heading">
-          <span class="text-micro text-primary">Implantação</span>
-          <h2 class="h2">Comece pequeno, evolua com dados reais.</h2>
-          <p class="body-large">A implantação é pensada para não travar a rotina da recepção.</p>
+          <span class="sec-eyebrow">Implantação</span>
+          <h2 class="sec-heading">Comece pequeno, evolua com dados reais.</h2>
+          <p class="sec-lead">A implantação é pensada para não travar a rotina da recepção.</p>
         </div>
-        <div class="rollout-grid">
+        <div class="rollout-grid reveal-stagger">
           <article><i class="rollout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 14l3 3-3 3"/></svg></i><span>Semana 1</span><h3>Mapeamento</h3><p>Levantamos canais, dúvidas frequentes, agenda, regras e pontos de transferência para humanos.</p></article>
           <article><i class="rollout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M19.8 7.5L17.2 9M6.8 15l-2.6 1.5"/><circle cx="12" cy="12" r="4"/></svg></i><span>Semana 2</span><h3>Configuração</h3><p>Montamos fluxos, tom de voz, base de conhecimento e integrações prioritárias.</p></article>
           <article><i class="rollout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19h14"/><path d="M7 19V5h10v14"/><path d="M10 9h4M10 13h4"/><path d="M17 8h2v4h-2"/></svg></i><span>Semana 3</span><h3>Piloto assistido</h3><p>Ativamos um fluxo controlado, monitoramos conversas e ajustamos respostas.</p></article>
@@ -1366,9 +1746,9 @@
       <div class="chat-flashlight"></div>
       <div class="container reveal">
         <div class="section-heading text-center compact-heading">
-          <span class="text-micro text-primary">Demo interativa</span>
-          <h2 class="h2">Teste a IA na prática.</h2>
-          <p class="body-large">Converse com o Ê-Bot Clinical e veja como ele explica automações, agenda, lembretes e implantação para a sua operação.</p>
+          <span class="sec-eyebrow">Demo interativa</span>
+          <h2 class="sec-heading">Teste a IA na prática.</h2>
+          <p class="sec-lead">Converse com o Ê-Bot Clinical e veja como ele explica automações, agenda, lembretes e implantação para a sua operação.</p>
         </div>
 
         <div class="chat-container glassmorphism" data-bot-name="Ê-Bot Clinical" data-system-prompt="Você é o Ê-Bot, um assistente virtual especialista no Ê-Bot Clinical. Ajude gestores de clínicas e hospitais a entenderem como modernizamos atendimento, reduzimos filas, automatizamos agendamentos, renovamos receitas e diminuímos faltas de pacientes. Seja profissional, empático e objetivo." style="max-width: 800px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(43, 159, 232, 0.2); background: rgba(255, 255, 255, 0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: flex; flex-direction: column; height: 600px;">
@@ -1407,7 +1787,7 @@
             <h2 class="h1">Pronto para modernizar a saúde?</h2>
             <p class="body-large">Da Unidade Básica de Saúde ao hospital particular. Reduza filas, faltas e custos administrativos sem trocar toda a sua operação.</p>
             <div class="cta-button-wrapper">
-              <button class="trigger-wa-modal btn btn-primary float-hover final-button">Falar com especialista</button>
+              <button class="trigger-wa-modal btn btn-primary float-hover final-button">Fale com um de nossos especialistas</button>
               <div class="text-small">Orçamento personalizado • Setup em 48h • Suporte dedicado</div>
             </div>
           </div>
@@ -1439,20 +1819,18 @@
       <div class="footer-restored-grid">
         <div class="footer-brand-block">
           <img src="assets/images/esistemas_logo.avif" alt="Ê-Sistemas Corporativo">
-          <p class="text-small">Transformando tecnologia em conexões reais através de inteligência artificial focada em eficiência, resultados e humanização.</p>
+          <p class="text-small">Tecnologia brasileira para transformar atendimento em saúde: filas organizadas, pacientes acompanhados e integrações confiáveis.</p>
         </div>
 
         <div>
-          <h4>Ê-Bot Clinical</h4>
+          <h4>Solução</h4>
           <ul class="text-small">
             <li><a href="#inicio">Início</a></li>
-            <li><a href="#fluxo">Fluxo de atendimento</a></li>
             <li><a href="#recursos">Recursos</a></li>
-            <li><a href="#painel">Conheça nosso sistema</a></li>
-            <li><a href="#whatsapp">Atendimento no WhatsApp</a></li>
-            <li><a href="#clientes">Clientes</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#demo">Demo IA</a></li>
+            <li><a href="#crm">CRM do paciente</a></li>
+            <li><a href="#painel">Conheça o sistema</a></li>
+            <li><a href="#quem-somos">Quem somos</a></li>
+            <li><a href="#parceiros">Parceiros e clientes</a></li>
           </ul>
         </div>
 
@@ -1460,9 +1838,9 @@
           <h4>Produtos Ê-Bot</h4>
           <ul class="text-small">
             <li><a href="https://êbot.com" target="_blank" rel="noopener">Site oficial Ê-Bot</a></li>
-            <li><a href="https://êbot.com/produtos.html" target="_blank" rel="noopener">Ê-Bot Explorer</a></li>
-            <li><a href="https://êbot.com/produtos.html" target="_blank" rel="noopener">Ê-Bot API</a></li>
             <li><a href="https://êbot.com/produtos.html" target="_blank" rel="noopener">Ê-Bot Panel</a></li>
+            <li><a href="https://êbot.com/produtos.html" target="_blank" rel="noopener">Ê-Bot API</a></li>
+            <li><a href="https://êbot.com/produtos.html" target="_blank" rel="noopener">Ê-Bot Explorer</a></li>
           </ul>
         </div>
 
@@ -1470,23 +1848,46 @@
           <h4>Contato</h4>
           <ul class="text-small">
             <li><button class="trigger-wa-modal">Agendar demonstração</button></li>
-            <li><span>(46) 99913-0505</span></li>
-            <li><span>comercial.ebot@esistemas.dev.br</span></li>
+            <li><a href="tel:+5546999130505">(46) 99913-0505</a></li>
+            <li><a href="mailto:comercial.ebot@esistemas.dev.br">comercial.ebot@esistemas.dev.br</a></li>
           </ul>
         </div>
       </div>
 
+      <!-- VALIDAR COM COMPLIANCE: exibir somente as certificações/atestados confirmados -->
+      <div class="footer-trust">
+        <span><strong>Tecnologia própria Ê-Sistemas</strong> — TechProvider Meta e compromisso com a privacidade.</span>
+        <span class="meta-seal meta-seal--dark" title="TechProvider Meta — parceiro oficial Meta">
+          <span class="meta-seal__logo"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M25.4 6.9c-3 0-5.3 1.5-7.4 3.9-2.1-2.4-4.4-3.9-7.4-3.9C6 6.9 2 11.7 2 18.6c0 6.7 3.4 10.5 7.6 10.5 3.1 0 5.9-2.3 8.4-6.6 2.5 4.3 5.3 6.6 8.4 6.6 4.2 0 7.6-3.8 7.6-10.5 0-6.9-4-11.7-8.6-11.7zM9.9 24.7c-2.2 0-3.8-2.4-3.8-6.1 0-4.5 2-7.3 4.9-7.3 1.8 0 3.4 1.2 5.2 3.7-2.3 4.6-4.2 9.7-6.3 9.7zm15.2 0c-2.1 0-3.9-5.1-6.3-9.7 1.8-2.5 3.4-3.7 5.2-3.7 2.9 0 4.9 2.8 4.9 7.3 0 3.7-1.6 6.1-3.8 6.1z"/></svg></span>TechProvider Meta<span class="meta-seal__check" aria-hidden="true">✓</span>
+        </span>
+        <span class="iso-pill" title="Atestado de conformidade em acompanhamento com o compliance">ISO 9001 · atestado</span>
+        <span class="iso-pill" title="Atestado de conformidade em acompanhamento com o compliance">ISO 27001 · atestado</span>
+        <span class="iso-pill" title="Conformidade com a LGPD no desenho da operação">LGPD · conformidade</span>
+      </div>
+
       <div class="footer-restored-bottom">
-        <div>&copy; 2024-2025 Ê-Sistemas. Todos os direitos reservados.</div>
+        <div>&copy; 2024-2026 Ê-Sistemas. Todos os direitos reservados.</div>
         <div>
           <span>Ê-Bot Clinical</span>
           <span>IA para atendimento em saúde</span>
+          <span>powered by <b>Ê-Sistemas</b></span>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Banner de aceite de cookies (LGPD) — padrão Ê-Bot -->
+  <div class="cookie-banner" id="cookieConsent" role="region" aria-label="Aviso de cookies" hidden>
+    <p class="cookie-banner__text"><strong>Usamos cookies</strong> para melhorar sua experiência, medir o desempenho do site e personalizar conteúdo. Você pode aceitar todos ou manter apenas o essencial. <button class="open-pdf-modal" type="button" data-pdf-title="Política de Privacidade" data-pdf-src="assets/pdf/ebot_politica_privacidade.pdf">Ler a política de privacidade</button></p>
+    <div class="cookie-banner__actions">
+      <button class="btn btn-outline" type="button" id="cookieEssential">Só essenciais</button>
+      <button class="btn btn-primary" type="button" id="cookieAcceptAll">Aceito todos</button>
+    </div>
+  </div>
+
   <script src="js/env-config.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/cookie-consent.js"></script>
   <script src="js/chat-widget.js?v=5"></script>
   <script src="js/utils.js"></script>
   <script src="js/navigation.js"></script>

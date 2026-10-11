@@ -15,4 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Mosaico do "Quem somos" tem entrada em cascata própria
+  document.querySelectorAll('.quem-mosaic').forEach(el => observer.observe(el));
 });

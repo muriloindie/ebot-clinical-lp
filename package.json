@@ -1,0 +1,10 @@
+{
+  "name": "ebot-clinical-lp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing Page Ê-Bot Clinical (Ê-Sistemas) — site estático HTML/CSS/JS, sem build e sem dependências.",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "start": "node scripts/serve.js"
+  }
+}

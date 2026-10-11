@@ -57,28 +57,33 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (window.Swiper) {
-    new Swiper('.testimonials-swiper', {
+    /* Carrossel mini de clientes: autoplay, arraste com a mãozinha e setas */
+    new Swiper('.clients-swiper--mini', {
       slidesPerView: 1,
-      spaceBetween: 22,
+      spaceBetween: 14,
       loop: true,
-      speed: 700,
+      speed: 640,
+      grabCursor: true,
+      simulateTouch: true,
+      resistanceRatio: 0.55,
       autoplay: {
-        delay: 5200,
+        delay: 3200,
+        waitForTransition: true,
+        pauseOnMouseEnter: true,
         disableOnInteraction: false,
       },
       pagination: {
-        el: '.testimonials-swiper .swiper-pagination',
+        el: '.clients-swiper--mini .swiper-pagination',
         clickable: true,
       },
       navigation: {
-        nextEl: '.testimonial-next',
-        prevEl: '.testimonial-prev',
+        nextEl: '.clients-swiper--mini ~ .testimonials-controls .testimonial-next, .clients-swiper--mini .testimonials-controls .testimonial-next',
+        prevEl: '.clients-swiper--mini ~ .testimonials-controls .testimonial-prev, .clients-swiper--mini .testimonials-controls .testimonial-prev',
       },
       breakpoints: {
-        980: {
-          slidesPerView: 1.35,
-          centeredSlides: true,
-        },
+        640: { slidesPerView: 1.4 },
+        980: { slidesPerView: 2.2, spaceBetween: 16 },
+        1280: { slidesPerView: 2.8, spaceBetween: 16 },
       },
     });
   }

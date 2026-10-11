@@ -1,0 +1,240 @@
+/* ==========================================================================
+   CRM do paciente — bloco dedicado (adaptado do Ê-Bot CRM para o Clinical)
+   ========================================================================== */
+
+.crm-section {
+  background:
+    radial-gradient(circle at 94% 6%, rgba(43, 159, 232, 0.08), transparent 34%),
+    #ffffff;
+}
+
+.crm-section .section-lead,
+.crm-section .body-large {
+  max-width: 78ch;
+}
+
+.crm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.crm-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.7rem;
+  border: 1px solid rgba(43, 159, 232, 0.14);
+  border-radius: 1.55rem;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 16px 44px rgba(33, 68, 86, 0.07);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.crm-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.crm-card h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.22rem;
+  color: var(--dark);
+}
+
+.crm-card p {
+  color: var(--text-body);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.crm-card .crm-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
+  border-radius: 1rem;
+  background: rgba(43, 159, 232, 0.12);
+  color: var(--primary);
+}
+
+.crm-card .crm-icon .dx-ico {
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 1.4rem;
+}
+
+.crm-card--feature {
+  grid-column: span 2;
+}
+
+.crm-card--dark {
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 88% 16%, rgba(43, 159, 232, 0.22), transparent 14rem),
+    linear-gradient(150deg, #263532, #131e1c);
+  box-shadow: 0 30px 80px rgba(23, 33, 31, 0.22);
+}
+
+.crm-card--dark h3 { color: #f2f8fa; }
+.crm-card--dark p { color: rgba(242, 248, 250, 0.72); }
+.crm-card--dark .crm-icon { background: rgba(64, 189, 236, 0.18); color: #7cc3f2; }
+
+/* --- Pipeline da jornada --- */
+.crm-pipeline {
+  margin-top: 1.4rem;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px dashed rgba(43, 159, 232, 0.3);
+  background: rgba(246, 250, 252, 0.72);
+}
+
+.crm-pipeline__track {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.crm-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.7rem 0.42rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(43, 159, 232, 0.18);
+  background: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 750;
+  color: #465653;
+  white-space: nowrap;
+}
+
+.crm-step i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(43, 159, 232, 0.4);
+  animation: crmStepGlow 2.6s infinite;
+}
+
+.crm-step:nth-child(1) i { animation-delay: 0s; }
+.crm-step:nth-child(3) i { animation-delay: 0.4s; }
+.crm-step:nth-child(5) i { animation-delay: 0.8s; }
+.crm-step:nth-child(7) i { animation-delay: 1.2s; }
+.crm-step:nth-child(9) i { animation-delay: 1.6s; }
+
+.crm-step.is-done {
+  border-color: rgba(14, 122, 62, 0.32);
+  background: rgba(14, 122, 62, 0.07);
+  color: #0e7a3e;
+}
+
+.crm-step.is-done i {
+  background: #0e7a3e;
+  animation-name: crmStepGlowDone;
+}
+
+.crm-arrow {
+  color: rgba(43, 159, 232, 0.55);
+  font-weight: 900;
+}
+
+.crm-pipeline__note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  color: var(--text-body);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.crm-pipeline__note .dx-ico {
+  width: 1.05rem;
+  height: 1.05rem;
+  font-size: 1.05rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  animation: crmNoteDrift 3.2s ease-in-out infinite;
+}
+
+/* --- Cadência (card escuro) --- */
+.crm-cadence {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+
+.crm-cadence span {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(242, 248, 250, 0.78);
+  font-size: 0.8rem;
+  opacity: 0;
+  animation: crmCadence 4.05s ease infinite;
+}
+
+.crm-cadence span:nth-child(1) { animation-delay: 0s; }
+.crm-cadence span:nth-child(2) { animation-delay: 1.2s; transform: translateX(14px); }
+.crm-cadence span:nth-child(3) { animation-delay: 2.7s; transform: translateX(28px); }
+
+.crm-cadence span b {
+  color: #7cc3f2;
+  font-weight: 800;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+@keyframes crmStepGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(43, 159, 232, 0.45); }
+  45% { box-shadow: 0 0 0 6px rgba(43, 159, 232, 0); }
+}
+
+@keyframes crmStepGlowDone {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(14, 122, 62, 0.45); }
+  45% { box-shadow: 0 0 0 6px rgba(14, 122, 62, 0); }
+}
+
+@keyframes crmNoteDrift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes crmCadence {
+  0% { opacity: 0; }
+  12%, 78% { opacity: 1; }
+  96%, 100% { opacity: 0.16; }
+}
+
+/* --- Responsivo --- */
+@media (max-width: 1080px) {
+  .crm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crm-card--feature { grid-column: span 2; }
+}
+
+@media (max-width: 720px) {
+  .crm-grid { grid-template-columns: 1fr; }
+  .crm-card--feature { grid-column: auto; }
+  .crm-pipeline__track { flex-direction: column; align-items: flex-start; }
+  .crm-arrow { display: none; }
+  .crm-cadence span:nth-child(2),
+  .crm-cadence span:nth-child(3) { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crm-step i,
+  .crm-cadence span,
+  .crm-pipeline__note .dx-ico {
+    animation: none;
+    opacity: 1;
+  }
+}

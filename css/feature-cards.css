@@ -33,9 +33,9 @@
   box-shadow: var(--shadow-hover);
 }
 
-/* cards 1 e 5 (1º da linha 1 e centro da linha 2) ocupam 2 colunas */
+/* cards de abertura e fechamento ocupam 2 colunas (grade 3×4 sem buracos) */
 .feature-card:nth-child(1),
-.feature-card:nth-child(5) {
+.feature-card:last-child {
   grid-column: span 2;
 }
 
@@ -726,7 +726,7 @@
     gap: 1.1rem;
   }
   .feature-card:nth-child(1),
-  .feature-card:nth-child(5) {
+  .feature-card:last-child {
     grid-column: span 1;
   }
 }
@@ -742,7 +742,7 @@
     border-radius: 1.35rem;
   }
   .feature-card:nth-child(1),
-  .feature-card:nth-child(5) {
+  .feature-card:last-child {
     grid-column: span 1;
   }
   .feature-card h3 {

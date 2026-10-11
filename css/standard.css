@@ -1,0 +1,683 @@
+/* ==========================================================================
+   PADRÃO Ê-BOT LP — portado do Ê-Bot Panel/API (painel-upgrade.css + <style>)
+   Adaptado ao tema Clinical (azul #2B9FE8) nos mesmos tokens.
+   Conteúdo:
+   1. Tokens do padrão + tratamento de fundo do body
+   2. Superfícies de seção (surface-grid / dots / waves / dark-neon)
+   3. Tríade de headings (sec-eyebrow / sec-heading / sec-lead)
+   4. Hero padrão (kicker, título two-tone, text-link, proof-chips)
+   5. Selo TechProvider Meta (meta-seal)
+   6. Reveal em stagger
+   7. Footer conforme painel
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens e fundo do body (mesma base do Panel)
+   -------------------------------------------------------------------------- */
+.clinical-page {
+  --ink: #14201d;
+  --muted: #5f6f6b;
+  --line: rgba(60, 72, 68, 0.13);
+  --shadow-std: 0 24px 70px rgba(47, 56, 53, 0.12);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --meta-blue: #0866ff;
+
+  background:
+    radial-gradient(circle at 16% 6%, rgba(43, 159, 232, 0.1), transparent 30rem),
+    radial-gradient(circle at 84% 2%, rgba(60, 72, 68, 0.1), transparent 26rem),
+    linear-gradient(180deg, #f9fcfe 0%, #f0f7fb 42%, #e9f3f8 100%);
+}
+
+/* grade fixa sutil com fade — igual ao Panel */
+.clinical-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(60, 72, 68, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 72, 68, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+}
+
+.clinical-page main,
+.clinical-page section,
+.clinical-page footer {
+  position: relative;
+  z-index: 1;
+}
+
+.clinical-page header {
+  z-index: 1001;
+}
+
+/* header do padrão: logo 44px, links 0.92rem */
+.clinical-header .brand-link svg {
+  height: 44px;
+}
+
+.clinical-header .nav-menu a {
+  color: rgba(20, 32, 29, 0.72);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+/* --------------------------------------------------------------------------
+   2. Superfícies de seção (mesmas do Panel, versão azul)
+   -------------------------------------------------------------------------- */
+.surface-grid,
+.surface-dots,
+.surface-waves { position: relative; overflow: hidden; }
+
+.surface-grid > .container,
+.surface-dots > .container,
+.surface-waves > .container { position: relative; z-index: 2; }
+
+.surface-grid {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(240, 247, 251, 0.86));
+}
+
+.surface-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26, 139, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 139, 199, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+}
+
+.surface-dots {
+  background: linear-gradient(180deg, rgba(224, 240, 249, 0.96), rgba(209, 230, 242, 0.85));
+}
+
+.surface-dots::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  background-image: radial-gradient(rgba(26, 139, 199, 0.3) 0.8px, transparent 0.8px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(circle at 50% 35%, #000, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 50% 35%, #000, transparent 72%);
+}
+
+.surface-waves {
+  background: linear-gradient(180deg, #f2f9fd, #e7f2f8);
+}
+
+.surface-waves::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(ellipse at 18% 30%, rgba(64, 189, 236, 0.16), transparent 32%),
+    radial-gradient(ellipse at 86% 48%, rgba(48, 163, 164, 0.13), transparent 34%),
+    radial-gradient(ellipse at 48% 88%, rgba(60, 72, 68, 0.08), transparent 30%);
+  filter: blur(8px);
+  animation: stdWaveDrift 13s ease-in-out infinite alternate;
+}
+
+@keyframes stdWaveDrift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to { transform: translate3d(2%, 2%, 0) scale(1.06); }
+}
+
+/* superfície dark com eyebrow neon (versão azul do dark-neon do Panel) */
+.surface-dark-neon {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(43, 159, 232, 0.16), transparent 18rem),
+    linear-gradient(160deg, #1c2825 0%, #101816 68%);
+}
+
+.surface-dark-neon .sec-eyebrow { color: #7cc3f2; }
+.surface-dark-neon .sec-heading { color: #f2f8fa; }
+.surface-dark-neon .sec-lead { color: rgba(255, 255, 255, 0.62); }
+
+/* --------------------------------------------------------------------------
+   3. Tríade de headings — mesma escala do Panel
+   -------------------------------------------------------------------------- */
+.sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sec-eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* eyebrow centrado ganha o traço também à direita */
+.text-center .sec-eyebrow,
+.compact-heading .sec-eyebrow {
+  justify-content: center;
+}
+
+.text-center .sec-eyebrow::after,
+.compact-heading .sec-eyebrow::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* seções escuras da LP: eyebrow em azul claro, lead translúcido */
+.section-dark .sec-eyebrow,
+.metrics-dark .sec-eyebrow,
+.clinical-problem .sec-eyebrow {
+  color: #7cc3f2;
+}
+
+.sec-heading {
+  max-width: 880px;
+  font-size: clamp(2.2rem, 4.7vw, 4.65rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+  color: var(--dark);
+}
+
+.sec-lead {
+  max-width: 720px;
+  margin-top: 1.35rem;
+  color: var(--muted);
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+/* heading centralizado */
+.stacked-heading.text-center .sec-lead,
+.compact-heading .sec-lead { margin-inline: auto; }
+.compact-heading .sec-lead { text-align: center; }
+
+/* hardening para boates/tempos escuros já usados pela LP */
+.section-dark .sec-heading { color: #ffffff; }
+.section-dark .sec-lead { color: rgba(255, 255, 255, 0.66); }
+
+/* --------------------------------------------------------------------------
+   4. Hero padrão
+   -------------------------------------------------------------------------- */
+/* Hero no ritmo do Panel: 10rem topo, 6rem base (não mais 130px rígidos) */
+.clinical-hero {
+  padding-top: 10rem;
+  padding-bottom: 6rem;
+}
+
+.clinical-hero-grid {
+  min-height: auto;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+/* alinhamento de foco óptico do hero padrão */
+.hero-badgeline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(43, 159, 232, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px rgba(60, 72, 68, 0.08);
+}
+
+.hero-kicker::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: stdLivePulse 2s infinite;
+}
+
+@keyframes stdLivePulse {
+  0% { box-shadow: 0 0 0 0 rgba(43, 159, 232, 0.5); }
+  70% { box-shadow: 0 0 0 9px rgba(43, 159, 232, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(43, 159, 232, 0); }
+}
+
+.hero-title {
+  max-width: 830px;
+  margin-top: 0.4rem;
+  font-size: clamp(2.45rem, 5.1vw, 5.05rem);
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+  color: var(--dark);
+}
+
+.hero-title span { color: var(--primary); }
+
+.hero-copy {
+  max-width: 700px;
+  margin: 1.45rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+.hero-copy strong { color: var(--dark); }
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--dark);
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover,
+.text-link:hover span { color: var(--primary); }
+
+.text-link span {
+  transition: transform 0.25s var(--ease-out), color 0.2s ease;
+}
+
+.text-link:hover span { transform: translateX(4px); }
+
+.hero-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 2rem;
+  max-width: 760px;
+}
+
+.proof-chip {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: var(--shadow-std);
+  border-radius: 1.15rem;
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.proof-chip strong {
+  display: block;
+  font-size: 1.45rem;
+  line-height: 1;
+  color: var(--dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.proof-chip span {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+/* coreografia pós-splash (igual ao Panel) */
+.s-hero-reveal .hero-badgeline,
+.s-hero-reveal .hero-title,
+.s-hero-reveal .hero-copy,
+.s-hero-reveal .hero-actions,
+.s-hero-reveal .hero-proof {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+}
+
+.s-hero-reveal .clinical-hero-visual {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.95s var(--ease-out), transform 0.95s var(--ease-out);
+}
+
+.s-hero-reveal.reveal-active .hero-badgeline { opacity: 1; transform: none; transition-delay: 0.05s; }
+.s-hero-reveal.reveal-active .hero-title { opacity: 1; transform: none; transition-delay: 0.14s; }
+.s-hero-reveal.reveal-active .hero-copy { opacity: 1; transform: none; transition-delay: 0.24s; }
+.s-hero-reveal.reveal-active .hero-actions { opacity: 1; transform: none; transition-delay: 0.36s; }
+.s-hero-reveal.reveal-active .hero-proof { opacity: 1; transform: none; transition-delay: 0.5s; }
+.s-hero-reveal.reveal-active .clinical-hero-visual { opacity: 1; transform: none; transition-delay: 0.42s; }
+
+@media (max-width: 1024px) {
+  .s-hero-reveal .clinical-hero-visual {
+    transform: translateY(26px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Selo TechProvider Meta (mesmo do Panel)
+   -------------------------------------------------------------------------- */
+.meta-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(8, 102, 255, 0.22);
+  box-shadow: 0 10px 26px rgba(8, 102, 255, 0.1);
+  color: #24303d;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.meta-seal__logo {
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  flex: 0 0 1.65rem;
+  border-radius: 50%;
+  background: var(--meta-blue);
+  color: #fff;
+}
+
+.meta-seal__logo svg {
+  width: 0.98rem;
+  height: 0.98rem;
+  fill: currentColor;
+  display: block;
+}
+
+.meta-seal__check {
+  display: grid;
+  place-items: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background: rgba(8, 102, 255, 0.14);
+  color: var(--meta-blue);
+  font-size: 0.62rem;
+  font-weight: 900;
+}
+
+.meta-seal--nav {
+  padding: 0.3rem 0.75rem 0.3rem 0.35rem;
+  font-size: 0.74rem;
+}
+
+.meta-seal--nav .meta-seal__logo {
+  width: 1.45rem;
+  height: 1.45rem;
+  flex-basis: 1.45rem;
+}
+
+.meta-seal--nav .meta-seal__logo svg {
+  width: 0.86rem;
+  height: 0.86rem;
+}
+
+.meta-seal--dark {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.meta-seal--dark .meta-seal__check {
+  background: rgba(255, 255, 255, 0.12);
+  color: #7cc3f2;
+}
+
+/* --------------------------------------------------------------------------
+   6. Reveal em stagger (grids), igual ao Panel
+   -------------------------------------------------------------------------- */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal.reveal-active .reveal-stagger > * { opacity: 1; transform: none; }
+
+.reveal.reveal-active .reveal-stagger > *:nth-child(2) { transition-delay: 0.07s; }
+.reveal.reveal-active .reveal-stagger > *:nth-child(3) { transition-delay: 0.14s; }
+.reveal.reveal-active .reveal-stagger > *:nth-child(4) { transition-delay: 0.21s; }
+.reveal.reveal-active .reveal-stagger > *:nth-child(5) { transition-delay: 0.28s; }
+.reveal.reveal-active .reveal-stagger > *:nth-child(6) { transition-delay: 0.35s; }
+.reveal.reveal-active .reveal-stagger > *:nth-child(n+7) { transition-delay: 0.42s; }
+
+/* --------------------------------------------------------------------------
+   9. Botão flutuante do WhatsApp — círculo com glow (padrão Panel)
+   -------------------------------------------------------------------------- */
+.floating-whatsapp {
+  width: 4.15rem;
+  height: 4.15rem;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.floating-whatsapp span {
+  display: none;
+}
+
+.floating-whatsapp::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 211, 102, 0.38);
+  animation: stdWaRing 2.4s ease-out infinite;
+}
+
+@keyframes stdWaRing {
+  from { transform: scale(1); opacity: 0.5; }
+  to { transform: scale(1.18); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-whatsapp::after {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Footer no padrão do Panel
+   -------------------------------------------------------------------------- */
+.clinical-page .clinical-footer-restored {
+  background: var(--dark-header);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   8. Banner de cookies — mesmo card do Panel
+   -------------------------------------------------------------------------- */
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 2600;
+  width: min(680px, calc(100vw - 2rem));
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1.35rem;
+  background: rgba(251, 252, 248, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(23, 33, 31, 0.22);
+  opacity: 0;
+  transform: translate(-50%, 24px);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
+  pointer-events: none;
+}
+
+.cookie-banner.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.cookie-banner__text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--muted, #5f6f6b);
+}
+
+.cookie-banner__text strong {
+  color: var(--dark);
+  font-weight: 800;
+}
+
+.cookie-banner__text button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--primary);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.cookie-banner__actions .btn {
+  padding: 0.7rem 1.3rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.footer-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.1rem 1.25rem;
+  margin-top: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.footer-trust strong {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 800;
+}
+
+.iso-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: help;
+}
+
+/* --------------------------------------------------------------------------
+   Responsivo do padrão
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .hero-proof {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+
+/* navbar em telas médias: o selo some (mesma regra do Panel <896) */
+@media (max-width: 1120px) {
+  .meta-seal--nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2rem, 11vw, 3.1rem) !important;
+    line-height: 1 !important;
+  }
+
+  .sec-heading {
+    font-size: clamp(2rem, 11vw, 3.1rem) !important;
+    line-height: 1 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .cookie-banner {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+    transform: translateY(24px);
+  }
+
+  .cookie-banner.is-visible {
+    transform: translateY(0);
+  }
+
+  .cookie-banner__actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-waves::before,
+  .hero-kicker::before {
+    animation: none !important;
+  }
+
+  .s-hero-reveal .hero-badgeline,
+  .s-hero-reveal .hero-title,
+  .s-hero-reveal .hero-copy,
+  .s-hero-reveal .hero-actions,
+  .s-hero-reveal .hero-proof,
+  .s-hero-reveal .clinical-hero-visual,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

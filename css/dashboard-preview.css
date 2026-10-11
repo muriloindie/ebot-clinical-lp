@@ -415,11 +415,9 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(26, 139, 199, 0.14);
+  padding: 12px 16px;
+  background: transparent;
+  border-bottom: 0;
 }
 
 .dx-search {
@@ -2171,5 +2169,563 @@
   .dx-bar i,
   .dx-chip-live i {
     animation: none;
+  }
+}
+
+/* ==========================================================================
+   Canvas da automação (aba Automação) — nós posicionados + conexões animadas
+   Referência: canvas do Ê-Bot API (dm-canvas), adaptado ao tema Clinical
+   ========================================================================== */
+
+.dx-canvas {
+  position: relative;
+  overflow: auto;
+  height: clamp(300px, 52vh, 380px);
+  border-radius: 22px;
+  border: 1px solid rgba(26, 139, 199, 0.18);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(43, 159, 232, 0.1), transparent 22rem),
+    linear-gradient(rgba(64, 130, 160, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 130, 160, 0.07) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.6);
+  background-size: auto, 26px 26px, 26px 26px, auto;
+  scrollbar-width: thin;
+}
+
+.dx-canvas::-webkit-scrollbar {
+  height: 8px;
+}
+
+.dx-canvas::-webkit-scrollbar-thumb {
+  background: rgba(43, 159, 232, 0.35);
+  border-radius: 999px;
+}
+
+.dx-canvas-inner {
+  position: relative;
+  width: 1240px;
+  height: 340px;
+}
+
+.dx-canvas-inner svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.dx-edge {
+  fill: none;
+  stroke: rgba(43, 159, 232, 0.55);
+  stroke-width: 2;
+  stroke-dasharray: 8 8;
+  animation: dxDash 14s linear infinite;
+}
+
+.dx-cnode {
+  position: absolute;
+  width: 176px;
+  padding: 0.6rem;
+  border-radius: 16px;
+  border: 1px solid rgba(26, 139, 199, 0.2);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 252, 255, 0.88));
+  box-shadow: 0 12px 28px rgba(33, 68, 86, 0.12);
+  text-align: left;
+  transition: 0.22s ease;
+}
+
+.dx-cnode:hover {
+  transform: translateY(-3px);
+  border-color: rgba(43, 159, 232, 0.45);
+}
+
+.dx-cnode.is-active {
+  border-color: rgba(43, 159, 232, 0.75);
+  box-shadow: 0 0 0 4px rgba(43, 159, 232, 0.14), 0 18px 36px rgba(43, 159, 232, 0.2);
+  animation: dxNodeBreathe 3.6s ease-in-out infinite;
+}
+
+.dx-cnode.is-success {
+  border-color: rgba(14, 122, 62, 0.45);
+}
+
+.dx-cnode.is-human {
+  border-color: rgba(201, 127, 18, 0.45);
+}
+
+.dx-cnode-kind {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dx-cnode-kind i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+}
+
+.dx-cnode strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--dark);
+}
+
+.dx-cnode small {
+  display: block;
+  margin-top: 0.22rem;
+  font-size: 0.66rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--dx-muted);
+}
+
+.dx-cnode .dx-node-ico {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: rgba(43, 159, 232, 0.12);
+  color: var(--dx-blue-text, #0f679b);
+}
+
+.dx-cnode .dx-node-ico .dx-ico {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+}
+
+@keyframes dxDash {
+  to { stroke-dashoffset: -300; }
+}
+
+@keyframes dxNodeBreathe {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(43, 159, 232, 0.12), 0 18px 36px rgba(43, 159, 232, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(43, 159, 232, 0.06), 0 18px 36px rgba(43, 159, 232, 0.26); }
+}
+
+/* canvas em tela pequena: mantém o scroll horizontal interno */
+@media (max-width: 900px) {
+  #dx-pane-ia.dx-pane {
+    padding: 10px;
+  }
+
+  .dx-canvas {
+    height: min(320px, 56vh);
+  }
+}
+
+/* ==========================================================================
+   Tour da demo (chrome da landing) — padrão Ê-Bot Panel, tema Clinical
+   ========================================================================== */
+
+.dx-showcase .tour-head {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.dx-showcase .tour-head .sec-lead {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.tour-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2.4rem auto 1rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--dx-line, rgba(26, 139, 199, 0.14));
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(33, 68, 86, 0.1);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.tour-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.68rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--dx-muted, #4f6062);
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: 0.24s ease;
+}
+
+.tour-tab .dx-ico {
+  width: 1.05rem;
+  height: 1.05rem;
+  font-size: 1.05rem;
+}
+
+.tour-tab:hover {
+  color: var(--dark);
+  background: rgba(43, 159, 232, 0.1);
+}
+
+.tour-tab.is-active {
+  background: var(--dark);
+  color: #7cc3f2;
+  box-shadow: 0 12px 26px rgba(23, 33, 31, 0.26);
+}
+
+@media (max-width: 700px) {
+  .tour-tabs { border-radius: 22px; width: 100%; }
+  .tour-tab { flex: 1 1 auto; justify-content: center; padding: 0.6rem 0.7rem; font-size: 0.8rem; }
+}
+
+.tour-frame {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 45px 110px rgba(23, 33, 31, 0.3);
+  border: 1px solid rgba(60, 72, 68, 0.16);
+}
+
+.tour-frame::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 29px;
+  pointer-events: none;
+  background: linear-gradient(140deg, rgba(64, 189, 236, 0.55), transparent 40%, rgba(37, 211, 102, 0.28));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* dentro do frame a janela é "naked": o chrome visual vem do frame */
+.tour-frame .dx-window {
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+  cursor: default;
+}
+
+.tour-frame .dx-window:hover {
+  transform: none;
+  box-shadow: none;
+  pointer-events: auto;
+}
+
+.tour-frame .dx-window::before {
+  display: none;
+}
+
+.tour-frame .dx-app {
+  height: 720px;
+}
+
+.tour-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1.2rem;
+  margin-top: 1.1rem;
+  color: var(--text-body);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.tour-hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tour-hint .dx-ico {
+  width: 1.05rem;
+  height: 1.05rem;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.tour-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+/* ==========================================================================
+   Editor de automações (aba Automações) — padrão dm do Ê-Bot Panel
+   ========================================================================== */
+
+.dx-flow-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  margin-bottom: 0.75rem;
+  border-radius: 18px;
+  border: 1px solid rgba(26, 139, 199, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.dx-flow-toolbar .dx-spacer {
+  flex: 1 1 auto;
+  min-width: 0.5rem;
+}
+
+.dx-flow-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.dx-flow-name .dx-card-mark {
+  margin-bottom: 0;
+}
+
+.dx-flow-name strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+}
+
+.dx-flow-name small {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--dx-muted, #4f6062);
+}
+
+.dx-flow-chips {
+  display: flex;
+  gap: 0.3rem;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+}
+
+.dx-flow-chips button {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(26, 139, 199, 0.16);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--dx-slate, #465558);
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.dx-flow-chips button.is-active {
+  background: rgba(43, 159, 232, 0.12);
+  border-color: rgba(43, 159, 232, 0.3);
+  color: var(--dx-blue-text, #0f679b);
+}
+
+.dx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1rem;
+  border-radius: 13px;
+  border: 1px solid transparent;
+  font-size: 0.8rem;
+  font-weight: 800;
+  transition: 0.22s ease;
+  white-space: nowrap;
+}
+
+.dx-btn .dx-ico {
+  width: 0.95rem;
+  height: 0.95rem;
+  font-size: 0.95rem;
+}
+
+.dx-btn--primary {
+  background: var(--dx-blue, #1a8bc7);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(26, 139, 199, 0.35);
+}
+
+.dx-btn--ghost {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(43, 159, 232, 0.18);
+  color: var(--dark, #263532);
+}
+
+.dx-btn--ghost:hover { border-color: rgba(43, 159, 232, 0.4); }
+
+.dx-btn--sm {
+  padding: 0.42rem 0.72rem;
+  font-size: 0.74rem;
+  border-radius: 11px;
+}
+
+.dx-editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 268px;
+  gap: 0.75rem;
+}
+
+@media (max-width: 1020px) {
+  .dx-editor { grid-template-columns: 1fr; }
+}
+
+.dx-inspector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dx-inspector .dx-card {
+  padding: 0.9rem;
+}
+
+.dx-inspector h4 {
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--dark, #263532);
+}
+
+.dx-insp-kind {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dx-blue-text, #0f679b);
+}
+
+.dx-insp-note {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--dx-muted, #4f6062);
+}
+
+.dx-field {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.dx-field label {
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(79, 96, 98, 0.85);
+}
+
+.dx-field .dx-field-box {
+  padding: 0.5rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(26, 139, 199, 0.16);
+  background: rgba(240, 247, 251, 0.5);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--dark, #263532);
+}
+
+.dx-flow-list {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.dx-flow-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.55rem 0.6rem;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.dx-flow-item:hover { border-color: rgba(43, 159, 232, 0.3); }
+
+.dx-flow-item.is-active {
+  border-color: rgba(43, 159, 232, 0.35);
+  background: rgba(43, 159, 232, 0.1);
+}
+
+.dx-flow-item .dx-flow-ico {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: rgba(43, 159, 232, 0.12);
+  color: var(--dx-blue-text, #0f679b);
+}
+
+.dx-flow-item .dx-flow-ico .dx-ico {
+  width: 0.95rem;
+  height: 0.95rem;
+  font-size: 0.95rem;
+}
+
+.dx-flow-item strong {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 900;
+  color: var(--dark, #263532);
+}
+
+.dx-flow-item small {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--dx-muted, #4f6062);
+}
+
+/* responsivo do app no frame */
+@media (max-width: 1024px) {
+  .tour-frame .dx-app { height: 640px; }
+}
+
+@media (max-width: 700px) {
+  .tour-frame { border-radius: 22px; }
+  .tour-frame .dx-app { height: 600px; }
+  .dx-flow-name small { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dx-edge {
+    animation: none;
+  }
+
+  .dx-cnode.is-active {
+    animation: none;
+    box-shadow: 0 0 0 4px rgba(43, 159, 232, 0.14);
   }
 }
