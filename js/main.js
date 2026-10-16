@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (window.Swiper) {
     /* Carrossel mini de clientes: autoplay, arraste com a mãozinha e setas */
+    /* (bloco comentado na LP enquanto o conteúdo de clientes não é definido) */
+    if (document.querySelector('.clients-swiper--mini')) {
     new Swiper('.clients-swiper--mini', {
       slidesPerView: 1,
       spaceBetween: 14,
@@ -86,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         1280: { slidesPerView: 2.8, spaceBetween: 16 },
       },
     });
+    }
   }
 
   const closeModal = () => {

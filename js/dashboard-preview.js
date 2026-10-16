@@ -67,5 +67,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Canvas de automação: arrastar para explorar o fluxo (pan, sem rolagem)
+  showcase.querySelectorAll('.dx-canvas').forEach((canvas) => {
+    const inner = canvas.querySelector('.dx-canvas-inner');
+    if (!inner) return;
+
+    let panning = false;
+    let startX = 0;
+    let startY = 0;
+    let pan = null;
+
+    const clamp = (value, limit) => Math.min(limit, Math.max(-limit, value));
+
+    // folga total = metade do excesso da área interna sobre o quadro,
+    // mais um pequeno respiro nas bordas
+    const limits = () => ({
+      lx: Math.max((inner.offsetWidth - canvas.clientWidth) / 2, 0) + 28,
+      ly: Math.max((inner.offsetHeight - canvas.clientHeight) / 2, 0) + 28,
+    });
+
+    const render = () => {
+      inner.style.setProperty('--dx-pan-x', `${pan.x}px`);
+      inner.style.setProperty('--dx-pan-y', `${pan.y}px`);
+    };
+
+    // posição de descanso: começo do fluxo encostado na esquerda, no meio vertical
+    const ensurePan = () => {
+      if (pan === null) {
+        if (!canvas.clientWidth) return false;
+        pan = { x: Math.max(0, (inner.offsetWidth - canvas.clientWidth) / 2), y: 0 };
+      }
+      const { lx, ly } = limits();
+      pan.x = clamp(pan.x, lx);
+      pan.y = clamp(pan.y, ly);
+      render();
+      return true;
+    };
+
+    canvas.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      if (!ensurePan()) return;
+      panning = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      canvas.classList.add('is-dragging');
+      canvas.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    canvas.addEventListener('pointermove', (event) => {
+      if (!panning) return;
+      const { lx, ly } = limits();
+      pan.x = clamp(pan.x + (event.clientX - startX), lx);
+      pan.y = clamp(pan.y + (event.clientY - startY), ly);
+      startX = event.clientX;
+      startY = event.clientY;
+      render();
+    });
+
+    const endPan = (event) => {
+      if (!panning) return;
+      panning = false;
+      canvas.classList.remove('is-dragging');
+      if (canvas.hasPointerCapture(event.pointerId)) {
+        canvas.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    canvas.addEventListener('pointerup', endPan);
+    canvas.addEventListener('pointercancel', endPan);
+    canvas.addEventListener('lostpointercapture', () => {
+      panning = false;
+      canvas.classList.remove('is-dragging');
+    });
+
+    // O quadro nasce escondido (aba inativa ⇒ largura 0); quando a aba
+    // Automação aparece, o ResizeObserver dispara e posiciona o descanso.
+    if (window.ResizeObserver) {
+      new ResizeObserver(() => ensurePan()).observe(canvas);
+    }
+    window.addEventListener('resize', ensurePan);
+    ensurePan();
+  });
+
   select(tabs[0].dataset.dxTab);
 });

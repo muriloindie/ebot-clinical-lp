@@ -277,6 +277,11 @@
 
 .hero-title span { color: var(--primary); }
 
+/* o nome Ê-Bot Clinical nunca quebra entre linhas */
+.hero-title .hero-brand-nowrap {
+  white-space: nowrap;
+}
+
 .hero-copy {
   max-width: 700px;
   margin: 1.45rem 0 0;
@@ -633,13 +638,15 @@
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(2rem, 11vw, 3.1rem) !important;
-    line-height: 1 !important;
+    /* 11vw estourava a largura com o "Ê-Bot Clinical" em nowrap;
+       9vw mantém o nome inteiro numa linha só em ~360-480px */
+    font-size: clamp(1.85rem, 9vw, 2.7rem) !important;
+    line-height: 1.02 !important;
   }
 
   .sec-heading {
-    font-size: clamp(2rem, 11vw, 3.1rem) !important;
-    line-height: 1 !important;
+    font-size: clamp(1.85rem, 9vw, 2.7rem) !important;
+    line-height: 1.02 !important;
   }
 }
 
