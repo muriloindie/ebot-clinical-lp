@@ -171,10 +171,10 @@
   function resetCard() {
     el.live.classList.remove('is-saved');
     el.badge.textContent = 'Atendendo no WhatsApp';
-    el.initials.textContent = '—';
+    el.initials.textContent = '+';
     el.name.textContent = 'Novo contato';
     FIELD_MAP.forEach(([, node]) => {
-      node.querySelector('strong').textContent = '—';
+      node.querySelector('strong').textContent = '···';
       node.classList.add('is-empty');
       node.classList.remove('is-saved');
     });

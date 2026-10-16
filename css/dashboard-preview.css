@@ -1604,13 +1604,17 @@
 
 .dx-builder {
   margin-top: 3rem;
-  padding: clamp(1.4rem, 3vw, 2.4rem);
+  padding: clamp(1.5rem, 3vw, 2.6rem);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 92% 4%, rgba(43, 159, 232, 0.14), transparent 42%),
-    #ffffff;
-  border: 1px solid rgba(43, 159, 232, 0.16);
-  box-shadow: 0 26px 66px rgba(33, 68, 86, 0.12);
+    linear-gradient(rgba(122, 190, 235, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 190, 235, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 88% -10%, rgba(64, 189, 236, 0.24), transparent 48%),
+    radial-gradient(circle at -6% 112%, rgba(43, 159, 232, 0.18), transparent 44%),
+    linear-gradient(160deg, #0c273c 0%, #0a1d2e 52%, #0b2a42 100%);
+  background-size: 30px 30px, 30px 30px, auto, auto, auto;
+  border: 1px solid rgba(122, 190, 235, 0.22);
+  box-shadow: 0 32px 80px rgba(10, 30, 48, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .dx-builder-head {
@@ -1619,7 +1623,11 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.2rem;
-  margin-bottom: 1.7rem;
+  margin-bottom: 1.9rem;
+}
+
+.dx-builder .sec-eyebrow {
+  color: #7cc3f2;
 }
 
 .dx-builder-head h3 {
@@ -1627,13 +1635,13 @@
   font-size: clamp(1.25rem, 2.1vw, 1.65rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--dark);
+  color: #f2f9ff;
 }
 
 .dx-builder-head p {
   margin: 0;
   max-width: 62ch;
-  color: var(--text-body);
+  color: rgba(203, 224, 238, 0.78);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -1644,9 +1652,10 @@
   gap: 0.45rem;
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
-  background: rgba(43, 159, 232, 0.1);
-  border: 1px solid rgba(43, 159, 232, 0.24);
-  color: var(--dx-blue-text);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(140, 205, 245, 0.32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #a6dcfb;
   font-size: 0.74rem;
   font-weight: 800;
 }
@@ -1654,11 +1663,10 @@
 .dx-track {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 1.7rem;
   display: flex;
   gap: 0.9rem;
   overflow-x: auto;
-  padding-bottom: 0.5rem;
   scrollbar-width: thin;
 }
 
@@ -1667,24 +1675,51 @@
 }
 
 .dx-track::-webkit-scrollbar-thumb {
-  background: rgba(43, 159, 232, 0.3);
+  background: rgba(122, 190, 235, 0.35);
   border-radius: 999px;
 }
 
+/* cards claros de vidro: borda fina com brilho + reflexo de superfície */
 .dx-node {
   position: relative;
   flex: 1 1 0;
   min-width: 190px;
-  padding: 1.1rem 1.1rem 1.2rem;
-  border-radius: 22px;
-  background: #f7fbff;
-  border: 1px solid rgba(43, 159, 232, 0.2);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 1.15rem 1.15rem 1.25rem;
+  border-radius: 20px;
+  background:
+    linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.65) 47%, transparent 62%) no-repeat,
+    linear-gradient(180deg, rgba(252, 254, 255, 0.98), rgba(226, 240, 250, 0.94));
+  background-size: 240% 100%, auto;
+  background-position: 130% 0, 0 0;
+  border: 1px solid rgba(150, 205, 240, 0.65);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 14px 30px rgba(6, 22, 36, 0.35),
+    0 0 26px rgba(64, 189, 236, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.9s ease;
 }
 
 .dx-node:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 44px rgba(43, 159, 232, 0.18);
+  background-position: -60% 0, 0 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 22px 46px rgba(6, 22, 36, 0.42),
+    0 0 34px rgba(64, 189, 236, 0.32);
+}
+
+/* reflexo do card no "chão" envernizado */
+.dx-node::before {
+  content: '';
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: calc(100% + 2px);
+  height: 26px;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(180deg, rgba(150, 205, 240, 0.22), transparent);
+  filter: blur(3px);
+  pointer-events: none;
 }
 
 .dx-node:not(:last-child)::after {
@@ -1694,7 +1729,7 @@
   right: -0.9rem;
   width: 0.9rem;
   height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(43, 159, 232, 0.55) 0 6px, transparent 6px 11px);
+  background: repeating-linear-gradient(90deg, rgba(122, 190, 235, 0.6) 0 6px, transparent 6px 11px);
 }
 
 .dx-node-ico {
@@ -1920,14 +1955,8 @@
   opacity: 1;
 }
 
-/* Rolagem "arrastável" dentro das telas */
-.dx-pane {
-  cursor: grab;
-}
-
-.dx-pane:active {
-  cursor: grabbing;
-}
+/* O arraste "de mão" acontece só no canvas da aba Automações
+   — as regras de cursor vivem no bloco do canvas */
 
 /* Sidebar clicável: atalho direto para cada aba */
 .dx-nav li[data-dx-nav] {
@@ -2179,7 +2208,7 @@
 
 .dx-canvas {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   height: clamp(300px, 52vh, 380px);
   border-radius: 22px;
   border: 1px solid rgba(26, 139, 199, 0.18);
@@ -2189,22 +2218,59 @@
     linear-gradient(90deg, rgba(64, 130, 160, 0.07) 1px, transparent 1px),
     rgba(255, 255, 255, 0.6);
   background-size: auto, 26px 26px, 26px 26px, auto;
-  scrollbar-width: thin;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.dx-canvas::-webkit-scrollbar {
-  height: 8px;
-}
-
-.dx-canvas::-webkit-scrollbar-thumb {
-  background: rgba(43, 159, 232, 0.35);
-  border-radius: 999px;
+/* estado de arraste: a mão fecha e o quadro "acorda" */
+.dx-canvas.is-dragging {
+  cursor: grabbing;
 }
 
 .dx-canvas-inner {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 1240px;
   height: 340px;
+  /* centrado de fábrica; o pan do JS entra no transform */
+  margin: -170px 0 0 -620px;
+  transform: translate3d(var(--dx-pan-x, 0px), var(--dx-pan-y, 0px), 0);
+  will-change: transform;
+}
+
+/* dica de exploração (some enquanto o usuário arrasta) */
+.dx-scroll-tip {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(38, 53, 50, 0.72);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.25s ease;
+}
+
+.dx-scroll-tip .dx-ico {
+  width: 0.85rem;
+  height: 0.85rem;
+  font-size: 0.85rem;
+}
+
+.dx-canvas.is-dragging .dx-scroll-tip {
+  opacity: 0;
 }
 
 .dx-canvas-inner svg {
@@ -2317,13 +2383,13 @@
   50% { box-shadow: 0 0 0 8px rgba(43, 159, 232, 0.06), 0 18px 36px rgba(43, 159, 232, 0.26); }
 }
 
-/* canvas em tela pequena: mantém o scroll horizontal interno */
+/* canvas em tela pequena: altura própria no layout empilhado */
 @media (max-width: 900px) {
   #dx-pane-ia.dx-pane {
     padding: 10px;
   }
 
-  .dx-canvas {
+  .dx-editor .dx-canvas {
     height: min(320px, 56vh);
   }
 }
@@ -2485,6 +2551,7 @@
   gap: 0.5rem;
   padding: 0.6rem;
   margin-bottom: 0.75rem;
+  flex: 0 0 auto;
   border-radius: 18px;
   border: 1px solid rgba(26, 139, 199, 0.14);
   background: rgba(255, 255, 255, 0.72);
@@ -2586,20 +2653,74 @@
   border-radius: 11px;
 }
 
-.dx-editor {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 268px;
-  gap: 0.75rem;
+/* O editor ocupa a altura restante do painel: só o inspetor direito rola */
+#dx-pane-ia.is-active {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-@media (max-width: 1020px) {
-  .dx-editor { grid-template-columns: 1fr; }
+.dx-editor {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.dx-editor .dx-canvas {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: auto; /* o clamp base fica só para quando o editor não está no flex */
 }
 
 .dx-inspector {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  flex: 0 0 268px;
+  width: 268px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 139, 199, 0.35) transparent;
+}
+
+.dx-inspector::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dx-inspector::-webkit-scrollbar-thumb {
+  background: rgba(26, 139, 199, 0.3);
+  border-radius: 999px;
+}
+
+.dx-inspector::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* empilhado: o painel volta a rolar por inteiro, canvas com altura própria */
+@media (max-width: 1020px) {
+  #dx-pane-ia.is-active {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .dx-editor {
+    flex-direction: column;
+  }
+
+  .dx-editor .dx-canvas {
+    height: clamp(300px, 52vh, 380px);
+  }
+
+  .dx-inspector {
+    flex: none;
+    width: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
 }
 
 .dx-inspector .dx-card {

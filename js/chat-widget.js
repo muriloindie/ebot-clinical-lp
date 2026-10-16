@@ -98,7 +98,9 @@ A função de renderização Replacehed substitui automaticamente o texto [BOTAO
       msgDiv.style.marginLeft = 'auto';
       msgDiv.style.flexDirection = 'row-reverse';
       msgDiv.innerHTML = `
-        <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--dark-header, #2f3835); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: bold;">VC</div>
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(38, 53, 50, 0.09); border: 1px solid rgba(38, 53, 50, 0.16); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#263532" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
         <div style="background: var(--primary, #88a72f); color: white; padding: 1rem 1.25rem; border-radius: 16px 0 16px 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 0.95rem; line-height: 1.5; word-wrap: break-word;">
           ${escapeHtml(text)}
         </div>
@@ -106,8 +108,8 @@ A função de renderização Replacehed substitui automaticamente o texto [BOTAO
     } else {
       const botImgSrc = chatContainer.querySelector('img') ? chatContainer.querySelector('img').src : '';
       msgDiv.innerHTML = `
-        <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary, #88a72f); flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <img src="${botImgSrc}" alt="Icon" style="width: 18px; height: 18px; object-fit: contain;">
+        <div style="width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+          <img src="${botImgSrc}" alt="" style="width: 28px; height: 28px; object-fit: contain;">
         </div>
         <div class="bot-msg-content" style="background: white; padding: 1rem 1.25rem; border-radius: 0 16px 16px 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 0.95rem; color: var(--dark, #333); line-height: 1.5; word-wrap: break-word;">
           ${text === 'Pensando...' ? '<span class="typing-dots"><span>.</span><span>.</span><span>.</span></span>' : renderMarkdown(text)}

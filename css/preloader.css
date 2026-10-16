@@ -78,6 +78,14 @@
   filter: drop-shadow(0 22px 40px rgba(13, 34, 46, 0.5));
 }
 
+/* O coração pulsa além do viewBox (scale 1.07): o SVG precisa sangrar sem cortar */
+.preloader-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
 .preloader-ebot {
   display: block;
   width: 100%;
