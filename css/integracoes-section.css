@@ -1,0 +1,488 @@
+/* ==========================================================================
+   10. Seção "Integrações externas" (#integracoes)
+   - Coluna de texto (.int-copy) + mapa de integrações (.int-lab)
+   - Mapa: painel escuro com 4 nós (WhatsApp, Google Agenda, sistema de gestão,
+     API/webhook) ligados ao Ê-Bot Clinical no centro, com "pacotes" animados
+     percorrendo os caminhos (mesma lógica de "Automações visuais" do Ê-Bot API)
+   - Rodapé da seção: mosaico de mecanismos (API + webhooks em destaque,
+     agenda bidirecional e canais conectados)
+   Prefixo das classes: int-
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   10.0 Layout geral
+   -------------------------------------------------------------------------- */
+
+.integracoes-section .int-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.int-copy .sec-heading {
+  max-width: 15ch;
+}
+
+/* frase de destaque em cor, no mesmo idioma two-tone do hero */
+.int-copy .int-hl {
+  color: var(--primary-hover);
+}
+
+/* o nome Ê-Bot nunca quebra no meio, em nenhum texto da seção */
+.integracoes-section .hero-brand-nowrap {
+  white-space: nowrap;
+}
+
+.int-copy .sec-lead {
+  max-width: 56ch;
+}
+
+/* pontos de integração reaproveitam o ritmo da lista de checks do WhatsApp */
+.int-copy .cw-checks {
+  margin: clamp(1.75rem, 3vw, 2.35rem) 0 2.1rem;
+}
+
+.int-copy .cw-check {
+  background: rgba(43, 159, 232, 0.1);
+  border: 1px solid rgba(43, 159, 232, 0.2);
+  color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   10.1 Mapa de integrações (painel escuro)
+   -------------------------------------------------------------------------- */
+
+.int-lab {
+  border-radius: 2rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  background: #0c1a22;
+  box-shadow: 0 35px 100px rgba(24, 58, 78, 0.22);
+  overflow: hidden;
+}
+
+.int-map {
+  position: relative;
+  min-height: 660px;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+  border-radius: 1.45rem;
+  background:
+    radial-gradient(circle at center, rgba(43, 159, 232, 0.22), transparent 23rem),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    #0f212c;
+  background-size: auto, 34px 34px, 34px 34px, auto;
+  overflow: hidden;
+}
+
+.int-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.int-path {
+  fill: none;
+  stroke: rgba(106, 186, 236, 0.58);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 9 11;
+  animation: intDashFlow 16s linear infinite;
+}
+
+.int-packet {
+  filter: drop-shadow(0 0 12px rgba(124, 195, 242, 0.85));
+}
+
+/* órbita de ferramentas: chips circulares ao redor da marca do Ê-Bot */
+.int-orbit {
+  position: relative;
+  width: min(100%, 580px);
+  aspect-ratio: 1;
+}
+
+.int-orbit-icon {
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: clamp(46px, 13.5%, 78px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  transition: box-shadow var(--transition-fast);
+}
+
+.int-orbit-icon img {
+  width: 54%;
+  height: 54%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* logos em formato de wordmark pedem mais área dentro do chip */
+.int-orbit-icon.is-wordmark img {
+  width: 72%;
+  height: 72%;
+}
+
+.int-orbit-icon:hover {
+  z-index: 20;
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.45);
+}
+
+.int-orbit-icon:hover img {
+  transform: scale(1.14);
+}
+
+/* centro da órbita: marca do Ê-Bot com anel de pulso */
+.int-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: clamp(132px, 30%, 180px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.int-hub::before,
+.int-hub::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: intCenterRing 3s ease-out infinite;
+}
+
+.int-hub::after {
+  animation-delay: 1s;
+}
+
+.int-hub-mark {
+  position: relative;
+  z-index: 2;
+  width: 66%;
+  animation: intCenterPulse 3s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+.int-hub-mark svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.45));
+}
+
+/* legenda do mapa */
+.int-lab-caption {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1rem 0.35rem 0.15rem;
+  color: rgba(216, 233, 243, 0.62);
+  font-size: 0.78rem;
+}
+
+.int-lab-caption .dx-ico {
+  width: 1rem;
+  height: 1rem;
+  color: #7cc3f2;
+}
+
+/* --------------------------------------------------------------------------
+   10.2 Mosaico de mecanismos (API + webhooks em destaque)
+   -------------------------------------------------------------------------- */
+
+.int-mechanics {
+  display: grid;
+  grid-template-columns: minmax(0, 1.32fr) minmax(0, 1fr);
+  gap: 1.15rem;
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.int-mech-col {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.int-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.65rem 1.65rem;
+  border: 1px solid rgba(43, 159, 232, 0.16);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 44px rgba(33, 68, 86, 0.07);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.int-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(64, 189, 236, 0.45);
+  box-shadow: 0 30px 70px rgba(43, 159, 232, 0.16);
+}
+
+.int-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.int-card-ico {
+  display: grid;
+  place-items: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 0.85rem;
+  background: rgba(43, 159, 232, 0.12);
+  border: 1px solid rgba(43, 159, 232, 0.22);
+  color: var(--primary);
+}
+
+.int-card-ico .dx-ico {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.int-card h3 {
+  color: var(--dark);
+  font-size: 1.14rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.int-card p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+/* cartão escuro: API + webhooks (destaque do mosaico) */
+.int-card--console {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(43, 159, 232, 0.22), transparent 22rem),
+    #0c1a22;
+  border-color: rgba(124, 195, 242, 0.18);
+  color: #e7f2f8;
+  box-shadow: 0 28px 70px rgba(19, 48, 66, 0.24);
+}
+
+.int-card--console:hover {
+  border-color: rgba(124, 195, 242, 0.45);
+  box-shadow: 0 34px 80px rgba(19, 48, 66, 0.3);
+}
+
+.int-card--console h3 {
+  color: #f2f9fd;
+}
+
+.int-card--console p {
+  color: rgba(216, 235, 245, 0.72);
+}
+
+.int-card--console .int-card-ico {
+  background: rgba(43, 159, 232, 0.24);
+  border-color: rgba(124, 195, 242, 0.32);
+  color: #9fd7ff;
+}
+
+/* console de exemplo do webhook */
+.int-code {
+  margin: 0;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #cfe8f5;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  line-height: 1.75;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.int-code .c-key { color: #7cc3f2; }
+.int-code .c-str { color: #a8e6c2; }
+.int-code .c-dim { color: rgba(216, 235, 245, 0.45); }
+
+.int-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.int-event-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.32rem 0.72rem;
+  border: 1px solid rgba(124, 195, 242, 0.28);
+  border-radius: 999px;
+  background: rgba(43, 159, 232, 0.14);
+  color: #bfe4f8;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+}
+
+.int-event-pill i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7cc3f2;
+  box-shadow: 0 0 0 0 rgba(124, 195, 242, 0.45);
+  animation: intPing 2.4s ease-out infinite;
+}
+
+.int-note,
+.int-card p.int-note {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(216, 235, 245, 0.62);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.int-note .dx-ico {
+  width: 1rem;
+  height: 1rem;
+  color: #7cc3f2;
+}
+
+/* linha de logos de aplicações (canais / automação) */
+.int-logo-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+  padding-top: 1.15rem;
+}
+
+.int-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.72rem 0.38rem 0.55rem;
+  border: 1px solid rgba(43, 159, 232, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--dark);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.int-logo-chip img {
+  width: 1.05rem;
+  height: 1.05rem;
+  object-fit: contain;
+}
+
+/* logos em SVG monocromático ganham branco sobre chip escuro */
+.int-logo-chip.is-dark img {
+  filter: brightness(0) invert(1);
+}
+
+.int-logo-chip .dx-ico {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.int-logo-chip.is-dark {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #cfe8f5;
+}
+
+/* --------------------------------------------------------------------------
+   10.3 Animações
+   -------------------------------------------------------------------------- */
+
+@keyframes intDashFlow {
+  to { stroke-dashoffset: -220; }
+}
+
+@keyframes intCenterRing {
+  0% { box-shadow: 0 0 0 0 rgba(43, 159, 232, 0.32); }
+  100% { box-shadow: 0 0 0 80px rgba(43, 159, 232, 0); }
+}
+
+@keyframes intCenterPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.45)) brightness(1); }
+  50% { transform: scale(1.06); filter: drop-shadow(0 18px 44px rgba(43, 159, 232, 0.4)) brightness(1.08); }
+  100% { transform: scale(1); filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.45)) brightness(1); }
+}
+
+@keyframes intPing {
+  0% { box-shadow: 0 0 0 0 rgba(124, 195, 242, 0.45); }
+  70%, 100% { box-shadow: 0 0 0 7px rgba(124, 195, 242, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   10.4 Responsivo
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .integracoes-section .int-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .int-copy .sec-heading { max-width: 20ch; }
+
+  /* a órbita é fluida: o quadrado encolhe junto com o painel */
+  .int-map {
+    min-height: 0;
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .int-mechanics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .int-map { padding: 1rem; }
+
+  .int-card { padding: 1.35rem 1.25rem 1.3rem; }
+
+  .int-code { font-size: 0.72rem; }
+}
+
+/* --------------------------------------------------------------------------
+   10.5 Movimento reduzido
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .int-path,
+  .int-hub-mark,
+  .int-hub::before,
+  .int-hub::after,
+  .int-orbit-icon img,
+  .int-event-pill i {
+    animation: none;
+  }
+
+  .int-card:hover { transform: none; }
+  .int-orbit-icon:hover img { transform: none; }
+}

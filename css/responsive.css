@@ -10,9 +10,12 @@
   .hero-split .badge { margin: 0 auto 1rem; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
 
-  /* Com 7 itens o menu em linha não cabe mais entre o logo e o CTA
-     (aperto comprimia a logo) — passa a ser menu lateral abaixo de 1025px. */
+/* Com 8 itens o menu em linha não cabe mais entre o logo e o CTA
+   (o aperto colava no logo e quebrava "Demo IA" em duas linhas) — passa a ser
+   menu lateral abaixo de 1201px. As regras de layout continuam em 1024px. */
+@media (max-width: 1200px) {
   .nav-menu {
     position: fixed;
     top: 80px;
