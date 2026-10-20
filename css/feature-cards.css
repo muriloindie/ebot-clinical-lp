@@ -548,6 +548,118 @@
 }
 
 /* --------------------------------------------------------------------------
+   9b. Demo 07 — Telefonia: chamada ao vivo + transcrição da IA
+   -------------------------------------------------------------------------- */
+.fs-tel {
+  align-content: center;
+  gap: 0.45rem;
+}
+
+/* linha da chamada: avatar pulsando "ao vivo" + meta + selo */
+.fs-call {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-line);
+  box-shadow: var(--fs-shadow);
+}
+.fs-call > span {
+  display: grid;
+  min-width: 0;
+}
+.fs-call strong {
+  font-size: 0.7rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fs-call small {
+  font-size: 0.56rem;
+  color: var(--fs-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fs-call .fs-pill {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+/* avatar da ligação: gradiente azul com anel de pulso contínuo */
+.fs-av--live {
+  width: 1.45rem;
+  height: 1.45rem;
+  color: #ffffff;
+  background: linear-gradient(140deg, var(--fs-primary), var(--fs-primary-text));
+  box-shadow: 0 0 0 0 rgba(26, 139, 199, 0.38);
+  animation: fsCallPulse 2.2s ease-out infinite;
+}
+.fs-av--live .dx-ico {
+  width: 0.78rem;
+  height: 0.78rem;
+  font-size: 0.78rem;
+}
+
+@keyframes fsCallPulse {
+  0% { box-shadow: 0 0 0 0 rgba(26, 139, 199, 0.38); }
+  70% { box-shadow: 0 0 0 7px rgba(26, 139, 199, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(26, 139, 199, 0); }
+}
+
+/* waveform: barras respirando no ritmo da voz */
+.fs-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.14rem;
+  height: 2.5rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 10px;
+  border: 1px solid var(--fs-line);
+  background: linear-gradient(90deg, rgba(26, 139, 199, 0.05), rgba(26, 139, 199, 0.13) 50%, rgba(26, 139, 199, 0.05));
+}
+.fs-wave i {
+  flex: 1 1 0;
+  height: 100%;
+  min-height: 3px;
+  transform: scaleY(0.28);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--fs-primary), rgba(26, 139, 199, 0.38));
+  animation: fsWave 1.5s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+@keyframes fsWave {
+  0%, 100% { transform: scaleY(0.26); }
+  50% { transform: scaleY(1); }
+}
+
+/* fala do paciente: legenda da transcrição entra com o loop */
+.fs-call-line {
+  margin: 0;
+  padding: 0.34rem 0.55rem;
+  border-radius: 10px;
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-line);
+  border-left: 3px solid rgba(26, 139, 199, 0.55);
+  color: var(--fs-slate);
+  font-size: 0.68rem;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fs-tel .fs-call-line { animation: fsPop 7s ease infinite 0.9s backwards; }
+
+/* o registro da resolução entra por último, como no atendimento real */
+.fs-tel .fs-doc { animation: fsPop 7s ease infinite 1.7s backwards; }
+.fs-tel .fs-call .fs-pill { animation: fsRing 2.6s ease infinite; }
+
+/* --------------------------------------------------------------------------
    9. Bolha de digitação
    -------------------------------------------------------------------------- */
 .fs-msg--type {

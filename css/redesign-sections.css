@@ -1190,7 +1190,7 @@
   align-items: center;
   gap: 0.4rem;
   width: fit-content;
-  margin-top: 0.25rem;
+  margin-top: auto; /* alinha a tag na base do card, independente do texto (o gap do card garante o respiro mínimo) */
   padding: 0.28rem 0.65rem;
   border-radius: 999px;
   border: 1px solid rgba(43, 159, 232, 0.3);
