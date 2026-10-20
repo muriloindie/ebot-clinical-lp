@@ -48,6 +48,12 @@
   line-height: 1.65;
 }
 
+/* integrações nativas citadas no card ganham destaque de cor */
+.crm-card .crm-hl {
+  color: var(--primary);
+  font-weight: 800;
+}
+
 .crm-card .crm-icon {
   display: grid;
   place-items: center;

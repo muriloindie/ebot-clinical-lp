@@ -40,5 +40,10 @@ documentação/
 *.swp
 *.swo
 
+# Ferramentas de agente (opencode / skills)
+.agents/
+.opencode/
+skills-lock.json
+
 # Docker test
 test-docker.sh
